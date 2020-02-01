@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+.name{
+  font-family: cursive;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Navbar{
   display: flex;
-  flex-direction: column;
+  background: #292c2f;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  }
+.Navbar div{
+  color: #80c7de;
+  font-weight: bold;
+  margin: 5px;
+  margin-left: 10px;
+}
+
+.Navbar div:hover{
   color: white;
+  margin-top:1px; 
+  transition:.1s;
+}
+.Navbar img{
+  width: 40px;
+}
+.link{
+  color: white;
+  text-decoration: none;
+}
+.link:hover{
+  color: white;
+  text-decoration: none;
+}
+#textanim{
+ overflow: hidden;
+  border-right: .10em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: 
+    typing 3.5s steps(50, end),
+    blink-caret .75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#home img{
+    margin-top: 80px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    margin-bottom:10px; 
+}
+.card-deck-me{
+  margin-right:25px;
+  margin-left: 25px;
+}
+.card-deck img{
+  width: 120px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 600px) {
+.typewriter{
+  font-size: 30px;
+}
+}
+@media (max-width: 450px) {
+.typewriter{
+  font-size: 20px;
+  color: green;
+}
 }

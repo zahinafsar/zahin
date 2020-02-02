@@ -5,7 +5,7 @@
   display: flex;
   background: #292c2f;
   align-items: center;
-  }
+}
 .Navbar div{
   color: #80c7de;
   font-weight: bold;
@@ -36,8 +36,8 @@
   margin: 0 auto;
   letter-spacing: .15em;
   animation: 
-    typing 3.5s steps(50, end),
-    blink-caret .75s step-end infinite;
+  typing 3.5s steps(50, end),
+  blink-caret .75s step-end infinite;
 }
 @keyframes typing {
   from { width: 0 }
@@ -65,9 +65,38 @@
   margin-left: 50%;
   transform: translateX(-50%);
 }
-@media (max-width: 600px) {
+.key{
+  z-index: 100002;
+  display: none;
+}
+.key2{
+  z-index: 100001;
+  display: none;
+}
+@media (max-width: 660px) {
 .typewriter{
   font-size: 30px;
+}
+.key{
+  display: block;
+}
+.Navbar{
+  left: 10px;
+  margin-top:15px;
+  z-index: 100000;
+  display: grid;
+  position: fixed;
+  flex-direction: column;
+  background: transparent;
+  width: 100%;
+  font-size: 0;
+}
+.Navbar div{
+  transition: .5s;
+  position: fixed;
+}
+.Navbar img{
+  width: 60px;
 }
 }
 @media (max-width: 450px) {

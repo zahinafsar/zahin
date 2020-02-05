@@ -1,6 +1,6 @@
 import React from 'react';
-import '../App.css';
-import '../footer.css';
+import '../../css/App.css';
+import '../../css/footer.css';
 
 const Foot=()=>{
 

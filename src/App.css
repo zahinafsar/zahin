@@ -66,11 +66,9 @@
   transform: translateX(-50%);
 }
 .key{
-  z-index: 100002;
   display: none;
 }
 .key2{
-  z-index: 100001;
   display: none;
 }
 @media (max-width: 660px) {
@@ -80,6 +78,10 @@
 .key{
   display: block;
 }
+.key2{
+  display: block;
+  transform: rotate(180deg);
+}
 .Navbar{
   left: 10px;
   margin-top:15px;
@@ -88,12 +90,28 @@
   position: fixed;
   flex-direction: column;
   background: transparent;
-  width: 100%;
   font-size: 0;
 }
 .Navbar div{
-  transition: .5s;
+  transition: .2s;
+}
+.cover{
+  z-index: 10000;
+  background-color: black;
+  opacity:.7;
+  height: 100vh;
+  width: 100%;
   position: fixed;
+  left: 0;
+  top: 0;
+}
+.navtoggle{
+  position: fixed;
+  transform: scale(0);
+}
+.navtoggle2{
+  position: relative;
+  transform: scale(1);
 }
 .Navbar img{
   width: 60px;

@@ -1,29 +1,190 @@
+#pro{
+  margin: 10px;
+}
+........................................../*skill*/
+#SkillBox {
+    font-size: 20px;
+    font-family: 'Indie Flower', cursive;
+    height: auto;
+    background-color: #fff;
+    border-radius:20px; 
+}
+#SkillBox img {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+
+.SkillBar{
+    width: 90%;
+    height: 50px;
+    position: relative;
+    background: rgba(17, 17, 17, .3);
+    margin: 20px auto;
+}
+
+
+#Skill-HTML {
+    width: 99%;
+    animation: Animate-HTML 4s;
+    height: 100%;
+    position: absolute;
+    background-color: #ea8564;
+}
+@keyframes Animate-HTML {
+    from {
+    width: 10px;
+}
+to {
+    width: 99%}
+}
+
+
+
+#Skill-RJ {
+    animation: rj 4s;
+    width: 80%;
+    height: 50px;
+    position: absolute;
+    background-color: #970cc1;
+}
+@keyframes rj {
+    from {
+    width: 10px;
+}
+to {
+    width: 80%}
+}
+
+
+
+#Skill-CSS {
+    animation: Animate-CSS 5s;
+    width: 99%;
+    height: 50px;
+    position: absolute;
+    background-color: #55a69f;
+}
+@keyframes Animate-CSS {
+    from {
+    width: 10px;
+}
+to {
+    width: 99%}
+}
+
+
+#Skill-JS {
+    animation: Animate-JS 4s;
+    width: 80%;
+    height: 50px;
+    position: absolute;
+    background-color: #c44e45;
+}
+@keyframes Animate-JS {
+    from {
+    width: 10px;
+}
+to {
+    width: 80%}
+}
+
+
+#Skill-photo {
+    animation: Animate-photo 3s;
+    width: 90%;
+    height: 50px;
+    position: absolute;
+    background-color: #c14343;
+}
+@keyframes Animate-photo {
+    from {
+    width: 10px;
+}
+to {
+    width: 90%}
+}
+
+
+
+
+
+#Skill-illust {
+    animation: Animate-illust 6s;
+    width: 90%;
+    height: 50px;
+    position: absolute;
+    background-color: #7f1ef8;
+}
+@keyframes Animate-illust {
+    from {
+    width: 10px;
+}
+to {
+    width: 90%}
+}
+
+
+
+
+
+
+#Skill-after {
+    animation: Animate-after 4s;
+    width: 70%;
+    height: 50px;
+    position: absolute;
+    background-color: #3cf81e;
+}
+@keyframes Animate-after {
+    from {
+    width: 10px;
+}
+to {
+    width: 70%}
+}
+
+
+.Skill-Area {
+    z-index: 1;
+    float: left;
+    //position: absolute;
+    margin-top: 15px;
+    margin-left: 15px;
+    text-shadow: none;
+    color: #fff;
+    //font-family: Lato-Regular, sans-serif;
+    font-size: 18px;
+}
+.PercentText {
+    z-index: 3;
+    position: relative;
+    padding-right: 15px;
+    margin-top: 15px;
+    float: right;
+    text-shadow: none;
+    color: #fff;
+    //font-family: Lato-Regular, sans-serif;
+    font-size: 18px;
+}
+........................................../*skill*/
+
+
+
+
+........................................../*common*/
+
 .name{
   font-family: cursive;
 }
 .link{
   color: white;
   text-decoration: none;
-}
-.about-title{
-  font-size: 22px;
-  font-weight: bold;
-  color: blue;
-  text-align: center;
-}
-.about-text{
-  font-weight: bold;
-  text-align: center;
-}
-/*.about-title img{
-  height: 10px;
-}
-.about-text img{
-  height: 10px;
-}*/
-.about-h1{
-  color: #02055f;
-  text-align: center;
 }
 .link:hover{
   color: white;
@@ -48,7 +209,6 @@
   from, to { border-color: transparent }
   50% { border-color: orange; }
 }
-
 #home img{
     margin-top: 80px;
     margin-left: 50%;
@@ -82,3 +242,26 @@
   color: green;
 }
 }
+........................................../*common*/
+
+
+
+........................................../*about*/
+.about-title{
+  font-size: 22px;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
+}
+.about-text{
+  font-weight: bold;
+  text-align: center;
+}
+
+.about-h1{
+  color: #02055f;
+  text-align: center;
+}
+
+
+

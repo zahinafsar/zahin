@@ -34,7 +34,7 @@ class App extends Component {
        <div id="home">
           <img src="./img/zahin.jpg" alt="zahin" />
           <h1  className="typewriter" id="textanim" style={{textAlign: 'center'}}>Mahir Md. Zahin Afsar</h1><br />
-          <h6 className="name" style={{textAlign: 'center'}}>My name is zahin.This is my parsonal website and made by myself.<br />Still i am a student.My aim is to be an engineer.<br />I like software as well as electronics.<br />You can get enough information about me from this site.</h6><br /><br /><br />
+          <h6 className="name" style={{textAlign: 'center'}}>My name is zahin.This is my personal website and made by myself.<br />Still i am a student.My aim is to be an engineer.<br />I like software as well as electronics.<br />You can get enough information about me from this site.</h6><br /><br /><br />
        </div>
        
        <Switch>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import './css/App.css';
 import Navbar from './files/components/nav';
 import Foot from './files/components/footer';
@@ -9,13 +9,28 @@ import About from './files/about';
 import Contact from './files/contact';
 import Project from './files/project';
 
-const App=()=>{
+class App extends Component {
+    state = {
+      loader: "loader"
+    }
+
+  load=()=>{
+    setTimeout(() => {
+    this.setState({
+        loader: "loaderhide"
+      })
+    }, 1000);
+  }
+  render(){
 
   return (
   	<Router>
-    <div>
+    <div onLoad={this.load}>
        <Navbar />
 
+      <div id={this.state.loader} className="hidden">
+        <img src="./img/loader.svg" alt="Loading..." />
+      </div>
        <div id="home">
           <img src="./img/zahin.jpg" alt="zahin" />
           <h1  className="typewriter" id="textanim" style={{textAlign: 'center'}}>Mahir Md. Zahin Afsar</h1><br />
@@ -29,10 +44,13 @@ const App=()=>{
           <Route path="/about" component={About}/>
           <Route path="/contact" component={Contact}/>
        </Switch>
+
+
        <Foot />
     </div>
     </Router>
  );
+}
 }
 
 export default App;

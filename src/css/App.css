@@ -1,7 +1,34 @@
 #pro{
   margin: 10px;
 }
-........................................../*skill*/
+
+.mapouter{
+  position:relative;
+  text-align:right;
+  height:500px;
+  width:100%;
+}
+.gmap_canvas{
+  overflow:hidden;
+  background:none!important;
+  height:400px;
+  width:100%;
+}
+
+#cont{
+  margin: 10px;
+}
+#cont .card img{
+  width: 70px;
+}
+#cont .card{
+  border: none;
+}
+
+
+
+
+
 #SkillBox {
     font-size: 20px;
     font-family: 'Indie Flower', cursive;
@@ -172,13 +199,43 @@ to {
     //font-family: Lato-Regular, sans-serif;
     font-size: 18px;
 }
-........................................../*skill*/
 
 
 
 
-........................................../*common*/
 
+
+
+
+
+
+#loader {
+    position: fixed;
+    z-index: 10000000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader > img {
+    width: 200px;
+}
+
+#loaderhide{
+    display: none;
+}
+
+
+
+
+#home{
+  margin: 15px;
+}
 .name{
   font-family: cursive;
 }
@@ -242,11 +299,15 @@ to {
   color: green;
 }
 }
-........................................../*common*/
 
 
 
-........................................../*about*/
+
+
+
+
+
+
 .about-title{
   font-size: 22px;
   font-weight: bold;

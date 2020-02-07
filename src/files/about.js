@@ -104,7 +104,7 @@ const About=()=>{
 			/>
 
 			<AbouttempInto
-			title="Class Eleven to Twoelve:(2018 - 2020)" 
+			title="Class Eleven to Twelve:(2018 - 2020)" 
 			text="Dania University College" 
 			/>
 

@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 import './css/App.css';
-import Navbar from './files/components/nav';
+import Menubar from './files/components/nav';
 import Foot from './files/components/footer';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Home from './files/home';

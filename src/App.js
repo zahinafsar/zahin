@@ -26,7 +26,7 @@ class App extends Component {
   return (
   	<Router>
     <div onLoad={this.load}>
-       <Navbar />
+       <Menubar />
 
       <div id={this.state.loader} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />

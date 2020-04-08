@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import './css/App.css';
-import Navbar from 'create-react-nav/nav/navSnack';
+import Navbar from './files/components/nav';
 import Foot from './files/components/footer';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Home from './files/home';
@@ -26,13 +26,7 @@ class App extends Component {
   return (
   	<Router>
     <div onLoad={this.load}>
-       <Navbar logoImg="/logo.png"  links={[
-      ["/","Home"],
-      ["/about","About"],
-      ["/skills","Skills"],
-      ["/project","Projects"],
-      ["/contact","Contact"]
-    ]}/>
+       <Navbar />
       <div id={this.state.loader} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />
       </div>

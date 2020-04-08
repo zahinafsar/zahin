@@ -239,11 +239,7 @@ to {
 .name{
   font-family:sans-serif;
 }
-.link{
-  color: white;
-  text-decoration: none;
-}
-.link:hover{
+a:hover{
   color: white;
   text-decoration: none;
 }

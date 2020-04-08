@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ useState } from 'react';
 import './css/App.css';
 import Navbar from './files/components/nav';
 import Foot from './files/components/footer';
@@ -9,26 +9,21 @@ import About from './files/about';
 import Contact from './files/contact';
 import Project from './files/project';
 
-class App extends Component {
-    state = {
-      loader: "loader"
-    }
+const App=()=>{
+    const [state,setState] = useState("loader"). 
 
   load=()=>{
     setTimeout(() => {
-    this.setState({
-        loader: "loaderhide"
-      })
+    setState("loaderhide");
     }, 1000);
   }
-  render(){
 
   return (
   	<Router>
     <div onLoad={this.load}>
        <Menubar />
 
-      <div id={this.state.loader} className="hidden">
+      <div id={state} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />
       </div>
        <div id="home">
@@ -50,7 +45,6 @@ class App extends Component {
     </div>
     </Router>
  );
-}
 }
 
 export default App;

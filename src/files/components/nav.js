@@ -3,7 +3,7 @@ import Navbar from "create-react-nav/nav/navSnack"
 
 const Navbar=()=>{
   return (
-   <Navbar links={[
+   <Menubar links={[
       ["/","Home"],
       ["/about","About"],
       ["/skills","Skills"],

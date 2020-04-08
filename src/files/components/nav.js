@@ -11,6 +11,5 @@ const Menubar=()=>{
       ["/contact","Contact"]
     ]}/>
 }
-}
 
 export default Navbar;

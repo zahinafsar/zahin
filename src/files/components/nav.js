@@ -10,6 +10,7 @@ const Menubar=()=>{
       ["/project","Projects"],
       ["/contact","Contact"]
     ]}/>
+)
 }
 
 export default Navbar;

@@ -1,6 +1,5 @@
 import React,{ useState } from 'react';
 import './css/App.css';
-import Menubar from './files/components/nav';
 import Foot from './files/components/footer';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Home from './files/home';
@@ -8,6 +7,7 @@ import Skills from './files/skills';
 import About from './files/about';
 import Contact from './files/contact';
 import Project from './files/project';
+import Navbar from "create-react-nav/nav/navSnack"
 
 const App=()=>{
     const [state,setState] = useState("loader"). 
@@ -21,7 +21,13 @@ const App=()=>{
   return (
   	<Router>
     <div onLoad={this.load}>
-       <Menubar />
+       <Navbar links={[
+      ["/","Home"],
+      ["/about","About"],
+      ["/skills","Skills"],
+      ["/project","Projects"],
+      ["/contact","Contact"]
+       ]}/>
 
       <div id={state} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />

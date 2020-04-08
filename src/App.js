@@ -10,7 +10,7 @@ import Project from './files/project';
 import Navbar from "create-react-nav/nav/navSnack"
 
 const App=()=>{
-    const [state,setState] = useState("loader"). 
+    const [state,setState] = useState("loader");
 
   load=()=>{
     setTimeout(() => {
@@ -21,13 +21,7 @@ const App=()=>{
   return (
   	<Router>
     <div onLoad={this.load}>
-       <Navbar links={[
-      ["/","Home"],
-      ["/about","About"],
-      ["/skills","Skills"],
-      ["/project","Projects"],
-      ["/contact","Contact"]
-       ]}/>
+       
 
       <div id={state} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />

@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from "create-react-nav/nav/navSnack"  
 
-const Navbar=()=>{
+const Menubar=()=>{
   return (
-   <Menubar links={[
+   <Navbar links={[
       ["/","Home"],
       ["/about","About"],
       ["/skills","Skills"],

@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Navbar from "create-react-nav/nav/navSnack"  
 
-class Navbar extends Component {
-  render(){
+const Navbar=()=>{
   return (
    <Navbar links={[
       ["/","Home"],
@@ -11,7 +10,6 @@ class Navbar extends Component {
       ["/project","Projects"],
       ["/contact","Contact"]
     ]}/>
- );
 }
 }
 

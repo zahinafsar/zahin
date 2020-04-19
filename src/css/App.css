@@ -71,11 +71,42 @@ to {
     width: 99%}
 }
 
+#Skill-NJ {
+    width: 90%;
+    animation: Animate-HTML 4s;
+    height: 100%;
+    position: absolute;
+    background-color: #c14343;
+}
+@keyframes Animate-HTML {
+    from {
+    width: 10px;
+}
+to {
+    width: 90%}
+}
+
+
+#Skill-MDB {
+    width: 90%;
+    animation: Animate-HTML 4s;
+    height: 100%;
+    position: absolute;
+    background-color: #7f1ef8;
+}
+@keyframes Animate-HTML {
+    from {
+    width: 10px;
+}
+to {
+    width: 90%}
+}
+
 
 
 #Skill-RJ {
     animation: rj 4s;
-    width: 80%;
+    width: 90%;
     height: 50px;
     position: absolute;
     background-color: #970cc1;
@@ -85,7 +116,7 @@ to {
     width: 10px;
 }
 to {
-    width: 80%}
+    width: 90%}
 }
 
 
@@ -108,7 +139,7 @@ to {
 
 #Skill-JS {
     animation: Animate-JS 4s;
-    width: 80%;
+    width: 99%;
     height: 50px;
     position: absolute;
     background-color: #c44e45;
@@ -118,7 +149,7 @@ to {
     width: 10px;
 }
 to {
-    width: 80%}
+    width: 99%}
 }
 
 

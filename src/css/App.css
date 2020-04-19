@@ -58,82 +58,19 @@
 
 #Skill-HTML {
     width: 99%;
-    animation: Animate-HTML 4s;
+    animation: Animate-JS 3s;
     height: 100%;
     position: absolute;
     background-color: #ea8564;
 }
-@keyframes Animate-HTML {
-    from {
-    width: 10px;
-}
-to {
-    width: 99%}
-}
-
-#Skill-NJ {
-    width: 90%;
-    animation: Animate-HTML 4s;
-    height: 100%;
-    position: absolute;
-    background-color: #c14343;
-}
-@keyframes Animate-HTML {
-    from {
-    width: 10px;
-}
-to {
-    width: 90%}
-}
-
-
-#Skill-MDB {
-    width: 90%;
-    animation: Animate-HTML 4s;
-    height: 100%;
-    position: absolute;
-    background-color: #7f1ef8;
-}
-@keyframes Animate-HTML {
-    from {
-    width: 10px;
-}
-to {
-    width: 90%}
-}
-
-
-
-#Skill-RJ {
-    animation: rj 4s;
-    width: 90%;
-    height: 50px;
-    position: absolute;
-    background-color: #970cc1;
-}
-@keyframes rj {
-    from {
-    width: 10px;
-}
-to {
-    width: 90%}
-}
-
 
 
 #Skill-CSS {
-    animation: Animate-CSS 5s;
+    animation: Animate-JS 3s;
     width: 99%;
     height: 50px;
     position: absolute;
     background-color: #55a69f;
-}
-@keyframes Animate-CSS {
-    from {
-    width: 10px;
-}
-to {
-    width: 99%}
 }
 
 
@@ -150,6 +87,40 @@ to {
 }
 to {
     width: 99%}
+}
+
+
+#Skill-NJ {
+    width: 90%;
+    animation: Animate-RJ 4.5s;
+    height: 100%;
+    position: absolute;
+    background-color: #c14343;
+}
+
+
+#Skill-MDB {
+    width: 90%;
+    animation: Animate-RJ 4.5s;
+    height: 100%;
+    position: absolute;
+    background-color: #7f1ef8;
+}
+
+
+#Skill-RJ {
+    animation: Animate-RJ 4.5s;
+    width: 90%;
+    height: 50px;
+    position: absolute;
+    background-color: #970cc1;
+}
+@keyframes Animate-RJ {
+    from {
+    width: 10px;
+}
+to {
+    width: 90%}
 }
 
 

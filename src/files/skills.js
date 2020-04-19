@@ -23,9 +23,13 @@ const Skills=()=>{
 
 	<Skillbar skillId="Skill-CSS" skill="CSS" level="99%" />
 
-	<Skillbar skillId="Skill-RJ" skill="React js" level="80%" />
+	<Skillbar skillId="Skill-JS" skill="Javascript" level="99%" />
 
-	<Skillbar skillId="Skill-JS" skill="Javascript" level="80%" />
+	<Skillbar skillId="Skill-RJ" skill="React js" level="90%" />
+
+	<Skillbar skillId="Skill-NJ" skill="Node.js" level="90%" />
+
+	<Skillbar skillId="Skill-MDB" skill="MongoDB" level="90%" />
 
 <br/><br/>
 

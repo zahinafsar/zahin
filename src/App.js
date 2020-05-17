@@ -28,12 +28,12 @@ class App extends Component {
   	<Router>
     <div onLoad={this.load}>
        <Navbar logoImg="/logo.png" links={[
-      ["/","Home"],
-      ["/about","About"],
-      ["/skills","Skills"],
-      ["/project","Projects"],
-      ["/contact","Contact"]
-    ]}/>
+        ["/","Home"],
+        ["/about","About"],
+        ["/skills","Skills"],
+        ["/project","Projects"],
+        ["/contact","Contact"]
+      ]}/>
       <div id={this.state.loader} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />
       </div>

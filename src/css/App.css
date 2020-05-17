@@ -213,7 +213,7 @@ to {
 
 #loader {
     position: fixed;
-    z-index: 10000000;
+    z-index: 1000000000;
     top: 0;
     left: 0;
     width: 100%;

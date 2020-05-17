@@ -27,9 +27,13 @@ const Skills=()=>{
 
 	<Skillbar skillId="Skill-RJ" skill="React js" level="90%" />
 
+	<Skillbar skillId="Skill-RJ" skill="Vue js" level="90%" />
+
 	<Skillbar skillId="Skill-NJ" skill="Node.js" level="90%" />
 
 	<Skillbar skillId="Skill-MDB" skill="MongoDB" level="90%" />
+
+	<Skillbar skillId="Skill-MDB" skill="MySql" level="90%" />
 
 <br/><br/>
 
@@ -37,11 +41,14 @@ const Skills=()=>{
 
 <center><h1>Graphics Design Skills</h1></center><hr/><br/>
 
-	<Skillbar skillId="Skill-photo" skill="Photoshop" level="90%" />
+	<Skillbar skillId="Skill-CSS" skill="Photoshop" level="99%" />
 
-	<Skillbar skillId="Skill-illust" skill="Illustrator" level="90%" />
+	<Skillbar skillId="Skill-JS" skill="Illustrator" level="99%" />
 
-	<Skillbar skillId="Skill-after" skill="Adobe After Effects" level="70%" />
+	<Skillbar skillId="Skill-MDB" skill="Adobe After Effects" level="90%" />
+
+	<Skillbar skillId="Skill-NJ" skill="Figma" level="90%" />
+
 </div>
     	)
 }

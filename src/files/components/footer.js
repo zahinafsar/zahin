@@ -1,8 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import '../../css/App.css';
 import '../../css/footer.css';
+import axios from "axios"
 
 const Foot=()=>{
+  const [email,setEmail]=useState("")
+  const [text,setText]=useState("")
+
+  const submithandle=(e)=>{
+    e.preventDefault();
+    axios.post("/email/text")
+  }
 
   return (
     <div className="Foot">
@@ -12,11 +20,11 @@ const Foot=()=>{
         <p class="footer-company-name">Md. Zahin Afsar &copy; 2019</p>
       </div>
       <div class="footer-right">
-        <p>Contact Me</p>
-        <form action="#" method="post">
-          <input type="text" name="email" placeholder="Email" />
-          <textarea name="message" placeholder="Message"></textarea>
-          <button>Send</button>
+        <p>Contact with Me to Hire</p>
+        <form onSubmit={submithandle}>
+          <input type="text" name="email" placeholder="Email" value={email} onChange={(e)=> setEmail(e.target.value)}/>
+          <textarea name="message" placeholder="Message" value={text} onChange={(e)=> setText(e.target.value)}></textarea>
+          <button type="submit">Send</button>
         </form>
       </div>
     </footer>

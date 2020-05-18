@@ -25,6 +25,18 @@
   border: none;
 }
 
+.z-btn-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.z-btn-group button{
+  margin: 0px 20px 0px 20px;
+}
+button a{
+  text-decoration: none;
+}
 
 
 

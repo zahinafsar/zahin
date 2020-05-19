@@ -8,7 +8,6 @@ const Foot=()=>{
   const [email,setEmail]=useState("")
   const [text,setText]=useState("")
   const [ok,setOk]=useState(false)
-  const [show, setShow] = useState(true);
 
   const submithandle=(e)=>{
     e.preventDefault();
@@ -17,11 +16,12 @@ const Foot=()=>{
 
   return (
     <div className="Foot">
-   {if(ok){return(
-      <Alert variant="success" onClose={() => setShow(false)} dismissible>
+   {
+     if(ok)return(
+      <Alert variant="success" onClose={() => setOk(false)} dismissible>
        Message successful sent!  
       </Alert>
-   )}}
+   )}
        <footer class="footer-distributed" id="footer">
       <div class="footer-left">
         <h3>Zahin<span>Afsar</span></h3>

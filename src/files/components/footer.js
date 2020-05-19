@@ -12,7 +12,9 @@ const Foot=()=>{
 
   const submithandle=(e)=>{
     e.preventDefault();
-    axios.get(`https://mdzahin-mails.herokuapp.com/${email}/${text}`).then((warn)=>setRes(warn)).then(setOk(true))
+    axios.get(`https://mdzahin-mails.herokuapp.com/${email}/${text}`).then((warn)=>setRes(warn)).then(setOk(true));
+    setEmail("");
+    setText("")
   }
 
   return (

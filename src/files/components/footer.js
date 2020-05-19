@@ -9,7 +9,7 @@ const Foot=()=>{
 
   const submithandle=(e)=>{
     e.preventDefault();
-    axios.get("/email/text")
+    axios.get(`https://mdzahin-mails.herokuapp.com/${email}/${text}`).then((e)=>console.log(e))
   }
 
   return (

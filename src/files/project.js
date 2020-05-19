@@ -1,5 +1,9 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import '../css/App.css';
+import axios from 'axios';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button'
+
 
 function Project(props){
 	return (
@@ -14,6 +18,12 @@ function Project(props){
 }
 
 const Projects=()=>{
+	const [info,setInfo]=useState([""]);
+
+	useEffect(()=>{
+	axios.get('https://api.github.com/users/Mdzahin/repos').then((res)=>setInfo(res.data))
+	},[])
+
     return (
 	<div>
 			<div id="SkillBox">
@@ -43,7 +53,18 @@ const Projects=()=>{
 			link="https://daniasc.team/"
 			/>
 
-		</div>
+		</div><br/>
+		<div id="SkillBox">
+				<div><img src="https://img.icons8.com/bubbles/500/000000/github.png" alt="img" /></div>
+				<center><h1>All My Github Repositories</h1></center><br/>
+				<br/>
+			</div>
+			<ListGroup>
+			{info.map((a)=>(
+			  <ListGroup.Item style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>{a.name} <Button variant="outline-primary"><a href={a.svn_url}>Link</a></Button></ListGroup.Item>
+			))}
+			</ListGroup>
+
 	</div>
     	)
 }

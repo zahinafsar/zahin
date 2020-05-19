@@ -9,7 +9,7 @@ const Foot=()=>{
 
   const submithandle=(e)=>{
     e.preventDefault();
-    axios.post("/email/text")
+    axios.get("/email/text")
   }
 
   return (

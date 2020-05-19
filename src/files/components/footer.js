@@ -16,12 +16,7 @@ const Foot=()=>{
 
   return (
     <div className="Foot">
-   {
-     if(ok)return(
-      <Alert variant="success" onClose={() => setOk(false)} dismissible>
-       Message successful sent!  
-      </Alert>
-   )}
+   {ok ?  <Alert variant="success" onClose={() => setOk(false)} dismissible>Message successful sent! </Alert> : ""}
        <footer class="footer-distributed" id="footer">
       <div class="footer-left">
         <h3>Zahin<span>Afsar</span></h3>

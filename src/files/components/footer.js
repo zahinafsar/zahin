@@ -1,19 +1,27 @@
 import React,{useState} from 'react';
 import '../../css/App.css';
 import '../../css/footer.css';
-import axios from "axios"
+import axios from "axios";
+import Alert from 'react-bootstrap/Alert'
 
 const Foot=()=>{
   const [email,setEmail]=useState("")
   const [text,setText]=useState("")
+  const [ok,setOk]=useState(false)
+  const [show, setShow] = useState(true);
 
   const submithandle=(e)=>{
     e.preventDefault();
-    axios.get(`https://mdzahin-mails.herokuapp.com/${email}/${text}`).then((e)=>console.log(e))
+    axios.get(`https://mdzahin-mails.herokuapp.com/${email}/${text}`).then(setOk(true))
   }
 
   return (
     <div className="Foot">
+   {if(ok){return(
+      <Alert variant="success" onClose={() => setShow(false)} dismissible>
+       Message successful sent!  
+      </Alert>
+   )}}
        <footer class="footer-distributed" id="footer">
       <div class="footer-left">
         <h3>Zahin<span>Afsar</span></h3>

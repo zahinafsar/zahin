@@ -32,7 +32,7 @@ const Contact=()=>{
 	    <a href="https://www.instagram.com/zahinafsar/"><img alt="img" src="https://img.icons8.com/cotton/128/000000/instagram-new.png"/></a>
 	  </div>
 	  <div className="card">
-	    <a href=""><img alt="img" src="https://img.icons8.com/cool-color/128/000000/twitter.png"/></a>
+	    <a href="https://twitter.com/ZahinAfsar"><img alt="img" src="https://img.icons8.com/cool-color/128/000000/twitter.png"/></a>
 	  </div>
 	  <div className="card" >
 	    <a href="https://github.com/mdzahin"><img alt="img" src="https://img.icons8.com/bubbles/128/000000/github.png"/></a>

@@ -8,11 +8,10 @@ const Foot=()=>{
   const [email,setEmail]=useState("")
   const [text,setText]=useState("")
   const [ok,setOk]=useState(false)
-  const [res,setRes]=useState("")
 
   const submithandle=(e)=>{
     e.preventDefault();
-    axios.get(`https://mdzahin-mails.herokuapp.com/${email}/${text}`).then((warn)=>setRes(warn)).then(setOk(true));
+    axios.get(`https://mdzahin-mails.herokuapp.com/${email}/${text}`).then(setOk(true));
     setEmail("");
     setText("")
   }
@@ -20,7 +19,7 @@ const Foot=()=>{
   return (
     <div className="Foot">
        <footer class="footer-distributed" id="footer">
-{ok ?  <Alert variant="success" onClose={() => setOk(false)} dismissible>Message successfully sent !!</Alert> : ""}
+       {ok ?  <Alert variant="success" onClose={() => setOk(false)} dismissible>Message successfully sent !!</Alert> : ""}
       <div class="footer-left">
         <h3>Zahin<span>Afsar</span></h3>
         <p class="footer-company-name">Md. Zahin Afsar &copy; 2019</p>

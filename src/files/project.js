@@ -48,7 +48,7 @@ const Projects=()=>{
 			/>
 
 			<Project 
-			title="Dania cience Club" 
+			title="Dania Science Club" 
 			text="Thats was made for our College Science Club.In-fact i am the Front-End developer and graphics designer of this site."
 			link="https://daniasc.team/"
 			/>

@@ -1,7 +1,9 @@
 #pro{
   margin: 10px;
 }
-
+.trigger{
+  top:0;
+}
 .mapouter{
   position:relative;
   text-align:right;

@@ -1,7 +1,10 @@
 #pro{
   margin: 10px;
 }
-.trigger .Appbar{
+.Appbar{
+  top: 0
+}
+.trigger{
   top: 0
 }
 .mapouter{

@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ useEffect,useState } from 'react';
 import './css/App.css';
 import Navbar from 'create-react-nav/nav/navSnack'
 import Foot from './files/components/footer';
@@ -10,23 +10,16 @@ import Contact from './files/contact';
 import Project from './files/project';
 
 
-class App extends Component {
-    state = {
-      loader: "loader"
-    }
-
-  load=()=>{
-    setTimeout(() => {
-    this.setState({
-        loader: "loaderhide"
-      })
-    }, 1000);
-  }
-  render(){
+const App =()=> {
+    const [loader,setLoader] = useState("loader")
+    
+    useEffect(()=>{
+        setLoader("loaderhide");
+    },[])
 
   return (
   	<Router>
-    <div onLoad={this.load}>
+    <div>
        <Navbar logoImg="/logo.png" links={[
         ["/","Home"],
         ["/about","About"],
@@ -34,7 +27,7 @@ class App extends Component {
         ["/project","Projects"],
         ["/contact","Contact"]
       ]}/>
-      <div id={this.state.loader} className="hidden">
+      <div id={loader} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />
       </div>
        <div id="home">
@@ -52,7 +45,6 @@ class App extends Component {
     </div>
     </Router>
  );
-}
 }
 
 export default App;

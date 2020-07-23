@@ -14,19 +14,26 @@ const App =()=> {
     const [loader,setLoader] = useState("loader")
     
     useEffect(()=>{
-        setLoader("loaderhide");
+        const load = setTimeout(() => {
+          setLoader("loaderhide");
+        }, 2000);
+        return () => clearTimeout(load);
     },[])
-
-  return (
-  	<Router>
-    <div>
-       <Navbar logoImg="/logo.png" links={[
+    
+    const link = [
         ["/","Home"],
         ["/about","About"],
         ["/skills","Skills"],
         ["/project","Projects"],
         ["/contact","Contact"]
-      ]}/>
+      ]
+
+  return (
+  	<Router>
+    <div>
+      
+      <Navbar logoImg="/logo.png" links={link}/>
+      
       <div id={loader} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />
       </div>

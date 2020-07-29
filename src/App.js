@@ -29,7 +29,6 @@ const App =()=> {
 
   return (
     <div>
-      <Navbar logoImg="/logo.png" routes={links}/>
       <div id={loader} className="hidden">
         <img src="./img/loader.svg" alt="Loading..." />
       </div>
@@ -37,6 +36,7 @@ const App =()=> {
           <img src="./img/zahin.jpg" alt="zahin" />
           <h1  className="typewriter" id="textanim" style={{textAlign: 'center'}}>Mahir Md. Zahin Afsar</h1><br />
        </div>
+       <Navbar logoImg="/logo.png" routes={links}/>
        <Foot />
     </div>
  );

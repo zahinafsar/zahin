@@ -144,6 +144,172 @@ a:hover{
   transform: translateX(-50%);
 }
 
+
+
+
+.SkillBar{
+  width: 90%;
+  height: 50px;
+  position: relative;
+  background: rgba(17, 17, 17, .3);
+  margin: 20px auto;
+}
+
+
+#Skill-HTML {
+  width: 99%;
+  animation: Animate-JS 3s;
+  height: 100%;
+  position: absolute;
+  background-color: #ea8564;
+}
+
+
+#Skill-CSS {
+  animation: Animate-JS 3s;
+  width: 99%;
+  height: 50px;
+  position: absolute;
+  background-color: #55a69f;
+}
+
+
+#Skill-JS {
+  animation: Animate-JS 4s;
+  width: 99%;
+  height: 50px;
+  position: absolute;
+  background-color: #c44e45;
+}
+@keyframes Animate-JS {
+  from {
+  width: 10px;
+}
+to {
+  width: 99%}
+}
+
+
+#Skill-NJ {
+  width: 90%;
+  animation: Animate-RJ 4.5s;
+  height: 100%;
+  position: absolute;
+  background-color: #c14343;
+}
+
+
+#Skill-MDB {
+  width: 90%;
+  animation: Animate-RJ 4.5s;
+  height: 100%;
+  position: absolute;
+  background-color: #7f1ef8;
+}
+
+
+#Skill-RJ {
+  animation: Animate-RJ 4.5s;
+  width: 90%;
+  height: 50px;
+  position: absolute;
+  background-color: #970cc1;
+}
+@keyframes Animate-RJ {
+  from {
+  width: 10px;
+}
+to {
+  width: 90%}
+}
+
+
+#Skill-photo {
+  animation: Animate-photo 3s;
+  width: 90%;
+  height: 50px;
+  position: absolute;
+  background-color: #c14343;
+}
+@keyframes Animate-photo {
+  from {
+  width: 10px;
+}
+to {
+  width: 90%}
+}
+
+
+
+
+
+#Skill-illust {
+  animation: Animate-illust 6s;
+  width: 90%;
+  height: 50px;
+  position: absolute;
+  background-color: #7f1ef8;
+}
+@keyframes Animate-illust {
+  from {
+  width: 10px;
+}
+to {
+  width: 90%}
+}
+
+
+
+
+
+
+#Skill-after {
+  animation: Animate-after 4s;
+  width: 70%;
+  height: 50px;
+  position: absolute;
+  background-color: #3cf81e;
+}
+@keyframes Animate-after {
+  from {
+  width: 10px;
+}
+to {
+  width: 70%}
+}
+
+
+.Skill-Area {
+  z-index: 1;
+  float: left;
+  margin-top: 15px;
+  margin-left: 15px;
+  text-shadow: none;
+  color: #fff;
+  font-size: 18px;
+}
+.PercentText {
+  z-index: 3;
+  position: relative;
+  padding-right: 15px;
+  margin-top: 15px;
+  float: right;
+  text-shadow: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 660px) {
 .typewriter{
   font-size: 30px;

@@ -99,7 +99,9 @@ button a{
     display: none;
 }
 
-
+.NavItems:after{
+  bottom: -11.5px !important;
+}
 
 
 #home{

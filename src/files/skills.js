@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/App.css';
-import SkillsDesktop from "./skillsDesktop"
-import SkillsMobile from "./skillsMobile"
+import SkillsDesktop from "./components/skillsDesktop"
+import SkillsMobile from "./components/skillsMobile"
 import Button from 'react-bootstrap/Button'
 
 const Skills = () => {
@@ -23,9 +23,9 @@ const Skills = () => {
     }, [])
     return (
         <div id="SkillBox">
-            <div><img src="https://img.icons8.com/clouds/512/000000/development-skill.png" alt="skill-icon" /></div>
+            <div id="title"><img src="./img/title-image/skill.png" alt="skill-icon" /></div>
             <div className="card-body">
-                <Button style={style} variant="outline-success" onClick={handleDevice} >{desktop ? "Graph Mode" : "Linear Mode"}</Button>
+                <Button style={style} variant="outline-success" onClick={handleDevice} >{desktop ? "Graph" : "Linear"}</Button>
                 {desktop ? <SkillsDesktop /> : <SkillsMobile />}
             </div>
         </div>

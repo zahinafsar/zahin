@@ -1,7 +1,7 @@
 import React from 'react';
-import '../css/App.css';
-import WebSkills from './components/WebSkill';
-import GraphicSkills from './components/GraphicSkill';
+import '../../css/App.css';
+import WebSkills from './WebSkill';
+import GraphicSkills from './GraphicSkill';
 
 const SkillsDesktop = () => {
     return (

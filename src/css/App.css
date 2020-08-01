@@ -7,6 +7,9 @@
 .trigger{
   top: 0
 }
+.btn a:hover {
+  color: white !important;
+}
 .mapouter{
   position:relative;
   text-align:right;
@@ -51,7 +54,6 @@ button a{
 }
 #SkillBox {
     font-size: 20px;
-    font-family: 'Indie Flower', cursive;
     height: auto;
     background-color: #fff;
     border-radius:20px; 
@@ -68,6 +70,13 @@ button a{
     transform: translateX(-50%);
 }
 
+#title img{
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
 
 #loader {
     position: fixed;
@@ -122,12 +131,16 @@ a:hover{
   from, to { border-color: transparent }
   50% { border-color: orange; }
 }
-#home img{
-    margin-top: 80px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    margin-bottom:10px; 
+#me{
+  display: flex;
+}
+#me img{
+  margin: auto;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  padding-top: 150px;
+  margin-top: -80px;
+  margin-bottom: 20px;
 }
 .card-deck-me{
   margin-right:25px;
@@ -143,6 +156,18 @@ a:hover{
   margin-left: 50%;
   transform: translateX(-50%);
 }
+
+.row{
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+@media (min-width: 576px){
+.card-deck {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}  
+}
+
 
 
 

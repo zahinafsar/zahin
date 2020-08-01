@@ -23,7 +23,7 @@ const Skills = () => {
     }, [])
     return (
         <div id="SkillBox">
-            <div><img src="https://img.icons8.com/dusk/512/000000/development-skill.png" alt="skill-icon" /></div>
+            <div><img src="https://img.icons8.com/clouds/512/000000/development-skill.png" alt="skill-icon" /></div>
             <div className="card-body">
                 <Button style={style} variant="outline-success" onClick={handleDevice} >{desktop ? "Graph Mode" : "Linear Mode"}</Button>
                 {desktop ? <SkillsDesktop /> : <SkillsMobile />}

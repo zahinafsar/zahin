@@ -32,7 +32,7 @@ const About=()=>{
     return (
 
 	<div id="card-deck-about" className="card-deck row">
-
+<div className="SkillBox"><img src="https://img.icons8.com/clouds/100/000000/about.png" alt="skill-icon" /></div>
 		<Abouttemp 
 		grid="card col-lg-3 col-xs-12" 
 		h1Class="about-h1"

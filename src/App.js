@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './css/App.css';
-import Navbar from 'create-react-nav/nav/navSnack'
+import Navbar from 'create-react-nav'
 import Foot from './files/components/footer';
 import Home from './files/home';
 import Skills from './files/skills';

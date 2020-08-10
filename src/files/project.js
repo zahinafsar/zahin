@@ -36,9 +36,9 @@ const Projects = () => {
 			<div className="card-deck" id="pro">
 
 				<Project
-					title="Barta App (Under Development)"
-					text="This is social networking site (made by Vue) where you can express your daily moments.You can customize your profile design with diamonds which you will have to buy"
-					link=""
+					title="Ubuntu Store (Under Development)"
+					text="This is a online app store to install free softwares for linux."
+					link="http://ubuntu-store.netlify.app/"
 				/>
 
 				<Project
@@ -49,7 +49,7 @@ const Projects = () => {
 
 				<Project
 					title="Dania Science Club"
-					text="Thats was made for our College Science Club.In-fact i am the Front-End developer and graphics designer of this site."
+					text="This was made for our Science Club. We have used html, css, javascript for the front-end and node.js + mongoDB as the back-end."
 					link="https://daniasc.team/"
 				/>
 

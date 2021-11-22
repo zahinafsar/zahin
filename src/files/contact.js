@@ -3,6 +3,32 @@ import '../css/App.css';
 
 
 const Contact = () => {
+	const contact = [
+		{
+			href: "https://www.facebook.com/m.zahin.afsar",
+			src: "https://img.icons8.com/dusk/128/000000/facebook-new.png"
+		},
+		{
+			href: "https://www.instagram.com/zahinafsar/",
+			src: "https://img.icons8.com/cotton/128/000000/instagram-new.png"
+		},
+		{
+			href: "https://twitter.com/ZahinAfsar",
+			src: "https://img.icons8.com/dusk/128/000000/twitter-circled.png"
+		},
+		{
+			href: "https://github.com/zahinafsar",
+			src: "https://img.icons8.com/bubbles/128/000000/github.png"
+		},
+		{
+			href: "tel:+8801787849609",
+			src: "https://img.icons8.com/dusk/128/000000/phone.png"
+		},
+		{
+			href: "https://api.whatsapp.com/send?phone: 8801787849609",
+			src: "https://img.icons8.com/dusk/128/000000/whatsapp.png"
+		},
+	]
 	return (
 		<div>
 			<div id="title">
@@ -25,24 +51,13 @@ const Contact = () => {
 			</div>
 
 			<div className="card-deck " id="cont">
-				<div className="card">
-					<a href="https://www.facebook.com/m.zahin.afsar"><img alt="img" src="https://img.icons8.com/dusk/128/000000/facebook-new.png" /></a>
-				</div>
-				<div className="card" >
-					<a href="https://www.instagram.com/zahinafsar/"><img alt="img" src="https://img.icons8.com/cotton/128/000000/instagram-new.png" /></a>
-				</div>
-				<div className="card">
-					<a href="https://twitter.com/ZahinAfsar"><img alt="img" src="https://img.icons8.com/cool-color/128/000000/twitter.png" /></a>
-				</div>
-				<div className="card" >
-					<a href="https://github.com/mdzahin"><img alt="img" src="https://img.icons8.com/bubbles/128/000000/github.png" /></a>
-				</div>
-				<div className="card" data-aos="flip-left">
-					<a href="tel:+8801787849609"><img alt="img" src="https://img.icons8.com/dusk/128/000000/phone.png" /></a>
-				</div>
-				<div className="card" >
-					<a href="https://api.whatsapp.com/send?phone=8801787849609"><img alt="img" src="https://img.icons8.com/dusk/128/000000/whatsapp.png" /></a>
-				</div>
+				{
+					contact.map(elm => (
+						<div className="card">
+							<a target="_blank" rel="noopener noreferrer" href={elm.href}><img alt="img" src={elm.src} /></a>
+						</div>
+					))
+				}
 			</div>
 		</div>
 	)

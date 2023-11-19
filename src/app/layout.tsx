@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="flex justify-center items-center h-screen p-5 max-w-[900px] mx-auto">
+        <main className="flex justify-center items-center h-screen overflow-hidden p-5 max-w-[950px] mx-auto">
           <ThemeSwitch className="fixed top-6 right-6" />
           {children}
         </main>

@@ -5,26 +5,19 @@ import { AnimatePresence, motion } from "framer-motion";
 import sun from "../assets/sun.svg";
 import moon from "../assets/moon.svg";
 import Image from "next/image";
+import { useWindowSize } from "@/hook/window";
 
 type Props = {
   className?: string;
 };
 
-const isReady = typeof window !== "undefined";
+const isReady = typeof window !== "undefined" ? window : undefined;
 const theme = isReady && localStorage.getItem("theme") === "dark";
 
 export default function ThemeSwitch({ className }: Props) {
-  const [screenWidth, setScreenWidth] = useState(0);
-  const [screenHeight, setScreenHeight] = useState(0);
+  const { screenHeight, screenWidth } = useWindowSize();
   const toggleRef = useRef<HTMLDivElement>(null);
   const [isDark, setIsDark] = useState(theme);
-
-  useEffect(() => {
-    if (isReady) {
-      setScreenWidth(window.innerWidth);
-      setScreenHeight(window.innerHeight);
-    }
-  }, [isReady]);
 
   const diameter = Math.sqrt(
     screenWidth * screenWidth + screenHeight * screenHeight

@@ -21,7 +21,7 @@ export const Button = (props: Props) => {
     <button
       onClick={handleClick}
       className={
-        "bg-primary font-bold py-2 px-4 rounded text-white " + props.className
+        "bg-primary font-bold py-2 px-4 rounded text-white text-[12px] " + props.className
       }
     >
       {props.children}

@@ -4,5 +4,14 @@
   },
   "contacts": {
     "email": "afsarzahin@gmail.com"
-  }
+  },
+  "interests": [
+    "Coding",
+    "Gaming",
+    "Traveling",
+    "Watching Movies",
+    "Spend time with family",
+    "Music",
+    "Sports"
+  ]
 }

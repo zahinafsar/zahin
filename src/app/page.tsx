@@ -26,7 +26,7 @@ export default function Home() {
         <h1 className="text-4xl font-[800] text-primary">It's Zahin Afsar</h1>
         <p className="text-grey mt-2 text-sm">
           Software Developer from Bangladesh. I am a self-taught developer who
-          loves to spend on
+          loves to spend time on
         </p>
         <div className="flex justify-center md:justify-start flex-wrap gap-[5px] mt-4">
           {data.interests.map((interest, index) => (

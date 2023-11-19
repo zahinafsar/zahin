@@ -45,10 +45,10 @@ export default function ThemeSwitch({ className }: Props) {
   const toggleTheme = () => {
     setIsDark((prev) => {
       if (prev) {
-        document.documentElement.classList.remove("dark");
+        // document.documentElement.classList.remove("dark");
         localStorage.removeItem("theme");
       } else {
-        document.documentElement.classList.add("dark");
+        // document.documentElement.classList.add("dark");
         localStorage.setItem("theme", "dark");
       }
       return !prev;

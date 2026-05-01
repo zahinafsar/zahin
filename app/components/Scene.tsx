@@ -12,7 +12,7 @@ import * as THREE from "three";
 
 function Model() {
   const group = useRef<THREE.Group>(null);
-  const { scene, animations } = useGLTF("/model.glb");
+  const { scene, animations } = useGLTF("/model.compressed.glb");
   const { actions, names } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ function Model() {
   );
 }
 
-useGLTF.preload("/model.glb");
+useGLTF.preload("/model.compressed.glb");
 
 export default function Scene() {
   return (

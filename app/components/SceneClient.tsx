@@ -1,21 +1,38 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import { useProgress } from "@react-three/drei";
 
 const Scene = dynamic(() => import("./Scene"), {
   ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
-        <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/10 border-t-[var(--accent)]" />
-        <p className="text-xs uppercase tracking-widest text-[var(--muted)]">
-          Loading 3D model
-        </p>
-      </div>
-    </div>
-  ),
+  loading: () => <Loader />,
 });
 
+function Loader() {
+  return (
+    <div className="absolute inset-0 z-20 flex items-center justify-center">
+      <Image
+        src="/loader.png"
+        alt="Loading"
+        width={1000}
+        height={1000}
+        className="blur-sm"
+        priority
+      />
+      <div className="absolute h-14 w-14 animate-spin rounded-full border-4 border-white/10 border-t-[var(--accent)]" />
+    </div>
+  );
+}
+
 export default function SceneClient() {
-  return <Scene />;
+  const { active, progress } = useProgress();
+  const loading = active || progress < 100;
+
+  return (
+    <div className="relative h-full w-full">
+      <Scene />
+      {loading && <Loader />}
+    </div>
+  );
 }

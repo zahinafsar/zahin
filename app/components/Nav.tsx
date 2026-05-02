@@ -4,11 +4,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Work", href: "/#experience" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Nav() {
@@ -30,7 +31,7 @@ export default function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-        <a href="#top" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+        <a href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
           <Image src="/logo-v2.png" alt="Zahin Afsar" width={32} height={32} priority />
           {/* <span>Zahin Afsar</span> */}
         </a>

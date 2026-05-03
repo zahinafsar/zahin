@@ -26,7 +26,6 @@ export async function generateMetadata({
 
   const fm = post.frontmatter;
   const url = `/blog/${slug}`;
-  const ogImage = fm.ogImage || fm.cover || "/logo-v2.png";
 
   return {
     title: fm.title,
@@ -47,19 +46,12 @@ export async function generateMetadata({
       modifiedTime: fm.updated || fm.date,
       authors: [SITE.url],
       tags: fm.tags,
-      images: [
-        {
-          url: ogImage,
-          alt: fm.title,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: fm.title,
       description: fm.description,
       creator: SITE.author.twitter,
-      images: [ogImage],
     },
   };
 }
@@ -83,7 +75,7 @@ export default async function PostPage({
 
   const fm = post.frontmatter;
   const url = `${SITE.url}/blog/${slug}`;
-  const ogImage = fm.ogImage || fm.cover || "/logo-v2.png";
+  const ogImage = `${SITE.url}/blog/${slug}/opengraph-image`;
 
   const all = await getAllPosts();
   const idx = all.findIndex((p) => p.slug === slug);
@@ -97,7 +89,7 @@ export default async function PostPage({
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     headline: fm.title,
     description: fm.description,
-    image: ogImage.startsWith("http") ? ogImage : `${SITE.url}${ogImage}`,
+    image: ogImage,
     datePublished: fm.date,
     dateModified: fm.updated || fm.date,
     inLanguage: SITE.language,

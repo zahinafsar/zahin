@@ -9,24 +9,28 @@ const projects = [
     tag: "Desktop · AI",
     desc: "Open-source AI coding assistant as a native desktop app. Focused UI on top of the opencode agent — chat panel drives the agent; right panel rotates between live preview, design canvas, file explorer, and git; built-in terminal slides under the preview.",
     accent: "from-[#b8ff3e]/20 to-transparent",
+    href: "https://github.com/zahinafsar/coodeen",
   },
   {
     name: "Next-TS-API",
     tag: "Library · Next.js",
     desc: "End-to-end type safety for Next.js 13+ API routes. Closes the TypeScript gap left by Server Actions when data fetching needs caching, RESTful architecture, or third-party integrations.",
     accent: "from-[#ff6b3d]/20 to-transparent",
+    href: "https://github.com/zahinafsar/next-ts-api",
   },
   {
     name: "Hippo-UI",
     tag: "Library · React",
     desc: "Lightweight React component library focused on accessibility, composability, and developer ergonomics.",
     accent: "from-[#3d8bff]/20 to-transparent",
+    href: "https://github.com/zahinafsar/hippo-ui",
   },
   {
     name: "Ant Design CSS Utilities",
     tag: "Library · CSS",
     desc: "CSS utility library for Ant Design that streamlines styling and ensures visual consistency across UI components.",
     accent: "from-[#b8ff3e]/20 to-transparent",
+    href: "https://github.com/zahinafsar/antd-css-utilities",
   },
 ];
 
@@ -54,7 +58,7 @@ export default function Projects() {
           {projects.map((p, i) => (
             <motion.a
               key={p.name}
-              href="https://github.com/zahinafsar"
+              href={p.href}
               target="_blank"
               rel="noreferrer"
               initial={{ opacity: 0, y: 30 }}

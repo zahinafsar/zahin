@@ -5,8 +5,6 @@ date: "2026-05-03"
 updated: "2026-05-03"
 tags: ["ai", "coding-agents", "claude", "codex", "opencode", "coodeen", "gemini"]
 author: "Md. Zahin Afsar"
-cover: "/logo-v2.png"
-ogImage: "/logo-v2.png"
 ---
 
 Skipping the IDE-fork crowd (Cursor, Windsurf) and the autonomous-PR-bot crowd (Devin). Five agents, where each one fits.

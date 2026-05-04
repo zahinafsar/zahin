@@ -5,8 +5,6 @@ date: "2026-05-02"
 updated: "2026-05-02"
 tags: ["nextjs", "typescript", "api", "type-safety", "react"]
 author: "Md. Zahin Afsar"
-cover: "/logo-v2.png"
-ogImage: "/logo-v2.png"
 ---
 
 Are you still using Server Actions to fetch your data? You shouldn't be — the [Next.js docs](https://nextjs.org/docs/app/getting-started/mutating-data) are pretty clear:

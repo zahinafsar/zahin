@@ -29,7 +29,7 @@ The default in 2026.
 - "Own the source" cuts both ways: 40 files in `components/ui` to maintain, no `npm update` for fixes.
 - Same baseline aesthetic as every other shadcn site. Distinctiveness is on you.
 
-## 2. [HippoUI](https://hippoui.dev)
+## 2. [HippoUI](https://hippoui.zahinafsar.com)
 
 Disclosure: mine. shadcn-style registry, Motion baked in, zero Radix dependency.
 
@@ -110,7 +110,7 @@ Accessible component primitives + style props.
 | Lib | Distribution | Styling | Animation | A11y source | Best at |
 |-----|--------------|---------|-----------|-------------|---------|
 | [**shadcn/ui**](https://ui.shadcn.com) | Copy-paste registry | Tailwind v4 | DIY | Radix | Owning your component layer |
-| [**HippoUI**](https://hippoui.dev) | Copy-paste registry | Tailwind v4 | Motion (default) | Custom hooks | Animated UI without Radix |
+| [**HippoUI**](https://hippoui.zahinafsar.com) | Copy-paste registry | Tailwind v4 | Motion (default) | Custom hooks | Animated UI without Radix |
 | [**DaisyUI**](https://daisyui.com) | Tailwind plugin | CSS classes | None | DIY | Markup-only, multi-framework |
 | [**HeroUI**](https://heroui.com) | npm package | Tailwind + slots | Framer (built-in) | React Aria | Polished defaults fast |
 | [**Material UI**](https://mui.com) | npm package | Emotion + sx | Built-in | Custom | Enterprise + DataGrid |

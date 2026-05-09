@@ -1,5 +1,6 @@
 "use client";
 
+import { Component, ReactNode, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useProgress } from "@react-three/drei";
@@ -25,13 +26,45 @@ function Loader() {
   );
 }
 
+function Fallback() {
+  return (
+    <div className="absolute inset-0 z-20 flex flex-col items-center justify-center">
+      <Image src="/placeholder.png" alt="" width={1500} height={1500} priority />
+      <p className="mt-2 text-xs text-white/60 -translate-x-8">
+        Unable to load 3D model. Showing fallback. Reload browser to retry.
+      </p>
+    </div>
+  );
+}
+
+class SceneErrorBoundary extends Component<
+  { onError: () => void; children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error: Error) {
+    console.error("Scene load failed:", error);
+    this.props.onError();
+  }
+  render() {
+    return this.state.hasError ? null : this.props.children;
+  }
+}
+
 export default function SceneClient() {
   const { active, progress } = useProgress();
-  const loading = active || progress < 100;
+  const [errored, setErrored] = useState(false);
+  const loading = !errored && (active || progress < 100);
 
   return (
     <div className="relative h-full w-full">
-      <Scene />
+      <SceneErrorBoundary onError={() => setErrored(true)}>
+        <Scene />
+      </SceneErrorBoundary>
+      {errored && <Fallback />}
       {loading && <Loader />}
     </div>
   );

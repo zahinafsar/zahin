@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 import SceneClient from "./SceneClient";
 
 const stack = ["Next.js", "React", "TypeScript", "GraphQL", "Node.js", "PostgreSQL"];
@@ -14,34 +13,17 @@ const phrases = [
   "delivering on tight deadlines.",
 ];
 
+const longestPhrase = phrases.reduce((a, b) => (a.length >= b.length ? a : b));
+
 function Typewriter() {
-  const [index, setIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const word = phrases[index];
-    const atEnd = !deleting && text === word;
-    const atStart = deleting && text === "";
-    const delay = atEnd ? 1800 : atStart ? 300 : deleting ? 35 : 70;
-
-    const t = setTimeout(() => {
-      if (atEnd) {
-        setDeleting(true);
-      } else if (atStart) {
-        setDeleting(false);
-        setIndex((i) => (i + 1) % phrases.length);
-      } else {
-        setText(deleting ? word.slice(0, text.length - 1) : word.slice(0, text.length + 1));
-      }
-    }, delay);
-    return () => clearTimeout(t);
-  }, [text, deleting, index]);
-
   return (
-    <span className="text-accent-gradient">
-      {text}
-      <span className="ml-1 inline-block h-[0.85em] w-[3px] translate-y-[0.05em] animate-pulse bg-[var(--accent)] align-middle" />
+    <span className="tw-wrap">
+      <span aria-hidden className="invisible">{longestPhrase}</span>
+      {phrases.map((p, i) => (
+        <span key={p} className={`tw-phrase tw-phrase-${i + 1} text-accent-gradient`}>
+          {p}
+        </span>
+      ))}
     </span>
   );
 }
@@ -65,7 +47,6 @@ export default function Hero() {
             className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl"
           >
             <span className="text-gradient whitespace-nowrap">Software engineer</span>
-            <br />
             <Typewriter />
           </motion.h1>
 

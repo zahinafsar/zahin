@@ -133,6 +133,30 @@ body {
   animation: pulse-ring 3s ease-out infinite;
 }
 
+.tw-wrap {
+  position: relative;
+  display: block;
+}
+.tw-phrase {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: tw-fade 15s ease-in-out infinite;
+}
+.tw-phrase-1 { animation-delay: 0s; }
+.tw-phrase-2 { animation-delay: 3s; }
+.tw-phrase-3 { animation-delay: 6s; }
+.tw-phrase-4 { animation-delay: 9s; }
+.tw-phrase-5 { animation-delay: 12s; }
+
+@keyframes tw-fade {
+  0%   { opacity: 0; transform: translateY(16px); }
+  4%   { opacity: 1; transform: translateY(0); }
+  16%  { opacity: 1; transform: translateY(0); }
+  20%  { opacity: 0; transform: translateY(-16px); }
+  100% { opacity: 0; transform: translateY(-16px); }
+}
+
 .prose-blog {
   color: var(--fg);
   font-size: 1.0625rem;

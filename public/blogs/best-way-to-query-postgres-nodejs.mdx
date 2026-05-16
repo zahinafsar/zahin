@@ -1,0 +1,119 @@
+---
+title: "Best Way to Query Postgres in Node.js — Prisma vs Drizzle vs Supabase vs Raw SQL"
+description: "Four ways to query Postgres from Node. Pros, cons, and benchmark numbers from a real multi-join query."
+date: "2026-05-16"
+updated: "2026-05-16"
+tags: ["postgres", "nodejs", "prisma", "drizzle", "supabase", "sql", "benchmark"]
+author: "Md. Zahin Afsar"
+---
+
+Four real options: **Prisma**, **Drizzle**, **Supabase PostgREST**, **raw SQL** (`postgres.js`). I benchmarked all four with the same multi-join query. Here's what wins, what loses, and when.
+
+Repo: [github.com/zahinafsar/node-orm-benchmark](https://github.com/zahinafsar/node-orm-benchmark)
+
+## Benchmark
+
+Same Postgres. Same query. 100 rows joined across 7 tables (conversations + contacts + messages + workflows + checkouts). 1000 iterations, concurrency 10.
+
+<PerfChart />
+
+Raw SQL is 2.5× faster than Drizzle, 8× faster than Prisma, 12× faster than Supabase. Tail latency (P99) is where the gap really widens.
+
+## 1. Raw SQL — `postgres.js`
+
+```ts
+const rows = await sql`
+  SELECT c.*, cc.username, co.given_name
+  FROM conversations c
+  INNER JOIN contact_channels cc ON cc.id = c.channel_id
+  INNER JOIN contacts co ON co.id = cc.contact_id
+  LIMIT 100
+`;
+```
+
+**Pros**
+- Fastest. Nothing between your query and Postgres.
+- Full SQL — window functions, CTEs, anything.
+- No abstraction to learn.
+
+**Cons**
+- No type safety on results.
+- No migrations.
+- Typos fail at runtime, not compile time.
+
+**Use when:** hot endpoints, reports, anything perf-critical.
+
+## 2. Drizzle
+
+```ts
+await db
+  .select()
+  .from(conversations)
+  .innerJoin(contact_channels, eq(conversations.channel_id, contact_channels.id))
+  .limit(100);
+```
+
+**Pros**
+- Almost as fast as raw (2.5× slower).
+- Typed queries, typed results.
+- One SQL statement per query — no N+1 surprises.
+- Lets you drop to raw SQL anytime.
+
+**Cons**
+- API mirrors SQL — if you don't know SQL, the learning curve is real.
+- Younger ecosystem than Prisma.
+
+**Use when:** default pick for new projects.
+
+## 3. Prisma
+
+```ts
+await prisma.conversations.findMany({
+  take: 100,
+  include: { contact_channels: { include: { contacts: true } } },
+});
+```
+
+**Pros**
+- Best DX. Schema-first, autocomplete everywhere.
+- Mature migrations, Studio GUI.
+- Huge ecosystem.
+
+**Cons**
+- 8× slower than raw on multi-joins.
+- `include` issues multiple queries and stitches in Node — not one SQL statement.
+- Separate Rust/WASM engine adds FFI overhead.
+
+**Use when:** DX matters more than perf, mostly simple queries.
+
+## 4. Supabase PostgREST
+
+```ts
+await postgrest.from('conversations').select('*, contact_channels(*)').limit(100);
+```
+
+**Pros**
+- Auto-generated REST API.
+- Row-level security baked in.
+- Great for browser → DB directly.
+
+**Cons**
+- Slowest. Extra HTTP hop: Node → PostgREST → Postgres.
+- JWT verification per request.
+- Wrong tool when you already have a Node server.
+
+**Use when:** browser client talking to Postgres. Never from a Node backend.
+
+## TL;DR
+
+- **Default:** Drizzle.
+- **Hot paths:** raw SQL via `postgres.js`. Drizzle lets you mix both.
+- **Avoid:** Prisma if P99 latency matters. PostgREST if you're already in Node.
+
+Try it yourself:
+
+```bash
+git clone https://github.com/zahinafsar/node-orm-benchmark
+npm install && npm run server
+npm run bench
+```

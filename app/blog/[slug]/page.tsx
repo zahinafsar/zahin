@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import CodeCopy from "../../components/CodeCopy";
-import { getAllPosts, getPostBySlug, getPostSlugs } from "../../lib/blog";
+import PerfChart from "../../components/blog/PerfChart";
+import { getAllPosts, getPostBySlug, getPostSlugs, remarkShikiCode } from "../../lib/blog";
 import { SITE } from "../../lib/site";
+
+const mdxComponents = { PerfChart };
 
 type Params = { slug: string };
 
@@ -187,10 +193,39 @@ export default async function PostPage({
             </div>
           </header>
 
-          <div
-            className="prose-blog mt-12"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          {post.isMdx ? (
+            <div className="prose-blog mt-12">
+              <MDXRemote
+                source={post.content}
+                components={mdxComponents}
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [remarkGfm, remarkShikiCode],
+                    rehypePlugins: [
+                      [
+                        rehypeRaw,
+                        {
+                          passThrough: [
+                            "mdxFlowExpression",
+                            "mdxJsxFlowElement",
+                            "mdxJsxTextElement",
+                            "mdxTextExpression",
+                            "mdxjsEsm",
+                          ],
+                        },
+                      ],
+                    ],
+                    remarkRehypeOptions: { allowDangerousHtml: true },
+                  },
+                }}
+              />
+            </div>
+          ) : (
+            <div
+              className="prose-blog mt-12"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+          )}
 
           <footer className="mt-16 border-t border-[var(--border)] pt-10">
             <div className="flex flex-col gap-3 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between">

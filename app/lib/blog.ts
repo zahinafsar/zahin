@@ -23,6 +23,7 @@ export type Post = {
   frontmatter: PostFrontmatter;
   content: string;
   html: string;
+  isMdx: boolean;
   readingTime: number;
   wordCount: number;
 };
@@ -64,6 +65,41 @@ ${highlighted}
 
 const markedInstance = buildMarked();
 
+type MdastNode = {
+  type: string;
+  value?: string;
+  lang?: string;
+  children?: MdastNode[];
+};
+
+async function collectAndReplaceCode(tree: MdastNode): Promise<void> {
+  const stack: MdastNode[] = [tree];
+  const codeNodes: MdastNode[] = [];
+  while (stack.length) {
+    const node = stack.pop()!;
+    if (node.type === "code") codeNodes.push(node);
+    if (node.children) stack.push(...node.children);
+  }
+  for (const node of codeNodes) {
+    const lang = node.lang || "text";
+    const highlighted = await highlight(node.value || "", lang);
+    const langLabel = escapeHtml(lang);
+    const wrapped = `<figure class="code-block" data-lang="${langLabel}">
+<div class="code-block-header"><span class="code-lang">${langLabel}</span><button class="copy-btn" data-copy type="button" aria-label="Copy code to clipboard"><span class="copy-icon" aria-hidden="true"></span><span class="copy-text">Copy</span></button></div>
+${highlighted}
+</figure>`;
+    node.type = "html";
+    node.value = wrapped;
+    delete node.lang;
+  }
+}
+
+export function remarkShikiCode() {
+  return async (tree: MdastNode) => {
+    await collectAndReplaceCode(tree);
+  };
+}
+
 function ensureDir(): boolean {
   return fs.existsSync(BLOGS_DIR) && fs.statSync(BLOGS_DIR).isDirectory();
 }
@@ -87,12 +123,14 @@ async function readFile(file: string): Promise<Post> {
   const content = parsed.content;
   const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
   const readingTime = Math.max(1, Math.round(wordCount / 220));
-  const html = (await markedInstance.parse(content)) as string;
+  const isMdx = file.endsWith(".mdx");
+  const html = isMdx ? "" : ((await markedInstance.parse(content)) as string);
   return {
     slug: slugFromFile(file),
     frontmatter: fm,
     content,
     html,
+    isMdx,
     readingTime,
     wordCount,
   };

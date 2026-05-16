@@ -22,7 +22,12 @@ npm run lint
 
 ### Where posts live
 
-`public/blogs/*.md` — one file per post. Filename (sans `.md`) = URL slug.
+`public/blogs/*.md` or `public/blogs/*.mdx` — one file per post. Filename (sans extension) = URL slug.
+
+- `.md` — pure markdown, rendered via `marked` → HTML string.
+- `.mdx` — markdown + React components, rendered via `next-mdx-remote/rsc`. Use for posts that need interactive charts, embeds, or any React component (e.g. `<PerfChart />`).
+
+Components available inside MDX live in `app/components/blog/*` and are wired into the components map in `app/blog/[slug]/page.tsx`.
 
 ### Frontmatter (required minimum)
 
@@ -83,6 +88,6 @@ Preview: `http://localhost:3000/blog/<slug>/opengraph-image`
 
 - Don't add `cover` / `ogImage` to frontmatter (unused — see above).
 - Don't add per-post OG image files. Dynamic generator handles all posts.
-- Don't introduce a CMS, MDX, or contentlayer — markdown + `marked` is intentional.
+- Don't introduce a CMS or contentlayer — markdown + `marked` (and MDX via `next-mdx-remote/rsc` for interactive posts) is intentional.
 - Don't bring back `tailwind.config.js` — v4 uses CSS-first config in `globals.css`.
 - Don't add lorem ipsum, placeholder text, or "TODO" content to a published post.

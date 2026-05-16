@@ -8,7 +8,7 @@ const projects = [
     name: "Coodeen",
     tag: "Desktop · AI",
     desc: "Open-source AI coding assistant as a native desktop app. Focused UI on top of the opencode agent — chat panel drives the agent; right panel rotates between live preview, design canvas, file explorer, and git; built-in terminal slides under the preview.",
-    accent: "from-[#b8ff3e]/20 to-transparent",
+    accent: "from-[#ff6b3d]/20 to-transparent",
     href: "https://github.com/zahinafsar/coodeen",
   },
   {
@@ -22,14 +22,14 @@ const projects = [
     name: "Hippo-UI",
     tag: "Library · React",
     desc: "Lightweight React component library focused on accessibility, composability, and developer ergonomics.",
-    accent: "from-[#3d8bff]/20 to-transparent",
+    accent: "from-[#ff6b3d]/20 to-transparent",
     href: "https://github.com/zahinafsar/hippo-ui",
   },
   {
     name: "Ant Design CSS Utilities",
     tag: "Library · CSS",
     desc: "CSS utility library for Ant Design that streamlines styling and ensures visual consistency across UI components.",
-    accent: "from-[#b8ff3e]/20 to-transparent",
+    accent: "from-[#ff6b3d]/20 to-transparent",
     href: "https://github.com/zahinafsar/antd-css-utilities",
   },
 ];

@@ -80,9 +80,9 @@ export default function Scene() {
         castShadow
         shadow-mapSize={[2048, 2048]}
       />
-      <directionalLight position={[-3, 2, -2]} intensity={0.6} color="#b8ff3e" />
+      <directionalLight position={[-3, 2, -2]} intensity={0.6} color="#ffffff" />
       <pointLight position={[0, 2, 3]} intensity={0.5} color="#ff6b3d" />
-      <pointLight position={[0, -1.5, 0]} intensity={6} color="#b8ff3e" distance={6} decay={2} />
+      <pointLight position={[0, -1.5, 0]} intensity={6} color="#ff6b3d" distance={6} decay={2} />
 
       <Suspense fallback={null}>
         <Bounds fit clip observe margin={1.2}>

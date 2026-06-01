@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { SITE } from "../lib/site";
 
 export default function Contact() {
   return (
@@ -23,7 +24,7 @@ export default function Contact() {
               <span className="text-accent-gradient">Let&apos;s build it.</span>
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--muted)] md:text-lg">
-              Open to frontend roles, freelance collaborations, and OSS work. Currently based in Dhaka, available remotely worldwide.
+              Open to fullstack roles, freelance collaborations. Currently based in Dhaka, available remotely worldwide.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -32,6 +33,15 @@ export default function Contact() {
                 className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 text-base font-medium text-black transition hover:bg-[var(--accent)]"
               >
                 afsarzahin@gmail.com
+                <span className="transition group-hover:translate-x-1">→</span>
+              </a>
+              <a
+                href={SITE.author.calendly}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-3 rounded-full border border-[var(--accent)] px-6 py-4 text-base font-medium text-white transition hover:bg-[var(--accent)] hover:text-black"
+              >
+                Book a call
                 <span className="transition group-hover:translate-x-1">→</span>
               </a>
               <a

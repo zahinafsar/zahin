@@ -10,6 +10,7 @@ export const SITE = {
     twitter: "@ZahinAfsar",
     github: "https://github.com/zahinafsar",
     linkedin: "https://www.linkedin.com/in/zahin-afsar-498392184/",
+    calendly: "https://calendly.com/afsarzahin/zahin-afsar-full-stack-software-engineer",
     image: "/logo-v2.png",
   },
   locale: "en_US",

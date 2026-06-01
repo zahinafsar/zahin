@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import SceneClient from "./SceneClient";
+import Image from "next/image";
 
 const stack = ["Next.js", "React", "TypeScript", "GraphQL", "Node.js", "PostgreSQL"];
 
@@ -101,10 +101,16 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative order-1 h-[420px] w-full md:h-[560px] lg:order-2 lg:h-[640px]"
+          className="relative order-1 h-[340px] w-full md:h-[460px] lg:order-2 lg:h-[520px]"
         >
-          <div className="pointer-events-none absolute bottom-0 left-1/2 h-64 w-[80%] -translate-x-1/2 rounded-full bg-[var(--accent)]/40 blur-[80px]" />
-          <SceneClient />
+          <Image
+            src="/hero.png"
+            alt="Md. Zahin Afsar"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-contain"
+          />
         </motion.div>
       </div>
 

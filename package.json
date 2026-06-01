@@ -9,8 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.6.1",
     "gray-matter": "^4.0.3",
     "marked": "^18.0.3",
     "motion": "^12.38.0",
@@ -21,15 +19,13 @@
     "recharts": "^3.8.1",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
-    "shiki": "^4.0.2",
-    "three": "^0.184.0"
+    "shiki": "^4.0.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/three": "^0.184.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.4",
     "tailwindcss": "^4",

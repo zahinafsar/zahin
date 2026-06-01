@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { SITE } from "../lib/site";
 
 const links = [
   { label: "About", href: "/#about" },
@@ -47,7 +48,9 @@ export default function Nav() {
           ))}
         </nav>
         <a
-          href="mailto:afsarzahin@gmail.com"
+          href={SITE.author.calendly}
+          target="_blank"
+          rel="noreferrer"
           className="hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-[var(--accent)] md:inline-block"
         >
           Let&apos;s talk

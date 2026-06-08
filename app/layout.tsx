@@ -48,14 +48,6 @@ export const metadata: Metadata = {
     title: SITE.title,
     description: SITE.description,
     locale: SITE.locale,
-    images: [
-      {
-        url: "/logo-v2.png",
-        width: 512,
-        height: 512,
-        alt: SITE.name,
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -63,7 +55,6 @@ export const metadata: Metadata = {
     description: SITE.description,
     creator: SITE.author.twitter,
     site: SITE.author.twitter,
-    images: ["/logo-v2.png"],
   },
   robots: {
     index: true,

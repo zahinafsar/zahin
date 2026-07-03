@@ -8,10 +8,11 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import CodeCopy from "../../components/CodeCopy";
 import PerfChart from "../../components/blog/PerfChart";
+import BunBench from "../../components/blog/BunBench";
 import { getAllPosts, getPostBySlug, getPostSlugs, remarkShikiCode } from "../../lib/blog";
 import { SITE } from "../../lib/site";
 
-const mdxComponents = { PerfChart };
+const mdxComponents = { PerfChart, BunBench };
 
 type Params = { slug: string };
 

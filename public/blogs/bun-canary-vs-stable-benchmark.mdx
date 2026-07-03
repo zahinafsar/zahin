@@ -1,0 +1,134 @@
+---
+title: "Bun (Rust) 1.4 Canary vs Bun (Zig) 1.3 Benchmark"
+description: "I put the old Zig Bun and the new Rust Bun in one container and made them race on a CPU task and a memory task. Here is what actually changed."
+date: "2026-07-03"
+updated: "2026-07-03"
+tags: ["bun", "javascript", "benchmark", "docker", "performance"]
+author: "Md. Zahin Afsar"
+---
+
+Jarred Sumner rewrote Bun from Zig to Rust. I love Rust, so I got excited. Finally, Rust wins, everything is faster now, right?
+
+Then I stopped and asked a simple question: is it actually faster? Loving Rust is not proof. So I put both Buns — the old Zig one and the new Rust one — in the same container and made them race.
+
+**Short answer:** Rust (Bun) uses less memory. Zig (Bun) is a tiny bit faster. Here it is, test by test:
+
+- **Memory test — memory used:** Rust (Bun) was **6.0% better** (used less memory). Rust wins.
+- **CPU test — memory used:** Rust (Bun) was **4.8% better** (used less memory). Rust wins.
+- **Memory test — speed:** Zig (Bun) was **1.4% faster**. Basically a tie.
+- **CPU test — speed:** Zig (Bun) was **2.1% faster**. Basically a tie (and this one is noisy, more on that below).
+
+So: **Rust wins on memory, both tests. Speed is a tie.**
+
+Code and Dockerfile: [github.com/zahinafsar/bun_zig-vs-bun_rust](https://github.com/zahinafsar/bun_zig-vs-bun_rust)
+
+## The results, in one picture
+
+<BunBench />
+
+Both charts: **shorter bars are better.** On memory (right chart), the orange Rust bars are clearly shorter — Rust uses less. On time (left chart), the bars are almost the same height — a tie.
+
+### The exact numbers
+
+| Test | Runtime | Time (ms) | Memory (MB) |
+|------|---------|----------:|------------:|
+| CPU test | Zig (Bun) | 468.6 | 46.0 |
+| CPU test | **Rust (Bun)** | 478.6 | **43.8** |
+| Memory test | Zig (Bun) | 168.6 | 221.9 |
+| Memory test | **Rust (Bun)** | 170.9 | **208.6** |
+
+And the difference as a percentage:
+
+| Test | Speed | Memory |
+|------|:-----:|:------:|
+| CPU test | Zig 2.1% faster | Rust used 4.8% less |
+| Memory test | Zig 1.4% faster | Rust used 6.0% less |
+
+## How I set it up
+
+One image, two Buns, no excuses. I copy the Zig Bun to the side, upgrade a second copy to the Rust one, and keep both. Same machine, same everything except the runtime. If I ran them on two different machines, some Rust fan (yes, me) would just blame the machine.
+
+```dockerfile
+FROM oven/bun:latest
+
+# bun upgrade needs unzip
+RUN apt-get update && apt-get install -y --no-install-recommends unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN cp "$(command -v bun)" /usr/local/bin/bun-stable \
+    && bun upgrade --canary \
+    && cp "$(command -v bun)" /usr/local/bin/bun-canary
+
+COPY bench.js run.sh ./
+CMD ["bash", "run.sh"]
+```
+
+Run it:
+
+```bash
+docker build -t bun-bench . && docker run --rm bun-bench
+```
+
+## The two tasks
+
+Two tasks, timed one by one. No libraries. A fixed random seed, so every run does the exact same work.
+
+**CPU task** — heavy math, almost no memory use. A recursive `fib(30)`, a tight number loop, and many `Math.sqrt` passes over a small buffer.
+
+```js
+function cpuTask() {
+  let acc = 0;
+  const buf = new Float64Array(4096);
+  for (let it = 0; it < ITERATIONS; it++) {
+    acc += fib(30);
+    let h = 2166136261 >>> 0;
+    for (let i = 0; i < 500000; i++) {
+      h ^= (i * 16777619) >>> 0;
+      h = (h + ((h << 13) | (h >>> 19))) >>> 0;
+    }
+    for (let pass = 0; pass < 32; pass++)
+      for (let i = 1; i < buf.length; i++)
+        buf[i] = Math.sqrt(buf[i] * buf[i - 1] + 1.0);
+    acc += h + buf[buf.length - 1];
+  }
+  return acc;
+}
+```
+
+**Memory task** — lots of allocation. A big `Float64Array`, about 500K small objects kept in memory, a large `Map`, and a JSON round-trip. I check peak memory with `process.memoryUsage().rss`.
+
+```js
+function memTask() {
+  const big = new Float64Array(SIZE);            // SIZE = 2_000_000
+  const n = Math.floor(SIZE / 4);
+  const objs = new Array(n);
+  for (let i = 0; i < n; i++)
+    objs[i] = { id: i, v: big[i], tag: i & 7, name: "n" + (i & 1023) };
+  const map = new Map();
+  for (let i = 0; i < n; i++) map.set(i, objs[i]);
+  const parsed = JSON.parse(JSON.stringify(objs.slice(0, 200000)));
+  // ...check memory after each step, keep the highest value
+}
+```
+
+## Read the numbers with care
+
+The memory result is clear, and I will happily take it: the Rust Bun uses **5–6% less** on both tasks. It happened in every run, not just one lucky one. Nice work, Rust.
+
+The time result is not so clear. One Zig run of the CPU task finished in **344ms**, while the others took about **500ms**. That one odd run pulls the Zig average down and makes Rust look worse than it really is. Remove it, and the two are basically equal. Not the "Rust destroys Zig" headline I was hoping for.
+
+**Five runs on a warm laptop is not enough to trust a 2% gap.** Other apps, heat, and garbage-collection timing all live in that range. If you care about the speed number, do more runs:
+
+```bash
+docker run --rm -e RUNS=15 bun-bench
+```
+
+More runs cancel out the odd ones. Even better, report the **fastest** run instead of the average. The fastest run is the one with the least interference from other things on the machine.
+
+## So, did Rust help?
+
+Kind of, yes. The new Bun uses less memory and did not get slower. That is a win, just a quiet one. If you run many Bun processes at once (servers, CI, one worker per request), 5% less memory each adds up to real free space.
+
+As a Rust lover, I wanted fireworks. I got a small, steady improvement instead. And honestly, that is a healthy rewrite. Boring is good.
+
+Want to try it yourself? Clone the harness and run it on your own machine: [github.com/zahinafsar/bun_zig-vs-bun_rust](https://github.com/zahinafsar/bun_zig-vs-bun_rust). Your numbers will differ from mine — that is exactly why it ships as a container.

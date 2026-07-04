@@ -3,7 +3,7 @@ title: "Bun (Rust) 1.4 Canary vs Bun (Zig) 1.3 Benchmark"
 description: "I put the old Zig Bun and the new Rust Bun in one container and made them race on a CPU task and a memory task. Here is what actually changed."
 date: "2026-07-03"
 updated: "2026-07-03"
-tags: ["bun", "javascript", "benchmark", "docker", "performance"]
+tags: ["bun", "javascript", "Rust", "Zig", "benchmark", "docker", "performance"]
 author: "Md. Zahin Afsar"
 ---
 
@@ -51,7 +51,6 @@ One image, two Buns, no excuses. I copy the Zig Bun to the side, upgrade a secon
 ```dockerfile
 FROM oven/bun:latest
 
-# bun upgrade needs unzip
 RUN apt-get update && apt-get install -y --no-install-recommends unzip \
     && rm -rf /var/lib/apt/lists/*
 
@@ -99,7 +98,7 @@ function cpuTask() {
 
 ```js
 function memTask() {
-  const big = new Float64Array(SIZE);            // SIZE = 2_000_000
+  const big = new Float64Array(SIZE);
   const n = Math.floor(SIZE / 4);
   const objs = new Array(n);
   for (let i = 0; i < n; i++)
@@ -107,7 +106,6 @@ function memTask() {
   const map = new Map();
   for (let i = 0; i < n; i++) map.set(i, objs[i]);
   const parsed = JSON.parse(JSON.stringify(objs.slice(0, 200000)));
-  // ...check memory after each step, keep the highest value
 }
 ```
 

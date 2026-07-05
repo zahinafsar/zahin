@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     canonical: "/",
     types: {
       "application/rss+xml": [
-        { url: "/feed.xml", title: `${SITE.name} — Blog RSS Feed` },
+        { url: "/feed.xml", title: `${SITE.name} Blog RSS Feed` },
       ],
     },
   },

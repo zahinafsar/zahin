@@ -1,7 +1,7 @@
 export const SITE = {
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://zahinafsar.com").replace(/\/$/, ""),
   name: "Zahin Afsar",
-  title: "Zahin Afsar — Software Engineer",
+  title: "Zahin Afsar, Software Engineer",
   description:
     "Software engineer building performant, modern products with JavaScript, TypeScript, React, and Next.js.",
   author: {

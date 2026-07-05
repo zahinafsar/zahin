@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 const stats = [
   { v: "5+", l: "Years building for the web" },
   { v: "1.2K+", l: "Contributions last year" },
-  { v: "9th", l: "Code Samurai 2024 — nationwide" },
+  { v: "9th", l: "Code Samurai 2024, nationwide" },
   { v: "OSS", l: "Libraries used by other devs" },
 ];
 
@@ -20,7 +20,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-[var(--muted)] md:text-2xl"
         >
-          For the past three years I&apos;ve led frontend work across Shopify integrations, peer-to-peer marketplaces, and internal dashboards — turning fuzzy requirements into resilient TypeScript codebases while finishing my B.Sc. in CSE at Green University of Bangladesh, and looking to take on bigger, more challenging problems as a <span className="text-accent-gradient">software engineer</span>.
+          For the past three years I&apos;ve led frontend work across Shopify integrations, peer-to-peer marketplaces, and internal dashboards, turning fuzzy requirements into resilient TypeScript codebases while finishing my B.Sc. in CSE at Green University of Bangladesh, and looking to take on bigger, more challenging problems as a <span className="text-accent-gradient">software engineer</span>.
         </motion.p>
 
         <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">

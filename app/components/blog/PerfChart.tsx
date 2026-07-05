@@ -82,7 +82,7 @@ function ChartTooltip({ active, payload, label, unit }: ChartTooltipProps) {
 export default function PerfChart({
   data = DEFAULT_DATA,
   unit = "ms",
-  caption = "Latency by method — Avg, P95, P99. Lower is better.",
+  caption = "Latency by method: Avg, P95, P99. Lower is better.",
 }: {
   data?: Row[];
   unit?: string;

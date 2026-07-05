@@ -5,7 +5,7 @@ import { SectionLabel } from "./About";
 
 const jobs = [
   {
-    role: "Frontend Engineer",
+    role: "Lead Frontend Engineer",
     company: "Voyage Mobile Inc",
     period: "Jul 2023 – Apr 2026",
     location: "Remote",
@@ -28,7 +28,7 @@ const jobs = [
     points: [
       "Built mobile and web interfaces in React and React Native.",
       "Integrated Firebase Auth, Cloud Messaging, and secure payment flows.",
-      "Redesigned product listing pages — improved conversion and stability.",
+      "Redesigned product listing pages, improving conversion and stability.",
     ],
     tech: ["React", "React Native", "TypeScript", "Node.js", "Firebase", "MongoDB"],
   },

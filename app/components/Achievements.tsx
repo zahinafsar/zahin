@@ -8,7 +8,7 @@ const wins = [
     rank: "9th",
     label: "Winner",
     event: "Code Samurai 2024",
-    desc: "Top teams nationwide — built a high-impact, scalable software solution under competitive constraints.",
+    desc: "Top teams nationwide. Built a high-impact, scalable software solution under competitive constraints.",
   },
   {
     rank: "2nd",
@@ -25,7 +25,7 @@ const wins = [
 ];
 
 const contribs = [
-  "Active Stack Overflow contributor — practical answers to frontend & web problems.",
+  "Active Stack Overflow contributor with practical answers to frontend & web problems.",
   "Maintainer of OSS tools used by other developers.",
   "Mentor to students learning React, Next.js, and modern frontend architecture.",
 ];

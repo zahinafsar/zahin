@@ -56,7 +56,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="max-w-lg text-base leading-relaxed text-[var(--muted)] md:text-lg"
           >
-            I&apos;m <span className="text-white">Md. Zahin Afsar</span> — a software engineer from Bangladesh, building performant, accessible products with JavaScript & TypeScript.
+            I&apos;m <span className="text-white">Md. Zahin Afsar</span>, a software engineer from Bangladesh, building performant, accessible products with JavaScript & TypeScript.
           </motion.p>
 
           <motion.div

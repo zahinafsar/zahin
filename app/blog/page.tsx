@@ -7,7 +7,7 @@ import { SITE } from "../lib/site";
 
 export const dynamic = "force-static";
 
-const PAGE_TITLE = "Blog — Engineering notes, deep dives & tutorials";
+const PAGE_TITLE = "Blog: Engineering notes, deep dives & tutorials";
 const PAGE_DESC =
   "Articles on TypeScript, React, Next.js, performance, and shipping production software by Md. Zahin Afsar.";
 const PAGE_PATH = "/blog";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: PAGE_PATH,
     types: {
       "application/rss+xml": [
-        { url: "/feed.xml", title: `${SITE.name} — Blog RSS Feed` },
+        { url: "/feed.xml", title: `${SITE.name} Blog RSS Feed` },
       ],
     },
   },

@@ -1,8 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
-import { SectionLabel } from "./About";
-
 const jobs = [
   {
     role: "Lead Frontend Engineer",
@@ -60,12 +57,8 @@ export default function Experience() {
 
           <div className="space-y-12">
             {jobs.map((j, i) => (
-              <motion.div
+              <div
                 key={j.company}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.6, delay: i * 0.05 }}
                 className="relative pl-10 md:grid md:grid-cols-2 md:gap-12 md:pl-0"
               >
                 <div className="absolute left-0 top-2 h-4 w-4 rounded-full border-2 border-[var(--accent)] bg-[var(--bg)] md:left-1/2 md:-translate-x-1/2" />
@@ -103,7 +96,7 @@ export default function Experience() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

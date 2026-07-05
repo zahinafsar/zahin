@@ -1,21 +1,13 @@
 "use client";
 
-import { motion } from "motion/react";
 import { SITE } from "../lib/site";
 
 export default function Contact() {
   return (
     <section id="contact" className="relative w-full px-6 py-32 md:px-10">
       <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-[2rem] border border-[var(--border)] bg-gradient-to-br from-[var(--bg-soft)] via-black to-[var(--bg-soft)] p-10 md:p-20"
+        <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border)] bg-gradient-to-br from-[var(--bg-soft)] via-black to-[var(--bg-soft)] p-10 md:p-20"
         >
-          <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-[var(--accent)]/15 blur-[100px]" />
-          <div className="absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-[var(--accent-2)]/15 blur-[100px]" />
 
           <div className="relative">
             <h2 className="text-4xl font-semibold leading-tight tracking-tight md:text-7xl">
@@ -77,7 +69,7 @@ export default function Contact() {
               <Field label="Timezone" value="GMT+6" />
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

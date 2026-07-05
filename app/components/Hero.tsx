@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import Image from "next/image";
 
 const stack = ["Next.js", "React", "TypeScript", "GraphQL", "Node.js", "PostgreSQL"];
@@ -34,37 +33,20 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-screen w-full items-center overflow-hidden pt-24"
     >
-      <div className="absolute inset-0 grid-bg opacity-50" />
-      <div className="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-[var(--accent)]/10 blur-[120px] blob" />
-      <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-[var(--accent-2)]/10 blur-[120px] blob" style={{ animationDelay: "-6s" }} />
+      <div className="absolute inset-0 grid-bg opacity-80" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 md:px-10 lg:grid-cols-2">
         <div className="order-2 flex flex-col gap-6 lg:order-1">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl"
-          >
+          <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
             <span className="text-gradient whitespace-nowrap">Software engineer</span>
             <Typewriter />
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="max-w-lg text-base leading-relaxed text-[var(--muted)] md:text-lg"
-          >
+          <p className="max-w-lg text-base leading-relaxed text-[var(--muted)] md:text-lg">
             I&apos;m <span className="text-white">Md. Zahin Afsar</span>, a software engineer from Bangladesh, building performant, accessible products with JavaScript & TypeScript.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="flex flex-wrap items-center gap-3 pt-2"
-          >
+          <div className="flex flex-wrap items-center gap-3 pt-2">
             <a
               href="#projects"
               className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-[var(--accent)]"
@@ -78,14 +60,9 @@ export default function Hero() {
             >
               Get in touch
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap gap-2 pt-4"
-          >
+          <div className="flex flex-wrap gap-2 pt-4">
             {stack.map((s) => (
               <span
                 key={s}
@@ -94,15 +71,10 @@ export default function Hero() {
                 {s}
               </span>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative order-1 h-[340px] w-full md:h-[460px] lg:order-2 lg:h-[520px]"
-        >
+        <div className="relative order-1 h-[340px] w-full md:h-[460px] lg:order-2 lg:h-[520px]">
           <Image
             src="/hero.png"
             alt="Md. Zahin Afsar"
@@ -111,7 +83,7 @@ export default function Hero() {
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-contain"
           />
-        </motion.div>
+        </div>
       </div>
 
     </section>

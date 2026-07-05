@@ -1,8 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
-import { SectionLabel } from "./About";
-
 const wins = [
   {
     rank: "9th",
@@ -39,13 +36,9 @@ export default function Achievements() {
         </h2>
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {wins.map((w, i) => (
-            <motion.div
+          {wins.map((w) => (
+            <div
               key={w.event}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
               className="rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-6"
             >
               <div className="flex items-baseline gap-3">
@@ -62,7 +55,7 @@ export default function Achievements() {
               <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
                 {w.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 

@@ -1,8 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
-import { SectionLabel } from "./About";
-
 const groups = [
   { title: "Languages", items: ["JavaScript", "TypeScript"] },
   { title: "Front-End", items: ["Next.js", "React", "React Native", "D3.js"] },
@@ -36,12 +33,8 @@ export default function Skills() {
 
         <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--border)] md:grid-cols-6">
           {groups.map((g, i) => (
-            <motion.div
+            <div
               key={g.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
               className={`bg-[var(--bg)] p-6 md:p-8 ${i < 3 ? "md:col-span-2" : "md:col-span-3"}`}
             >
               <div className="text-xs uppercase tracking-widest text-[var(--accent)]">
@@ -57,7 +50,7 @@ export default function Skills() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

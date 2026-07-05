@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
-
 type OpenSourceProject = {
   name: string;
   tag: string;
@@ -137,16 +135,12 @@ export default function Projects() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {openSource.map((p, i) => (
-            <motion.a
+          {openSource.map((p) => (
+            <a
               key={p.name}
               href={p.href}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
               className="group relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-8 transition hover:border-white/20"
             >
               <div
@@ -168,7 +162,7 @@ export default function Projects() {
               <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">
                 {p.desc}
               </p>
-            </motion.a>
+            </a>
           ))}
         </div>
 
@@ -183,13 +177,9 @@ export default function Projects() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {personal.map((p, i) => (
-            <motion.article
+          {personal.map((p) => (
+            <article
               key={`${p.name}-${p.title}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
               className="group relative flex flex-col overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] transition hover:border-white/20"
             >
               <div
@@ -275,7 +265,7 @@ export default function Projects() {
                   </div>
                 )}
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 type OpenSourceProject = {
   name: string;
   tag: string;
@@ -54,6 +56,38 @@ const openSource: OpenSourceProject[] = [
 
 const personal: PersonalProject[] = [
   {
+    name: "ArrayQ",
+    title: "CRM · Logistics",
+    role: "Full-Stack Development",
+    desc: "A CRM built for haulers across the USA. Manages jobs, customers, and dispatch in one place so hauling businesses can track work and keep the pipeline moving.",
+    skills: ["Next.js", "TypeScript", "PostgreSQL", "AI", "Stripe"],
+    video: "/projects/array-crm.mp4",
+    accent: "from-[#ff6b3d]/20 to-transparent",
+    live: "https://arrayq.com",
+    closedSource: true,
+  },
+  {
+    name: "Klaviyo Dashboard",
+    title: "Marketing Analytics · AI",
+    role: "Full-Stack Development",
+    desc: "A dashboard that plugs into Klaviyo to monitor campaign performance for brands, then uses AI to draft a full marketing calendar. See what's working, then let it plan what ships next.",
+    skills: ["Next.js", "TypeScript", "Klaviyo API", "AI", "PostgreSQL", "SQS", "AWS"],
+    video: "/projects/klaviyo-dashboard.mp4",
+    accent: "from-[#ff6b3d]/20 to-transparent",
+    closedSource: true,
+  },
+  {
+    name: "Gluesale",
+    title: "Shopify Application",
+    role: "Full-Stack Development",
+    desc: "Turns customers into advocates for Shopify stores. Auto-generates referral links, mints discount codes, and rewards both sides. API-only, no storefront scripts, with a live dashboard for claims and conversions.",
+    skills: ["Shopify", "Next.js", "TypeScript", "Webhooks", "PostgreSQL"],
+    video: "/projects/gluesale.mp4",
+    accent: "from-[#ff6b3d]/20 to-transparent",
+    live: "https://gluesale.com",
+    closedSource: true,
+  },
+  {
     name: "BeforeSell",
     title: "P2P Marketplace",
     role: "Full-Stack Development",
@@ -61,6 +95,7 @@ const personal: PersonalProject[] = [
     skills: ["Next.js", "TypeScript", "SQL", "UI/UX Prototyping", "NGINX"],
     video: "/projects/beforesell.mp4",
     accent: "from-[#ff6b3d]/20 to-transparent",
+    live: "https://beforesell.com",
     github: "https://github.com/zahinafsar/beforesell",
   },
   {
@@ -71,6 +106,7 @@ const personal: PersonalProject[] = [
     skills: ["Shopify", "AWS Lambda", "PostgreSQL", "Next.js", "JavaScript"],
     video: "/projects/liverecover-app.mp4",
     accent: "from-[#ff6b3d]/20 to-transparent",
+    live: "https://liverecover.com",
     closedSource: true,
   },
   {
@@ -81,6 +117,7 @@ const personal: PersonalProject[] = [
     skills: ["Electron", "Desktop Application"],
     video: "/projects/coodeen.mp4",
     accent: "from-[#ff6b3d]/20 to-transparent",
+    live: "https://coodeen.com",
     github: "https://github.com/zahinafsar/coodeen",
   },
   {
@@ -91,6 +128,7 @@ const personal: PersonalProject[] = [
     skills: ["TypeScript", "NGINX", "PostgreSQL", "Stripe", "Twilio"],
     video: "/projects/luggora.mp4",
     accent: "from-[#ff6b3d]/20 to-transparent",
+    live: "https://luggora.com",
     github: "https://github.com/zahinafsar/luggora",
   },
   {
@@ -116,6 +154,21 @@ const personal: PersonalProject[] = [
 ];
 
 export default function Projects() {
+  const [active, setActive] = useState<PersonalProject | null>(null);
+
+  useEffect(() => {
+    if (!active) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActive(null);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [active]);
+
   return (
     <section id="projects" className="relative w-full px-6 py-32 md:px-10">
       <div className="mx-auto max-w-7xl">
@@ -180,7 +233,16 @@ export default function Projects() {
           {personal.map((p) => (
             <article
               key={`${p.name}-${p.title}`}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] transition hover:border-white/20"
+              role="button"
+              tabIndex={0}
+              onClick={() => setActive(p)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActive(p);
+                }
+              }}
+              className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] transition hover:border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6b3d]/60"
             >
               <div
                 className={`absolute -inset-px -z-10 bg-gradient-to-br ${p.accent} opacity-0 transition group-hover:opacity-100`}
@@ -188,6 +250,7 @@ export default function Projects() {
               <div className="relative aspect-video overflow-hidden border-b border-[var(--border)]">
                 <video
                   src={p.video}
+                  aria-label={`${p.name} — ${p.title} demo`}
                   autoPlay
                   muted
                   loop
@@ -228,7 +291,8 @@ export default function Projects() {
                         href={p.live}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-xs text-[var(--muted)] transition hover:border-white hover:text-white"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-[#ff6b3d]/40 bg-[#ff6b3d]/10 px-3.5 py-1.5 text-xs text-[#ff6b3d] transition hover:border-[#ff6b3d] hover:bg-[#ff6b3d]/20"
                       >
                         Live ↗
                       </a>
@@ -238,7 +302,8 @@ export default function Projects() {
                         href={p.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-xs text-[var(--muted)] transition hover:border-white hover:text-white"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs text-white transition hover:border-white/40 hover:bg-white/10"
                       >
                         GitHub ↗
                       </a>
@@ -269,6 +334,114 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      {active && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${active.name} details`}
+          onClick={() => setActive(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-sm md:p-8"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative my-auto w-full max-w-4xl overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] shadow-2xl"
+          >
+            <button
+              type="button"
+              onClick={() => setActive(null)}
+              aria-label="Close"
+              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-lg text-white transition hover:border-white hover:bg-black/60"
+            >
+              ✕
+            </button>
+
+            <div className="relative aspect-video w-full overflow-hidden border-b border-[var(--border)] bg-black">
+              <video
+                src={active.video}
+                aria-label={`${active.name} — ${active.title} demo`}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                className="absolute inset-0 h-full w-full object-contain"
+              />
+            </div>
+
+            <div className="p-6 md:p-8">
+              <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                {active.title}
+              </div>
+              <h3 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+                {active.name}
+              </h3>
+              <div className="mt-1 text-sm text-[var(--muted)]">
+                {active.role}
+              </div>
+
+              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
+                {active.desc}
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                {active.skills.map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full border border-[var(--border)] px-2.5 py-1 text-[11px] text-[var(--muted)]"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+
+              {(active.live || active.github || active.closedSource) && (
+                <div className="mt-7 flex flex-wrap items-center gap-2">
+                  {active.live && (
+                    <a
+                      href={active.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-[#ff6b3d]/40 bg-[#ff6b3d]/10 px-3.5 py-1.5 text-xs text-[#ff6b3d] transition hover:border-[#ff6b3d] hover:bg-[#ff6b3d]/20"
+                    >
+                      Live ↗
+                    </a>
+                  )}
+                  {active.github && (
+                    <a
+                      href={active.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs text-white transition hover:border-white/40 hover:bg-white/10"
+                    >
+                      GitHub ↗
+                    </a>
+                  )}
+                  {!active.github && active.closedSource && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-xs text-[var(--muted)]">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                      </svg>
+                      Closed source
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

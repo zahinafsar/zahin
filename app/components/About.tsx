@@ -15,13 +15,17 @@ export default function About() {
           For the past three years I&apos;ve led frontend work across Shopify integrations, peer-to-peer marketplaces, and internal dashboards, turning fuzzy requirements into resilient TypeScript codebases while finishing my B.Sc. in CSE at Green University of Bangladesh, and looking to take on bigger, more challenging problems as a <span className="text-accent-gradient">software engineer</span>.
         </p>
 
-        <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--border)] md:grid-cols-4">
+        <div className="mt-20 grid grid-cols-2 gap-4 md:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.l} className="bg-[var(--bg)] p-6 md:p-8">
-              <div className="text-4xl font-semibold tracking-tight md:text-5xl">
+            <div
+              key={s.l}
+              className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-6 transition hover:border-white/20 md:p-8"
+            >
+              <span className="absolute inset-x-0 top-0 h-px scale-x-0 bg-[var(--accent)] transition-transform duration-300 group-hover:scale-x-100" />
+              <div className="text-4xl font-semibold tracking-tight text-accent-gradient md:text-5xl">
                 {s.v}
               </div>
-              <div className="mt-2 text-xs leading-snug text-[var(--muted)]">
+              <div className="mt-3 text-xs leading-snug text-[var(--muted)]">
                 {s.l}
               </div>
             </div>

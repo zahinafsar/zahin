@@ -11,11 +11,11 @@ export default function About() {
   return (
     <section id="about" className="relative w-full px-6 py-32 md:px-10">
       <div className="mx-auto max-w-7xl">
-        <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-[var(--muted)] md:text-2xl">
+        {/* <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-[var(--muted)] md:text-2xl">
           For the past three years I&apos;ve led frontend work across Shopify integrations, peer-to-peer marketplaces, and internal dashboards, turning fuzzy requirements into resilient TypeScript codebases while finishing my B.Sc. in CSE at Green University of Bangladesh, and looking to take on bigger, more challenging problems as a <span className="text-accent-gradient">software engineer</span>.
-        </p>
+        </p> */}
 
-        <div className="mt-20 grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {stats.map((s) => (
             <div
               key={s.l}

@@ -56,14 +56,14 @@ const openSource: OpenSourceProject[] = [
 
 const personal: PersonalProject[] = [
   {
-    name: "ArrayQ",
-    title: "CRM · Logistics",
-    role: "Full-Stack Development",
-    desc: "A CRM built for haulers across the USA. Manages jobs, customers, and dispatch in one place so hauling businesses can track work and keep the pipeline moving.",
-    skills: ["Next.js", "TypeScript", "PostgreSQL", "AI", "Stripe"],
-    video: "/projects/array-crm.mp4",
+    name: "LiveRecover",
+    title: "Shopify Application",
+    role: "Frontend-focused Fullstack Development",
+    desc: "Turns abandoned carts back into sales. Real people text shoppers over SMS, connected straight to Shopify, recovering up to ~30% of lost carts.",
+    skills: ["Shopify", "AWS Lambda", "PostgreSQL", "Next.js", "JavaScript"],
+    video: "/projects/liverecover-app.mp4",
     accent: "from-[#ff6b3d]/20 to-transparent",
-    live: "https://arrayq.com",
+    live: "https://liverecover.com",
     closedSource: true,
   },
   {
@@ -71,20 +71,17 @@ const personal: PersonalProject[] = [
     title: "Marketing Analytics · AI",
     role: "Full-Stack Development",
     desc: "A dashboard that plugs into Klaviyo to monitor campaign performance for brands, then uses AI to draft a full marketing calendar. See what's working, then let it plan what ships next.",
-    skills: ["Next.js", "TypeScript", "Klaviyo API", "AI", "PostgreSQL", "SQS", "AWS"],
+    skills: [
+      "Next.js",
+      "TypeScript",
+      "Klaviyo API",
+      "AI",
+      "PostgreSQL",
+      "SQS",
+      "AWS",
+    ],
     video: "/projects/klaviyo-dashboard.mp4",
     accent: "from-[#ff6b3d]/20 to-transparent",
-    closedSource: true,
-  },
-  {
-    name: "Gluesale",
-    title: "Shopify Application",
-    role: "Full-Stack Development",
-    desc: "Turns customers into advocates for Shopify stores. Auto-generates referral links, mints discount codes, and rewards both sides. API-only, no storefront scripts, with a live dashboard for claims and conversions.",
-    skills: ["Shopify", "Next.js", "TypeScript", "Webhooks", "PostgreSQL"],
-    video: "/projects/gluesale.mp4",
-    accent: "from-[#ff6b3d]/20 to-transparent",
-    live: "https://gluesale.com",
     closedSource: true,
   },
   {
@@ -99,14 +96,25 @@ const personal: PersonalProject[] = [
     github: "https://github.com/zahinafsar/beforesell",
   },
   {
-    name: "LiveRecover",
-    title: "Shopify Application",
-    role: "Frontend-focused Fullstack Development",
-    desc: "Turns abandoned carts back into sales. Real people text shoppers over SMS, connected straight to Shopify, recovering up to ~30% of lost carts.",
-    skills: ["Shopify", "AWS Lambda", "PostgreSQL", "Next.js", "JavaScript"],
-    video: "/projects/liverecover-app.mp4",
+    name: "ArrayQ",
+    title: "CRM · Logistics",
+    role: "Full-Stack Development",
+    desc: "A CRM built for haulers across the USA. Manages jobs, customers, and dispatch in one place so hauling businesses can track work and keep the pipeline moving.",
+    skills: ["Next.js", "TypeScript", "PostgreSQL", "AI", "Stripe"],
+    video: "/projects/array-crm.mp4",
     accent: "from-[#ff6b3d]/20 to-transparent",
-    live: "https://liverecover.com",
+    live: "https://arrayq.com",
+    closedSource: true,
+  },
+  {
+    name: "Gluesale",
+    title: "Shopify Application",
+    role: "Full-Stack Development",
+    desc: "Turns customers into advocates for Shopify stores. Auto-generates referral links, mints discount codes, and rewards both sides. API-only, no storefront scripts, with a live dashboard for claims and conversions.",
+    skills: ["Shopify", "Next.js", "TypeScript", "Webhooks", "PostgreSQL"],
+    video: "/projects/gluesale.mp4",
+    accent: "from-[#ff6b3d]/20 to-transparent",
+    live: "https://gluesale.com",
     closedSource: true,
   },
   {
@@ -172,62 +180,10 @@ export default function Projects() {
   return (
     <section id="projects" className="relative w-full px-6 py-32 md:px-10">
       <div className="mx-auto max-w-7xl">
-        {/* Open source */}
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-            Open source.
-          </h2>
-          <a
-            href="https://github.com/zahinafsar"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm text-[var(--muted)] transition hover:border-white hover:text-white"
-          >
-            github.com/zahinafsar →
-          </a>
-        </div>
-
-        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {openSource.map((p) => (
-            <a
-              key={p.name}
-              href={p.href}
-              target="_blank"
-              rel="noreferrer"
-              className="group relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-8 transition hover:border-white/20"
-            >
-              <div
-                className={`absolute -inset-px -z-10 bg-gradient-to-br ${p.accent} opacity-0 transition group-hover:opacity-100`}
-              />
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
-                    {p.tag}
-                  </div>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
-                    {p.name}
-                  </h3>
-                </div>
-                <div className="text-2xl text-[var(--muted)] transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white">
-                  ↗
-                </div>
-              </div>
-              <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">
-                {p.desc}
-              </p>
-            </a>
-          ))}
-        </div>
-
         {/* Personal / client work */}
-        <div className="mt-28">
-          <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-            Personal &amp; client work.
-          </h2>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[var(--muted)]">
-            Shipped products and storefronts: the pixels, not the packages.
-          </p>
-        </div>
+        <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
+          Personal &amp; client work.
+        </h2>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {personal.map((p) => (
@@ -321,7 +277,14 @@ export default function Projects() {
                           strokeLinejoin="round"
                           aria-hidden="true"
                         >
-                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                          <rect
+                            x="3"
+                            y="11"
+                            width="18"
+                            height="11"
+                            rx="2"
+                            ry="2"
+                          />
                           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                         </svg>
                         Closed source
@@ -331,6 +294,53 @@ export default function Projects() {
                 )}
               </div>
             </article>
+          ))}
+        </div>
+
+        {/* Open source */}
+        <div className="flex flex-wrap items-end justify-between gap-6 mt-28">
+          <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
+            Open source.
+          </h2>
+          <a
+            href="https://github.com/zahinafsar"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm text-[var(--muted)] transition hover:border-white hover:text-white"
+          >
+            github.com/zahinafsar →
+          </a>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
+          {openSource.map((p) => (
+            <a
+              key={p.name}
+              href={p.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-8 transition hover:border-white/20"
+            >
+              <div
+                className={`absolute -inset-px -z-10 bg-gradient-to-br ${p.accent} opacity-0 transition group-hover:opacity-100`}
+              />
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                    {p.tag}
+                  </div>
+                  <h3 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+                    {p.name}
+                  </h3>
+                </div>
+                <div className="text-2xl text-[var(--muted)] transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white">
+                  ↗
+                </div>
+              </div>
+              <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">
+                {p.desc}
+              </p>
+            </a>
           ))}
         </div>
       </div>
@@ -430,7 +440,14 @@ export default function Projects() {
                         strokeLinejoin="round"
                         aria-hidden="true"
                       >
-                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <rect
+                          x="3"
+                          y="11"
+                          width="18"
+                          height="11"
+                          rx="2"
+                          ry="2"
+                        />
                         <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                       </svg>
                       Closed source

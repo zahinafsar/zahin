@@ -6,18 +6,24 @@ const wins = [
     label: "Winner",
     event: "Code Samurai 2024",
     desc: "Top teams nationwide. Built a high-impact, scalable software solution under competitive constraints.",
+    image: "/recognition/code-samurai.jpg",
+    link: "https://www.facebook.com/photo/?fbid=778233367743644&set=pcb.778236821076632",
   },
   {
     rank: "2nd",
     label: "1st Runner-up",
     event: "Web Xtreme Hackathon",
     desc: "Feature-rich web app focused on performance, UX, and real-world problem solving.",
+    image: "/recognition/web-xtreme.jpg",
+    link: "https://www.facebook.com/photo/?fbid=1032938992214027&set=pcb.1032940195547240",
   },
   {
     rank: "3rd",
     label: "2nd Runner-up",
     event: "Neo Fest Hackathon",
-    desc: "Fast-paced collaboration to deliver an innovative, technically sound product.",
+    desc: "Team: Green Thunder. Fast-paced collaboration to deliver an innovative, technically sound product.",
+    image: "/recognition/neo-fest.jpg",
+    link: "https://www.facebook.com/photo/?fbid=1133129342157787&set=a.472289101575151",
   },
 ];
 
@@ -37,25 +43,37 @@ export default function Achievements() {
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
           {wins.map((w) => (
-            <div
+            <a
               key={w.event}
-              className="rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-6"
+              href={w.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] transition-colors hover:border-[var(--accent)]"
             >
-              <div className="flex items-baseline gap-3">
-                <span className="text-5xl font-semibold tracking-tight text-accent-gradient">
-                  {w.rank}
-                </span>
-                <span className="text-xs uppercase tracking-widest text-[var(--muted)]">
-                  {w.label}
-                </span>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={w.image}
+                  alt={`${w.event} recognition`}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
-              <h3 className="mt-4 text-xl font-semibold tracking-tight">
-                {w.event}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
-                {w.desc}
-              </p>
-            </div>
+              <div className="p-6">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-5xl font-semibold tracking-tight text-accent-gradient">
+                    {w.rank}
+                  </span>
+                  <span className="text-xs uppercase tracking-widest text-[var(--muted)]">
+                    {w.label}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-xl font-semibold tracking-tight">
+                  {w.event}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                  {w.desc}
+                </p>
+              </div>
+            </a>
           ))}
         </div>
 

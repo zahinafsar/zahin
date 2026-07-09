@@ -1,15 +1,15 @@
 ---
 title: "Ziex (Zig) vs Leptos (Rust) SSR Benchmark"
-description: "Ziex's landing page says it out-renders Leptos by 3x. I put both in Docker, had them render the same 50-row list on every request, and pointed oha at them. Leptos won."
+description: "Ziex bills itself as a fast Zig SSR framework, so I put it up against Leptos: both in Docker, rendering the same 50-row list on every request, with oha pointed at them. Leptos won."
 date: "2026-07-09"
 updated: "2026-07-09"
 tags: ["ziex", "leptos", "zig", "Rust", "ssr", "benchmark", "docker", "performance"]
 author: "Md. Zahin Afsar"
 ---
 
-Ziex is a full-stack web framework for Zig: JSX-style markup right inside Zig code. Its landing page has a benchmark chart showing Ziex at ~25,857 SSR requests per second and Leptos, the big Rust framework, at ~7,659. Roughly 3x.
+Ziex is a full-stack web framework for Zig: JSX-style markup right inside Zig code. It pitches itself as a fast server-rendering framework, fast enough to go head-to-head with the big Rust frameworks.
 
-I love Rust, so a Zig framework claiming to triple Leptos at server rendering was worth checking. One machine, two containers, same load generator, same page.
+I love Rust, so a Zig framework going after Leptos at server rendering was worth checking. One machine, two containers, same load generator, same page.
 
 **Result:** on my machine, Leptos won, and comfortably.
 
@@ -95,7 +95,7 @@ This Ziex dev build always compiles a client WASM bundle and injects a preload `
 
 This is my laptop, and Ziex is `0.1.0-dev`. Actix and Tokio have been tuned for exactly this kind of load for years, and Leptos rides on top of that. Ziex's `serve` path is not final, and the project says so. A pre-1.0 Zig framework holding a mature Rust stack to under 2x on throughput and staying level at the tail is a good showing, not an embarrassment.
 
-Why the contradiction with Ziex's own chart? Their Leptos entry is almost certainly the full `cargo-leptos` hydration build, which does more work per request than my server-only render, on their hardware, through their harness. Benchmarks are arguments about setup, and their setup is not mine.
+If you see Ziex ahead somewhere else, look at the setup. A `cargo-leptos` hydration build does more work per request than my server-only render, and hardware and harness swing these numbers hard. Benchmarks are arguments about setup, and this one is mine.
 
 ## So, should you use Ziex?
 

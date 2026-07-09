@@ -9,10 +9,11 @@ import Footer from "../../components/Footer";
 import CodeCopy from "../../components/CodeCopy";
 import PerfChart from "../../components/blog/PerfChart";
 import BunBench from "../../components/blog/BunBench";
+import ZiexLeptos from "../../components/blog/ZiexLeptos";
 import { getAllPosts, getPostBySlug, getPostSlugs, remarkShikiCode } from "../../lib/blog";
 import { SITE } from "../../lib/site";
 
-const mdxComponents = { PerfChart, BunBench };
+const mdxComponents = { PerfChart, BunBench, ZiexLeptos };
 
 type Params = { slug: string };
 

@@ -4,6 +4,7 @@ const jobs = [
   {
     role: "Lead Frontend Engineer",
     company: "Voyage Mobile Inc",
+    url: "https://www.voyagesms.com/",
     logo: "/logos/voyage.jpg",
     period: "Aug 2023 – May 2026",
     location: "Remote",
@@ -20,6 +21,7 @@ const jobs = [
   {
     role: "Software Engineer",
     company: "Wecycle",
+    url: "https://getwecycle.com/",
     logo: "/logos/wecycle.jpg",
     period: "Jan 2023 – Dec 2023",
     location: "Remote",
@@ -34,6 +36,7 @@ const jobs = [
   {
     role: "Full-Stack Developer",
     company: "Makereal",
+    url: "https://www.linkedin.com/company/makereal",
     logo: "/logos/makereal.jpg",
     period: "Dec 2021 – Jan 2023",
     location: "Dhaka",
@@ -61,17 +64,31 @@ export default function Experience() {
               key={j.company}
               className="relative flex gap-4 py-8 first:pt-0 last:pb-0 md:gap-6"
             >
-              <img
-                src={j.logo}
-                alt={`${j.company} logo`}
-                className="z-10 h-12 w-12 flex-none rounded-lg border border-[var(--border)] bg-black object-cover md:h-14 md:w-14"
-              />
+              <a
+                href={j.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="z-10 flex-none"
+              >
+                <img
+                  src={j.logo}
+                  alt={`${j.company} logo`}
+                  className="h-12 w-12 rounded-lg border border-[var(--border)] bg-black object-cover md:h-14 md:w-14"
+                />
+              </a>
 
               <div className="min-w-0 flex-1">
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                   <h3 className="text-lg font-semibold tracking-tight md:text-xl">
                     {j.role}{" "}
-                    <span className="text-[var(--accent)]">({j.company})</span>
+                    <a
+                      href={j.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[var(--accent)] hover:underline"
+                    >
+                      ({j.company})
+                    </a>
                   </h3>
                   <div className="flex-none text-sm text-[var(--muted)] sm:text-right">
                     {j.period} · {j.location}

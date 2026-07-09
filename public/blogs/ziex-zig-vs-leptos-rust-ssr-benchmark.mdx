@@ -1,0 +1,121 @@
+---
+title: "Ziex (Zig) vs Leptos (Rust) SSR Benchmark"
+description: "Ziex's site says it out-renders Leptos. I put both in Docker, pointed oha at them, and let them race on a plain hello-world page. The winner surprised me."
+date: "2026-07-09"
+updated: "2026-07-09"
+tags: ["ziex", "leptos", "zig", "Rust", "ssr", "benchmark", "docker", "performance"]
+author: "Md. Zahin Afsar"
+---
+
+I found Ziex last week. It is a full-stack web framework for Zig, JSX-style markup right inside Zig code, and its landing page has a benchmark chart. That chart shows Ziex doing about 25,857 SSR requests per second and Leptos, the big Rust framework, doing about 7,659. Roughly 3x.
+
+I love Rust. So a Zig framework beating Leptos 3-to-1 at server rendering was exactly the kind of claim I wanted to check myself.
+
+So I did the only thing that settles it: one machine, two containers, same load generator, same page. No marketing slides, just `oha` and a stopwatch.
+
+**Short answer:** on my machine, Leptos won. Not by 3x, but it won. Here it is:
+
+- **Throughput:** Leptos did **~235k req/s**, Ziex did **~183k req/s**. Leptos ~28% ahead.
+- **Median latency (p50):** Leptos **0.10 ms**, Ziex **0.23 ms**. Leptos roughly 2x lower.
+- **Tail latency (p90 / p99):** basically a tie. Both sit around 0.5 ms and 0.9 to 1.0 ms.
+- **Errors:** zero. Both served millions of requests at 100% success.
+
+So the vendor chart did not reproduce. Not even the direction. More on why below, because it is not as damning as it sounds.
+
+Code, Dockerfiles, and the load harness: [github.com/zahinafsar/ziex_zig-vs-leptos_rust](https://github.com/zahinafsar/ziex_zig-vs-leptos_rust)
+
+## The results, in one picture
+
+<ZiexLeptos />
+
+Left chart is latency, shorter is better, and the orange Leptos bar is clearly lower at p50 while p90 and p99 sit on top of each other. Right chart is throughput in thousands of requests per second, taller is better, and Leptos is the taller bar.
+
+### The exact numbers
+
+| metric | Ziex (Zig) | Leptos (Rust) |
+| ------ | ---------: | ------------: |
+| req/sec | ~182,700 | ~235,000 |
+| avg latency | 0.27 ms | 0.22 ms |
+| p50 | 0.23 ms | 0.10 ms |
+| p90 | 0.46 ms | 0.54 ms |
+| p99 | 0.98 ms | 0.90 ms |
+| total reqs (20s) | ~3.65M | ~4.6M |
+| success | 100% | 100% |
+
+Two runs, 20 seconds each, 50 connections. The gap held across both.
+
+## How I set it up
+
+Two apps, one page each, both serving on container port 3000. Both render the same thing: an `<h1>`, a paragraph, wrapped in a full HTML document. Nothing dynamic, nothing cached.
+
+Ziex is the starter template cut down to a single SSR page:
+
+```zig
+pub fn Page(ctx: zx.PageContext) !zx.Component {
+    return (
+        <main @allocator={ctx.arena}>
+            <h1>Hello, Ziex!</h1>
+            <p>Minimal server-side rendered page.</p>
+        </main>
+    );
+}
+
+const zx = @import("zx");
+```
+
+Its container downloads Zig 0.16.0, builds with `zig build --release=fast`, and runs the documented production path, `zig build serve --release=fast`.
+
+Leptos is a hand-written Axum server that renders a `view!` to an HTML string per request. No hydration, no WASM bundle, because Ziex's page has no client component either. Same shape of work on both sides.
+
+```rust
+async fn handler() -> Html<String> {
+    let owner = Owner::new();
+    let body = owner.with(|| {
+        view! {
+            <main>
+                <h1>"Hello, Leptos!"</h1>
+                <p>"Minimal server-side rendered page."</p>
+            </main>
+        }
+        .to_html()
+    });
+    Html(format!("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Leptos</title></head><body>{body}</body></html>"))
+}
+```
+
+Both live behind `docker compose`. Load comes from a third container running `oha` on the same bridge network, hitting each server by its internal name so neither one pays for host port forwarding:
+
+```bash
+oha -z 20s -c 50 --no-tui --output-format json http://ziex:3000/
+oha -z 20s -c 50 --no-tui --output-format json http://leptos:3000/
+```
+
+If I had run the two servers on two different machines, I could not trust a single number. Same box, same network, same generator, or it does not count.
+
+## Read the numbers with care
+
+Before anyone quotes this as "Rust beats Zig at SSR," slow down. This test measures almost nothing about templating.
+
+The page is a hello-world. At sub-millisecond latencies you are not measuring how fast each framework turns data into HTML. You are measuring per-request overhead: the HTTP parser, the accept loop, the allocator, how the runtime hands a socket to a worker. Axum and Tokio have been tuned hard for exactly this microbenchmark for years. Ziex is `0.1.0-dev`. Its `serve` path is not final, and the framework itself says client-side rendering and state management are still moving.
+
+So the honest read is not "Rust is faster than Zig." It is "a mature Rust HTTP stack edges out a pre-1.0 Zig one on an empty page, on my laptop." Those are very different sentences.
+
+And why does this contradict Ziex's own chart? Most likely their Leptos entry rendered a heavier, hydrated page through the full `leptos_axum` integration, which does more work than my bare `to_html()`. Different page, different harness, different hardware. Benchmarks are arguments about setup, and their setup is not mine.
+
+**Five-ish million requests on a warm laptop still is not the last word.** If you care, push harder and run it where you would actually deploy:
+
+```bash
+DURATION=30s CONNECTIONS=200 ./bench.sh
+```
+
+Better yet, swap the hello-world for a page that renders a list of 100 rows. That starts to measure the template engine instead of the socket plumbing, and that is where a compiled Zig renderer might actually pull ahead.
+
+## So, should you use Ziex?
+
+For this test, no framework embarrassed itself. Both did millions of requests, zero errors, sub-millisecond medians. That is a good problem to have.
+
+Ziex is genuinely fun. Writing HTML inside Zig with real control flow, compiling to a single static binary, is a nice place to be. But it is early. If you want production SSR today, Leptos is further along and, on my empty page, quietly faster. If you want to bet on where Zig web frameworks are going, Ziex is worth watching, just know you are on the `dev` releases.
+
+I wanted the Zig underdog to upset Rust. Instead Rust held the line and Zig kept up. On a page this small, keeping up with Tokio is already a compliment.
+
+Want to run it yourself? It is a compose file, two Dockerfiles, and one `bench.sh`. Clone it, point it at your own hardware, and your numbers will differ from mine: [github.com/zahinafsar/ziex_zig-vs-leptos_rust](https://github.com/zahinafsar/ziex_zig-vs-leptos_rust). That is the whole reason it ships as a container.

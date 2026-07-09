@@ -298,19 +298,9 @@ export default function Projects() {
         </div>
 
         {/* Open source */}
-        <div className="flex flex-wrap items-end justify-between gap-6 mt-28">
-          <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-            Open source.
-          </h2>
-          <a
-            href="https://github.com/zahinafsar"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-4 py-2 text-sm text-[var(--muted)] transition hover:border-white hover:text-white"
-          >
-            github.com/zahinafsar →
-          </a>
-        </div>
+        <h2 className="text-4xl font-semibold tracking-tight md:text-6xl mt-28">
+          Open source.
+        </h2>
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
           {openSource.map((p) => (

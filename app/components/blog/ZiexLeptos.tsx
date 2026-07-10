@@ -28,12 +28,12 @@ type ChartTooltipProps = {
 type Row = { name: string; ziex: number; leptos: number };
 
 const LATENCY: Row[] = [
-  { name: "p50", ziex: 0.44, leptos: 0.24 },
-  { name: "p90", ziex: 1.13, leptos: 0.46 },
-  { name: "p99", ziex: 2.5, leptos: 1.95 },
+  { name: "p50", ziex: 0.43, leptos: 0.71 },
+  { name: "p90", ziex: 1.06, leptos: 1.16 },
+  { name: "p99", ziex: 2.08, leptos: 2.37 },
 ];
 
-const THROUGHPUT: Row[] = [{ name: "req/sec", ziex: 87.9, leptos: 157.1 }];
+const THROUGHPUT: Row[] = [{ name: "req/sec", ziex: 92.85, leptos: 70.62 }];
 
 const ZIEX = "#7dd3fc";
 const LEPTOS = "#ff6b3d";

@@ -1,21 +1,21 @@
 ---
 title: "Ziex (Zig) vs Leptos (Rust) SSR Benchmark"
-description: "Ziex bills itself as a fast Zig SSR framework, so I put it up against Leptos: both in Docker, rendering the same 50-row list on every request, with oha pointed at them. Leptos won."
+description: "A head-to-head SSR benchmark: Ziex (Zig) against Leptos (Rust), both in Docker on an equal 2-CPU/2GB budget rendering the same 50-row page. Ziex takes the full-router run, but the winner flips the moment you change how much framework each side turns on."
 date: "2026-07-09"
-updated: "2026-07-09"
+updated: "2026-07-10"
 tags: ["ziex", "leptos", "zig", "Rust", "ssr", "benchmark", "docker", "performance"]
 author: "Md. Zahin Afsar"
 ---
 
-Ziex is a full-stack web framework for Zig: JSX-style markup right inside Zig code. It pitches itself as a fast server-rendering framework, fast enough to go head-to-head with the big Rust frameworks.
+Ziex is a full-stack web framework for Zig: JSX-style markup right inside Zig code, file-based routing, one static binary. It pitches itself as fast enough to go head-to-head with the big Rust frameworks.
 
-I love Rust, so a Zig framework going after Leptos at server rendering was worth checking. One machine, two containers, same load generator, same page.
+I love Rust, so a Zig framework going after Leptos was worth checking. One machine, two containers, same load generator, same page, same CPU and memory budget. And this time both sides run the real thing: a layout, a router, the full server-render path each framework ships. No stripped-down handler on either side.
 
-**Result:** on my machine, Leptos won, and comfortably.
+**Result:** on my machine, under equal limits, Ziex won.
 
-- **Throughput:** Leptos **~157k req/s**, Ziex **~88k req/s**. Leptos ~79% ahead.
-- **Median latency (p50):** Leptos **0.24 ms**, Ziex **0.44 ms**.
-- **Tail (p99):** close, **1.95 ms** vs **2.50 ms**.
+- **Throughput:** Ziex **~92.8k req/s**, Leptos **~70.6k req/s**. Ziex ~31% ahead.
+- **Median latency (p50):** Ziex **0.43 ms**, Leptos **0.71 ms**. 1.67x faster.
+- **Tail (p99):** Ziex **2.08 ms**, Leptos **2.37 ms**.
 - **Errors:** zero on both, millions of requests each.
 
 Code, Dockerfiles, and the harness: [github.com/zahinafsar/ziex_zig-vs-leptos_rust](https://github.com/zahinafsar/ziex_zig-vs-leptos_rust)
@@ -26,20 +26,42 @@ Code, Dockerfiles, and the harness: [github.com/zahinafsar/ziex_zig-vs-leptos_ru
 
 | metric | Ziex (Zig) | Leptos (Rust) |
 | ------ | ---------: | ------------: |
-| req/sec | ~87,900 | ~157,100 |
-| avg latency | 0.57 ms | 0.32 ms |
-| p50 | 0.44 ms | 0.24 ms |
-| p90 | 1.13 ms | 0.46 ms |
-| p99 | 2.50 ms | 1.95 ms |
-| max | 14.14 ms | 19.30 ms |
-| total reqs (20s) | ~1.76M | ~3.14M |
+| req/sec | ~92,850 | ~70,624 |
+| avg latency | 0.54 ms | 0.71 ms |
+| p50 | 0.43 ms | 0.71 ms |
+| p90 | 1.06 ms | 1.16 ms |
+| p99 | 2.08 ms | 2.37 ms |
+| max | 6.73 ms | 8.52 ms |
+| total reqs (20s) | ~1.86M | ~1.41M |
 | success | 100% | 100% |
 
-20 seconds, 50 connections.
+20 seconds, 50 connections, each container capped at 2 CPUs and 2 GB.
+
+## The catch
+
+Here is the part that makes this benchmark honest instead of a headline. Leptos's renderer is not slow. It is faster than Ziex's. The winner flips depending on how much of each framework you actually run.
+
+Three measurements, same 50-row page:
+
+- **Pure render, in a loop, no server:** Leptos renders it in **~1,790 ns**, Ziex in **~4,900 ns**. Leptos ~2.7x faster.
+- **Bare handler, no router** (just `to_html()` behind one route): Leptos **~151k req/s**, Ziex **~89k**. Leptos wins.
+- **Full routed SSR** (both using their real router + layout, the run above): Ziex **~92.8k**, Leptos **~70.6k**. Ziex wins.
+
+Same Leptos engine, three results. It goes from winning by a mile to losing, purely by turning on the framework around it.
+
+So why does routing cost Leptos so much? Switching on `leptos_router` + `leptos_actix` is not "match a URL." It is the full isomorphic app server:
+
+- a reactive router context per request (signals for location, params, query),
+- streaming SSR (`render_app_to_stream`, chunked body, futures scheduling),
+- resource-serialization scripts appended to every response (`__RESOLVED_RESOURCES=[]`, `__PENDING_RESOURCES=[]`) even with zero async resources.
+
+Ziex's router is the opposite: file-based, resolved at build time into a static table, then a plain dispatch to the page and a lean render straight into a writer. No per-request reactive graph, no streaming envelope. Its throughput barely moves between configs (~87–93k everywhere) because it does the same small amount of work per request no matter what. Leptos swings from 151k to 70k because its framework does a lot more once you let it.
+
+The static 50-row page rewards whichever framework does the least. That is Ziex here.
 
 ## The workload
 
-Both render the same page: a `<main>` with 50 rows, each `<div>SSR {v}-{i}</div>`, built by a server-side loop and generated fresh every request. No caching, no precomputed string. This is the same list Ziex uses in its own benchmark repo, so neither side got an easier page.
+Both render the same page: a `<main>` with 50 rows, each `<div>SSR {v}-{i}</div>`, built by a server-side loop, fresh every request. No caching, no precomputed string. Same list Ziex uses in its own benchmark repo, so neither side got an easier page.
 
 Ziex builds it with a template `for` loop:
 
@@ -59,11 +81,11 @@ pub fn Page(ctx: zx.PageContext) zx.Component {
 const zx = @import("zx");
 ```
 
-Leptos builds the same rows through a component, served by actix-web:
+Leptos builds the same rows in a component, wired through `leptos_router` and served by `leptos_actix`:
 
 ```rust
 #[component]
-fn SsrPage() -> impl IntoView {
+fn Page() -> impl IntoView {
     let items: Vec<u32> = (0..50).map(|_| 1).collect();
 
     view! {
@@ -76,31 +98,44 @@ fn SsrPage() -> impl IntoView {
         </main>
     }
 }
+
+#[component]
+fn App() -> impl IntoView {
+    view! {
+        <Router>
+            <Routes fallback=|| "Not found.">
+                <Route path=path!("") view=Page/>
+            </Routes>
+        </Router>
+    }
+}
 ```
 
-Both live behind `docker compose`. Load comes from a third container running `oha` on the same bridge network, hitting each server by its internal name so neither pays for host port forwarding:
+Both live behind `docker compose`, each pinned to 2 CPUs and 2 GB so neither can outspend the other:
+
+```yaml
+deploy:
+  resources:
+    limits:
+      cpus: "2"
+      memory: 2g
+```
+
+Load comes from a third container running `oha` on the same bridge network, hitting each server by its internal name so neither pays for host port forwarding:
 
 ```bash
 oha -z 20s -c 50 --no-tui --output-format json http://ziex:3000/
 oha -z 20s -c 50 --no-tui --output-format json http://leptos:3000/
 ```
 
-Same box, same network, same generator, or it does not count.
-
-## The one unfair bit, and it favors Ziex
-
-This Ziex dev build always compiles a client WASM bundle and injects a preload `<link>` plus a `<script>` into the `<head>`, even with `config.csr = false`. There is no flag in this version to turn it off. My Leptos app ships pure SSR with no client bundle. So Ziex's response carries a couple of extra tags Leptos's does not. `oha` never fetches those sub-resources, so they cost bytes, not render time. The asymmetry that exists works against Leptos, and Leptos still won.
-
-## Read it with care
-
-This is my laptop, and Ziex is `0.1.0-dev`. Actix and Tokio have been tuned for exactly this kind of load for years, and Leptos rides on top of that. Ziex's `serve` path is not final, and the project says so. A pre-1.0 Zig framework holding a mature Rust stack to under 2x on throughput and staying level at the tail is a good showing, not an embarrassment.
-
-If you see Ziex ahead somewhere else, look at the setup. A `cargo-leptos` hydration build does more work per request than my server-only render, and hardware and harness swing these numbers hard. Benchmarks are arguments about setup, and this one is mine.
+Same box, same network, same generator, same budget, or it does not count.
 
 ## So, should you use Ziex?
 
 Nobody embarrassed themselves. Both did millions of requests, zero errors, sub-millisecond medians, on a page that actually renders data.
 
-Ziex is genuinely fun: writing HTML inside Zig with real control flow, compiling to one static binary, is a lovely place to work. But it is early, and here Leptos was faster across the board. If you need production SSR today, Leptos is further along and, on my hardware, quietly ahead. If you want to bet on where Zig web frameworks are heading, Ziex is worth watching, just know you are on the `dev` releases.
+Ziex is genuinely fun: writing HTML inside Zig with real control flow, file-based routes, compiling to one static binary, is a lovely place to work. Its lean request path means the full framework costs almost nothing over a bare render, which is exactly why it took this benchmark. But it is early, on `dev` releases, with a WASM bundle it cannot yet turn off.
+
+Leptos is the safer production bet today: mature stack, huge ecosystem, and a renderer that is genuinely faster once you stop paying for machinery you are not using. If your pages are static lists, that machinery is pure overhead and Ziex wins. If your pages are interactive and you want hydration and fine-grained reactivity, Leptos is doing real work for that cost, and you would want it.
 
 Want to run it yourself? A compose file, two Dockerfiles, one `bench.sh`. Clone it and your numbers will differ from mine: [github.com/zahinafsar/ziex_zig-vs-leptos_rust](https://github.com/zahinafsar/ziex_zig-vs-leptos_rust).

@@ -2,14 +2,22 @@
 
 import Image from "next/image";
 
-const stack = ["Next.js", "React", "TypeScript", "GraphQL", "Node.js", "PostgreSQL"];
+const stack = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "AI Agents",
+  "LLMs",
+  "Node.js",
+  "PostgreSQL",
+];
 
 const phrases = [
-  "turning users into customers.",
-  "lifting conversion rates.",
-  "shipping MVPs in weeks.",
-  "scaling startups to millions.",
-  "delivering on tight deadlines.",
+  "building Shopify stores",
+  "building AI agents",
+  "turning users into customers",
+  "automating business",
+  "delivering AI services"
 ];
 
 const longestPhrase = phrases.reduce((a, b) => (a.length >= b.length ? a : b));
@@ -17,9 +25,14 @@ const longestPhrase = phrases.reduce((a, b) => (a.length >= b.length ? a : b));
 function Typewriter() {
   return (
     <span className="tw-wrap">
-      <span aria-hidden className="invisible">{longestPhrase}</span>
+      <span aria-hidden className="invisible">
+        {longestPhrase}
+      </span>
       {phrases.map((p, i) => (
-        <span key={p} className={`tw-phrase tw-phrase-${i + 1} text-accent-gradient`}>
+        <span
+          key={p}
+          className={`tw-phrase tw-phrase-${i + 1} text-accent-gradient`}
+        >
           {p}
         </span>
       ))}
@@ -36,14 +49,20 @@ export default function Hero() {
       <div className="absolute inset-0 grid-bg opacity-80" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 md:px-10 lg:grid-cols-2">
-        <div className="order-2 flex flex-col gap-6 lg:order-1">
+        <div className="order-2 flex flex-col gap-4 lg:order-1">
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-            <span className="text-gradient whitespace-nowrap">Software engineer</span>
+            <span className="text-gradient whitespace-nowrap">
+              Software engineer
+            </span>
             <Typewriter />
           </h1>
 
           <p className="max-w-lg text-base leading-relaxed text-[var(--muted)] md:text-lg">
-            I&apos;m <span className="text-white">Md. Zahin Afsar</span>, a software engineer from Bangladesh, building performant, accessible products with JavaScript & TypeScript.
+            I&apos;m <span className="text-white">Md. Zahin Afsar</span>, a
+            software engineer from Bangladesh. I develop{" "}
+            <span className="text-white">AI agents</span> and{" "}
+            <span className="text-white">AI services</span>, and build
+            performant, accessible products with JavaScript &amp; TypeScript.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -85,7 +104,6 @@ export default function Hero() {
           />
         </div>
       </div>
-
     </section>
   );
 }

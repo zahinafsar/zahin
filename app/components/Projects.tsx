@@ -1,6 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ExternalLink } from "lucide-react";
+
+function GithubIcon({ size = 13 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z" />
+    </svg>
+  );
+}
 
 type OpenSourceProject = {
   name: string;
@@ -250,7 +265,8 @@ export default function Projects() {
                         onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-1.5 rounded-full border border-[#ff6b3d]/40 bg-[#ff6b3d]/10 px-3.5 py-1.5 text-xs text-[#ff6b3d] transition hover:border-[#ff6b3d] hover:bg-[#ff6b3d]/20"
                       >
-                        Live ↗
+                        <ExternalLink size={13} aria-hidden />
+                        Live
                       </a>
                     )}
                     {p.github && (
@@ -261,7 +277,8 @@ export default function Projects() {
                         onClick={(e) => e.stopPropagation()}
                         className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs text-white transition hover:border-white/40 hover:bg-white/10"
                       >
-                        GitHub ↗
+                        <GithubIcon />
+                        GitHub
                       </a>
                     )}
                     {!p.github && p.closedSource && (
@@ -322,9 +339,6 @@ export default function Projects() {
                   <h3 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
                     {p.name}
                   </h3>
-                </div>
-                <div className="text-2xl text-[var(--muted)] transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white">
-                  ↗
                 </div>
               </div>
               <p className="mt-5 text-sm leading-relaxed text-[var(--muted)]">
@@ -404,7 +418,8 @@ export default function Projects() {
                       rel="noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full border border-[#ff6b3d]/40 bg-[#ff6b3d]/10 px-3.5 py-1.5 text-xs text-[#ff6b3d] transition hover:border-[#ff6b3d] hover:bg-[#ff6b3d]/20"
                     >
-                      Live ↗
+                      <ExternalLink size={13} aria-hidden />
+                      Live
                     </a>
                   )}
                   {active.github && (
@@ -414,7 +429,8 @@ export default function Projects() {
                       rel="noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs text-white transition hover:border-white/40 hover:bg-white/10"
                     >
-                      GitHub ↗
+                      <GithubIcon />
+                      GitHub
                     </a>
                   )}
                   {!active.github && active.closedSource && (

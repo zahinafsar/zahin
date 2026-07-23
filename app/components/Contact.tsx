@@ -25,7 +25,6 @@ export default function Contact() {
                 className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 text-base font-medium text-black transition hover:bg-[var(--accent)]"
               >
                 afsarzahin@gmail.com
-                <span className="transition group-hover:translate-x-1">→</span>
               </a>
               <a
                 href={SITE.author.calendly}
@@ -34,7 +33,6 @@ export default function Contact() {
                 className="group inline-flex items-center gap-3 rounded-full border border-[var(--accent)] px-6 py-4 text-base font-medium text-white transition hover:bg-[var(--accent)] hover:text-black"
               >
                 Book a call
-                <span className="transition group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="https://github.com/zahinafsar"

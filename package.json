@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "lucide-react": "^1.26.0",
     "marked": "^18.0.3",
     "next": "16.1.4",
     "next-mdx-remote": "^6.0.0",

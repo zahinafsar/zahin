@@ -243,7 +243,7 @@ export default async function PostPage({
                 </a>.
               </div>
               <Link href="/blog" className="text-white hover:text-[var(--accent)]">
-                ← All posts
+                All posts
               </Link>
             </div>
 
@@ -258,7 +258,7 @@ export default async function PostPage({
                     className="group rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-5 transition hover:border-white/20"
                   >
                     <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
-                      ← Previous
+                      Previous
                     </div>
                     <div className="mt-2 font-medium">{prev.frontmatter.title}</div>
                   </Link>
@@ -269,7 +269,7 @@ export default async function PostPage({
                     className="group rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-5 text-right transition hover:border-white/20"
                   >
                     <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
-                      Next →
+                      Next
                     </div>
                     <div className="mt-2 font-medium">{next.frontmatter.title}</div>
                   </Link>

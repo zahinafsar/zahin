@@ -203,9 +203,6 @@ export default async function BlogIndex() {
                           </span>
                         ))}
                       </div>
-                      <span className="text-xl text-[var(--muted)] transition group-hover:translate-x-1 group-hover:text-white">
-                        →
-                      </span>
                     </div>
                   </Link>
                 </li>

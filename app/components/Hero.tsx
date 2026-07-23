@@ -71,7 +71,6 @@ export default function Hero() {
               className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-[var(--accent)]"
             >
               View my work
-              <span className="transition group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#contact"

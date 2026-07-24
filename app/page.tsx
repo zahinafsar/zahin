@@ -1,5 +1,6 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
+import Showreel from "./components/Showreel";
 import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
@@ -14,6 +15,7 @@ export default function Home() {
     <main id="main" className="relative">
       <Nav />
       <Hero />
+      <Showreel />
       <About />
       <Experience />
       <Projects />

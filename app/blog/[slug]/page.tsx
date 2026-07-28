@@ -10,10 +10,11 @@ import CodeCopy from "../../components/CodeCopy";
 import PerfChart from "../../components/blog/PerfChart";
 import BunBench from "../../components/blog/BunBench";
 import ZiexLeptos from "../../components/blog/ZiexLeptos";
+import LangBench, { LangBenchCpu, LangBenchMem } from "../../components/blog/LangBench";
 import { getAllPosts, getPostBySlug, getPostSlugs, remarkShikiCode } from "../../lib/blog";
 import { SITE } from "../../lib/site";
 
-const mdxComponents = { PerfChart, BunBench, ZiexLeptos };
+const mdxComponents = { PerfChart, BunBench, ZiexLeptos, LangBench, LangBenchCpu, LangBenchMem };
 
 type Params = { slug: string };
 

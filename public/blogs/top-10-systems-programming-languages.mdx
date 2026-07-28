@@ -1,0 +1,107 @@
+---
+title: "Top 10 Systems Programming Languages"
+description: "C, C++, Rust, Zig, Go, Odin, Nim, D, Ada and Crystal on a CPU task and a memory task. Same container, same algorithm, same checksum."
+date: "2026-07-28"
+updated: "2026-07-28"
+tags: ["benchmark", "Rust", "Zig", "Go", "C", "C++", "Odin", "Nim", "D", "Ada", "Crystal", "performance"]
+author: "Md. Zahin Afsar"
+---
+
+Ten systems languages. Two workloads. One container each, same algorithm, same LCG, same printed checksum. If a language disagrees on the checksum, its numbers are thrown out.
+
+Code and Dockerfiles: [github.com/zahinafsar/lang-bench](https://github.com/zahinafsar/lang-bench)
+
+**Short answer:** the CPU test is a ten-way tie, 13 ms between first and last. The memory test separates: Zig and Rust lead at 729 ms, Go trails at 890 ms.
+
+25 timed runs per language per benchmark, 3 warmups. Every number below is the median.
+
+## Overall
+
+Geometric mean of the two speed ratios. 1.00x is the fastest.
+
+| Pos | Language | Score | CPU | Memory |
+|-----|----------|-------|-----|--------|
+| 1 | Zig | 1.00x | 1.00x | 1.00x |
+| 2 | Rust | 1.00x | 1.00x | 1.00x |
+| 3 | Odin | 1.00x | 1.00x | 1.00x |
+| 4 | C++ (g++) | 1.01x | 1.00x | 1.02x |
+| 5 | Ada (gnat-gcc) | 1.02x | 1.00x | 1.03x |
+| 6 | C (gcc) | 1.02x | 1.01x | 1.03x |
+| 7 | D (GDC) | 1.02x | 1.00x | 1.04x |
+| 8 | Nim | 1.03x | 1.00x | 1.06x |
+| 9 | Crystal | 1.06x | 1.00x | 1.13x |
+| 10 | Go | 1.11x | 1.01x | 1.22x |
+
+## CPU test
+
+Mandelbrot escape-time, 1000x1000 grid, 1000 iteration cap, f64. Tiny working set. Pure arithmetic and branches.
+
+<LangBenchCpu />
+
+| Pos | Language | Time | Fastest run | Peak RSS |
+|-----|----------|------|-------------|----------|
+| 1 | Rust | 1174.5 ms | 1170.8 ms | 0.2 MB |
+| 2 | Zig | 1174.8 ms | 1171.7 ms | 0.5 MB |
+| 3 | Nim | 1175.6 ms | 1172.4 ms | 0.5 MB |
+| 4 | Odin | 1175.7 ms | 1172.6 ms | 1.2 MB |
+| 5 | Crystal | 1176.1 ms | 1173.1 ms | 2.3 MB |
+| 6 | C++ (g++) | 1177.6 ms | 1174.6 ms | 0.2 MB |
+| 7 | D (GDC) | 1178.2 ms | 1174.9 ms | 1.1 MB |
+| 8 | Ada (gnat-gcc) | 1179.7 ms | 1176.8 ms | 3.5 MB |
+| 9 | C (gcc) | 1181.7 ms | 1176.5 ms | 0.2 MB |
+| 10 | Go | 1187.1 ms | 1182.6 ms | 1.9 MB |
+
+First to last: 12.6 ms, or 1.1%. Ten compilers turn the same f64 loop into the same machine code and finish at the same time.
+
+The one real gap is Go, 12.6 ms behind Rust. Everything from Rust through Ada is inside 5 ms.
+
+## Memory test
+
+256 MB array of 64-bit ints, filled sequentially, then 60M pseudo-random reads. Allocator, page faults, cache and TLB.
+
+<LangBenchMem />
+
+| Pos | Language | Time | Fastest run | Peak RSS |
+|-----|----------|------|-------------|----------|
+| 1 | Zig | 728.8 ms | 718.4 ms | 256.5 MB |
+| 2 | Rust | 729.0 ms | 706.5 ms | 256.1 MB |
+| 3 | Odin | 731.6 ms | 716.5 ms | 257.0 MB |
+| 4 | C++ (g++) | 745.1 ms | 733.0 ms | 256.2 MB |
+| 5 | Ada (gnat-gcc) | 748.5 ms | 721.5 ms | 259.5 MB |
+| 6 | C (gcc) | 749.9 ms | 722.8 ms | 256.0 MB |
+| 7 | D (GDC) | 755.6 ms | 735.5 ms | 257.5 MB |
+| 8 | Nim | 773.0 ms | 757.6 ms | 256.4 MB |
+| 9 | Crystal | 821.0 ms | 805.8 ms | 259.0 MB |
+| 10 | Go | 890.2 ms | 861.8 ms | 258.4 MB |
+
+729 ms to 890 ms, a 22% spread. This is the benchmark that actually ranks anything.
+
+Three tiers. Zig, Rust and Odin at 729-732 ms. Then a manual-memory pack from C++ to D at 745-756 ms. Then the managed runtimes: Nim 773, Crystal 821, Go 890.
+
+Peak RSS is ~256 MB everywhere, GC or not. The array is one flat block of unboxed ints, so every runtime handles it identically. Nobody pays an allocator penalty on this shape, the cost shows up in time instead.
+
+## Setup
+
+- One Docker image per language, built from a single source file.
+- `--cpus=2 --memory=2g`. Apple M-series, arm64, Docker 27.4.0.
+- hyperfine, 3 warmups, 25 timed runs, median reported.
+- Peak RSS from a separate run under a `fork` + `wait4` wrapper, measured inside the container.
+- Workload sizes are compile-time constants. Nothing is read from disk, so no file I/O lands in the measured region.
+- Identical LCG everywhere (`x = (x * 1103515245 + 12345) & 0x7FFFFFFF`), so all ten print `308895001` and `866904192`. All ten agreed.
+
+Toolchains: gcc 14.2.0, rustc 1.97.1, Zig 0.16.0, Go 1.26.5, Odin dev-2026-07, Nim 2.2.0, GDC 14.2.0, Crystal 1.21.0.
+
+## Two float traps
+
+Getting all ten to agree on the CPU checksum took two compiler flags, both about fused multiply-add. FMA computes `a*b + c` in one instruction with one rounding instead of two, which is faster and more accurate, and which makes your results differ from everyone who does not use it. On the Mandelbrot boundary a handful of points then take a different number of iterations and the checksum splits.
+
+- **GCC toolchains (C, C++, Nim, Ada)** need `-ffp-contract=off`. It costs C about 3.7% on the CPU test. That is the one non-default flag in the suite.
+- **Go** permits fusing in the spec, across statements, and the arm64 backend does it. Plain `zr*zr - zi*zi + cr` printed `308895289` instead of `308895001`. The fix is an explicit `float64(...)` around each product, which the spec defines as forcing a rounding. It costs nothing measurable.
+
+Without those, the ten languages split into two checksum groups and the comparison is meaningless.
+
+## Caveats
+
+- Docker on macOS runs in a Linux VM. Absolute numbers are lower than bare metal. Relative comparisons hold.
+- 25 runs is enough to make the memory ranking reproducible. It is not enough to make the CPU ranking mean anything, because there is nothing there to resolve: the field is 1.1% wide and no amount of sampling will change that.
+- Programs are written the way each language is normally written. No hand-unrolling, no unsafe escape hatches, no language gets a specialised path the others do not.

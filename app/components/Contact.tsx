@@ -34,7 +34,7 @@ export default function Contact() {
               >
                 Book a call
               </a>
-              <a
+              {/* <a
                 href="https://github.com/zahinafsar"
                 target="_blank"
                 rel="noreferrer"
@@ -57,7 +57,7 @@ export default function Contact() {
                 className="inline-flex items-center gap-3 rounded-full border border-[var(--border)] px-6 py-4 text-base font-medium text-white transition hover:border-white"
               >
                 X
-              </a>
+              </a> */}
             </div>
 
             <div className="mt-12 grid grid-cols-2 gap-6 border-t border-[var(--border)] pt-8 md:grid-cols-4">

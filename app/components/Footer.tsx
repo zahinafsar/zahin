@@ -10,6 +10,9 @@ export default function Footer() {
           <a href="https://www.linkedin.com/in/zahin-afsar-498392184/" target="_blank" rel="noreferrer" className="hover:text-white">
             LinkedIn
           </a>
+          <a href="https://stackoverflow.com/users/11240893/zahin-afsar" target="_blank" rel="noreferrer" className="hover:text-white">
+            Stack Overflow
+          </a>
           <a href="https://x.com/ZahinAfsar" target="_blank" rel="noreferrer" className="hover:text-white">
             X
           </a>

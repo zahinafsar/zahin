@@ -135,9 +135,9 @@ export default async function BlogIndex() {
           </nav>
 
           <header className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
+            {/* <p className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
               The Journal
-            </p>
+            </p> */}
             <h1 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">
               Notes from the <span className="text-accent-gradient">build trenches</span>.
             </h1>

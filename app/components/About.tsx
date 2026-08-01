@@ -4,7 +4,7 @@ const stats = [
   { v: "5+", l: "Years building for the web" },
   { v: "1.2K+", l: "Contributions last year" },
   { v: "9th", l: "Code Samurai 2024, nationwide" },
-  { v: "OSS", l: "Libraries used by other devs" },
+  { v: "450+", l: "Stack Overflow reputation" },
 ];
 
 export default function About() {
@@ -21,7 +21,6 @@ export default function About() {
               key={s.l}
               className="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-6 transition hover:border-white/20 md:p-8"
             >
-              <span className="absolute inset-x-0 top-0 h-px scale-x-0 bg-[var(--accent)] transition-transform duration-300 group-hover:scale-x-100" />
               <div className="text-4xl font-semibold tracking-tight text-accent-gradient md:text-5xl">
                 {s.v}
               </div>

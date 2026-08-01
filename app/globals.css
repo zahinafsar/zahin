@@ -49,6 +49,10 @@ body {
   overflow-x: hidden;
 }
 
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 ::selection {
   background: var(--accent);
   color: #000;

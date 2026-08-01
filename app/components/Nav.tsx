@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import { SITE } from "../lib/site";
 
 const links = [
-  { label: "About", href: "/#about" },
-  { label: "Work", href: "/#experience" },
+  { label: "About", href: "/#showreel" },
+  { label: "Experience", href: "/#experience" },
   { label: "Projects", href: "/#projects" },
   { label: "Skills", href: "/#skills" },
+  { label: "Recognition", href: "/#recognition" },
+  { label: "Recommendations", href: "/#recommendations" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -55,12 +57,12 @@ export default function Nav() {
           <Image src="/logo-v2.png" alt="Zahin Afsar" width={32} height={32} priority />
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Primary navigation" className="hidden items-center lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="rounded-full px-4 py-2 text-sm text-[var(--muted)] transition hover:text-white"
+              className="rounded-full px-2.5 py-2 text-xs text-[var(--muted)] transition hover:bg-white/5 hover:text-white xl:px-3 xl:text-sm"
             >
               {l.label}
             </a>
@@ -71,7 +73,7 @@ export default function Nav() {
           href={SITE.author.calendly}
           target="_blank"
           rel="noreferrer"
-          className="hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-[var(--accent)] md:inline-block"
+          className="hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-[var(--accent)] lg:inline-block"
         >
           Let&apos;s talk
         </a>
@@ -81,7 +83,7 @@ export default function Nav() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="relative z-50 -mr-2 flex h-10 w-10 items-center justify-center md:hidden"
+          className="relative z-50 -mr-2 flex h-10 w-10 items-center justify-center lg:hidden"
         >
           <span className="relative block h-4 w-6">
             <span
@@ -105,19 +107,23 @@ export default function Nav() {
     </header>
 
       <nav
+        aria-label="Mobile navigation"
         aria-hidden={!open}
-        className={`fixed inset-0 z-40 flex flex-col bg-[var(--bg)] transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[var(--bg)] transition-opacity duration-300 lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <div className="flex flex-col px-6 pt-28">
-          {links.map((l) => (
+        <div className="flex flex-col px-6 pt-24">
+          {links.map((l, index) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="border-b border-[var(--border)] py-5 text-3xl font-semibold tracking-tight text-white transition-colors hover:text-[var(--accent)]"
+              className="group flex items-center gap-4 border-b border-[var(--border)] py-4 text-2xl font-semibold tracking-tight text-white transition-colors hover:text-[var(--accent)]"
             >
+              <span className="w-5 font-mono text-[10px] font-normal tracking-widest text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               {l.label}
             </a>
           ))}

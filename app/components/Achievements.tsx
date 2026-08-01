@@ -35,7 +35,7 @@ const contribs = [
 
 export default function Achievements() {
   return (
-    <section className="relative w-full px-6 py-32 md:px-10">
+    <section id="recognition" className="relative w-full px-6 py-32 md:px-10">
       <div className="mx-auto max-w-7xl">
         <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
           Recognition & community.
@@ -77,7 +77,7 @@ export default function Achievements() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-8 md:p-10">
+        {/* <div className="mt-12 rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-8 md:p-10">
           <div className="text-xs uppercase tracking-widest text-[var(--accent)]">
             Contributions
           </div>
@@ -89,7 +89,7 @@ export default function Achievements() {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
     </section>
   );

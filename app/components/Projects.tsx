@@ -152,7 +152,7 @@ const personal: PersonalProject[] = [
     video: "/projects/luggora.mp4",
     accent: "from-[#ff6b3d]/20 to-transparent",
     live: "https://luggora.com",
-    github: "https://github.com/zahinafsar/luggora",
+    closedSource: true,
   },
   {
     name: "Fluzox",

@@ -23,9 +23,9 @@ export default function Home() {
       <Projects />
       <Skills />
       <Achievements />
-      <Featured />
+      {/* <Featured /> */}
       <Recommendations />
-      {/* <Faq /> */}
+      <Faq />
       <Contact />
       <Footer />
     </main>

@@ -4,20 +4,16 @@ type QA = { q: string; a: string };
 
 const faqs: QA[] = [
   {
-    q: "Who are you?",
-    a: "I am Zahin Afsar, a full-stack software engineer based in Bangladesh. I specialize in TypeScript, React, Next.js, and Node.js, and I build performant, accessible web products for startups and businesses across Bangladesh, South Asia, and worldwide.",
+    q: "Why should we hire you?",
+    a: "I have been building software for more than half a decade, and the applications I have worked on are used by millions of people every day. I have held multiple lead roles, where I have taken ownership of complex products, guided technical decisions, and helped teams deliver reliable software. I bring that leadership experience together with the ability to stay hands-on and turn ambitious ideas into production-ready products.",
   },
   {
-    q: "Are you available to work with clients outside Bangladesh, across South Asia and beyond?",
-    a: "I work remotely with startups and teams across South Asia and worldwide, collaborating across time zones and delivering resilient, well-tested TypeScript codebases on tight deadlines.",
+    q: "Tell me about your most challenging project.",
+    a: "One of my most challenging projects was building a bridge between n8n and our custom workflow frontend. The integration needed to preserve n8n's flexibility and scalability while feeling like a native part of our own system. I designed the connection so our users could create and manage powerful automated workflows through a tailored experience without losing the capabilities of the underlying platform.",
   },
   {
-    q: "Do you provide the best value-for-money software?",
-    a: "Yes, Because I live in Bangladesh, my cost of living is far lower than in Europe or North America, so I can charge much less than a Western engineer for the same work. You still get senior-level, full-stack engineering focused on conversion, performance, and maintainability, just at South Asian rates.",
-  },
-  {
-    q: "Are you specialized in particular technologies?",
-    a: "I focus on Next.js, React, TypeScript, Node.js, PostgreSQL, GraphQL, and Shopify, with a strong emphasis on frontend performance, accessibility, and clean, type-safe architecture.",
+    q: "Where do you see yourself in five years?",
+    a: "In five years, I want to be one of the best engineers in my field: someone trusted to solve difficult problems, lead strong teams, and build products with real impact. Over the next twenty years, I want to use that experience to become the founder of a successful technology startup.",
   },
 ];
 
@@ -44,8 +40,8 @@ export default function Faq() {
           Frequently asked questions.
         </h2>
         <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
-          Hiring a software engineer in Bangladesh or across South Asia? Here is
-          what people usually want to know.
+          A few questions I am often asked about my experience, approach, and
+          ambitions as a software engineer.
         </p>
 
         <div className="mt-12 divide-y divide-[var(--border)] border-y border-[var(--border)]">

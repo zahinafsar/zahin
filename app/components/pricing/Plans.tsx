@@ -1,11 +1,11 @@
-import { SITE } from "../../lib/site";
-
 const plans = [
   {
+    id: "standard",
     name: "Standard",
     price: 200,
     trial: "First 2 days free",
     popular: true,
+    url: "https://zpay.lemonsqueezy.com/checkout/buy/165320b1-f272-4dac-94ff-3011aff38b34",
     features: [
       "Any kind of development work",
       "We handle the AI: models, agents, prompts",
@@ -13,10 +13,12 @@ const plans = [
     ],
   },
   {
+    id: "priority",
     name: "Priority",
     price: 2000,
     trial: "First 7 days free",
     popular: false,
+    url: "https://zpay.lemonsqueezy.com/checkout/buy/966495b7-d26b-4812-bc14-50b37232127a",
     features: [
       "Any kind of development work",
       "We handle the AI: models, agents, prompts",
@@ -39,10 +41,8 @@ export default function Plans() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {plans.map((plan) => {
-            let cardClass =
-              "relative flex flex-col rounded-2xl border bg-white/[0.02] p-8 ";
-            let ctaClass =
-              "mt-auto inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition ";
+            let cardClass = "relative flex flex-col rounded-2xl border bg-white/[0.02] p-8 ";
+            let ctaClass = "mt-auto inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition ";
             if (plan.popular) {
               cardClass += "border-accent";
               ctaClass += "bg-accent text-black hover:bg-white";
@@ -52,7 +52,7 @@ export default function Plans() {
                 "border border-[var(--border)] text-white hover:border-white";
             }
             return (
-              <div key={plan.name} className={cardClass}>
+              <div key={plan.id} className={cardClass}>
                 {plan.popular && (
                   <span className="absolute -top-3 left-6 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-black">
                     Most popular
@@ -90,7 +90,7 @@ export default function Plans() {
                 </ul>
 
                 <a
-                  href={SITE.author.calendly}
+                  href={plan.url}
                   target="_blank"
                   rel="noreferrer"
                   className={ctaClass}

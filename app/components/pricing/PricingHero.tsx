@@ -1,5 +1,7 @@
 import { SITE } from "../../lib/site";
 
+const CUSTOMER_PORTAL = "https://zpay.lemonsqueezy.com/billing";
+
 export default function PricingHero() {
   return (
     <section className="relative flex w-full items-center overflow-hidden px-6 pb-24 pt-40 md:px-10">
@@ -33,6 +35,18 @@ export default function PricingHero() {
             Book a call
           </a>
         </div>
+
+        <p className="mt-6 text-xs text-[var(--muted)]">
+          Already subscribed?{" "}
+          <a
+            href={CUSTOMER_PORTAL}
+            target="_blank"
+            rel="noreferrer"
+            className="text-white underline underline-offset-4 transition hover:text-[var(--accent)]"
+          >
+            Manage your subscription
+          </a>
+        </p>
       </div>
     </section>
   );

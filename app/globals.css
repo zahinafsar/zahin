@@ -134,6 +134,44 @@ section[id] {
   animation: pulse-ring 3s ease-out infinite;
 }
 
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 24px rgba(255, 107, 61, 0.55),
+    0 0 60px rgba(255, 107, 61, 0.3);
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 75%
+  );
+  transform: translateX(-120%);
+  animation: shine-sweep 2.5s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 24px rgba(255, 107, 61, 0.55),
+      0 0 60px rgba(255, 107, 61, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(255, 107, 61, 0.9),
+      0 0 90px rgba(255, 107, 61, 0.45);
+  }
+}
+
+@keyframes shine-sweep {
+  0% { transform: translateX(-120%); }
+  50%, 100% { transform: translateX(120%); }
+}
+
 .tw-wrap {
   position: relative;
   display: block;

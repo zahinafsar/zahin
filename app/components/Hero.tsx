@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const stack = [
   "Next.js",
@@ -66,12 +67,12 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-[var(--accent)]"
+            <Link
+              href="/pricing"
+              className="btn-glow inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-black"
             >
-              View my work
-            </a>
+              Hire for $200/mo
+            </Link>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-5 py-3 text-sm font-medium text-white transition hover:border-white"

@@ -45,11 +45,10 @@ export default function Plans() {
             let ctaClass = "mt-auto inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition ";
             if (plan.popular) {
               cardClass += "border-accent";
-              ctaClass += "bg-accent text-black hover:bg-white";
+              ctaClass += "bg-accent text-white hover:text-black hover:bg-white";
             } else {
               cardClass += "border-[var(--border)]";
-              ctaClass +=
-                "border border-[var(--border)] text-white hover:border-white";
+              ctaClass += "border border-[var(--border)] text-white hover:border-white";
             }
             return (
               <div key={plan.id} className={cardClass}>

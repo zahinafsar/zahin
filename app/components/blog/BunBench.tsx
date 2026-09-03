@@ -158,7 +158,7 @@ export default function BunBench({
         <Chart data={TIME} unit="ms" title="Time" />
         <Chart data={MEMORY} unit="MB" title="Peak memory" />
       </div>
-      <figcaption className="mt-4 text-center text-xs text-[var(--muted)]">
+      <figcaption className="mt-4 text-center text-sm text-[var(--muted)]">
         {caption}
       </figcaption>
     </figure>

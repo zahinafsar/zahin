@@ -76,7 +76,7 @@ export default function Contact() {
 function Field({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+      <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
         {label}
       </div>
       <div className="mt-1 break-words text-sm text-white">{value}</div>

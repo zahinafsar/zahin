@@ -62,7 +62,7 @@ export default function Achievements() {
                   <span className="text-5xl font-semibold tracking-tight text-accent-gradient">
                     {w.rank}
                   </span>
-                  <span className="text-xs uppercase tracking-widest text-[var(--muted)]">
+                  <span className="text-sm uppercase tracking-widest text-[var(--muted)]">
                     {w.label}
                   </span>
                 </div>
@@ -78,7 +78,7 @@ export default function Achievements() {
         </div>
 
         {/* <div className="mt-12 rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-8 md:p-10">
-          <div className="text-xs uppercase tracking-widest text-[var(--accent)]">
+          <div className="text-sm uppercase tracking-widest text-[var(--accent)]">
             Contributions
           </div>
           <ul className="mt-6 flex flex-col gap-4">

@@ -24,7 +24,7 @@ export default function About() {
               <div className="text-4xl font-semibold tracking-tight text-accent-gradient md:text-5xl">
                 {s.v}
               </div>
-              <div className="mt-3 text-xs leading-snug text-[var(--muted)]">
+              <div className="mt-3 text-sm leading-snug text-[var(--muted)]">
                 {s.l}
               </div>
             </div>
@@ -37,7 +37,7 @@ export default function About() {
 
 export function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
+    <div className="flex items-center gap-3 text-sm uppercase tracking-[0.3em] text-[var(--muted)]">
       <span className="h-px w-8 bg-[var(--border)]" />
       {children}
     </div>

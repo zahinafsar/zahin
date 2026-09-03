@@ -49,13 +49,13 @@ export default function Featured() {
                 <h3 className="truncate text-xl font-semibold tracking-tight">
                   {feature.account}
                 </h3>
-                <div className="mt-1 truncate text-xs uppercase tracking-widest text-[var(--muted)]">
+                <div className="mt-1 truncate text-sm uppercase tracking-widest text-[var(--muted)]">
                   Instagram · {feature.handle}
                 </div>
                 <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-[var(--muted)]">
                   {feature.caption}
                 </p>
-                <span className="mt-auto inline-flex items-center gap-2 pt-6 text-xs uppercase tracking-widest text-[var(--accent)]">
+                <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm uppercase tracking-widest text-[var(--accent)]">
                   Watch the reel
                   <ExternalLink size={12} />
                 </span>

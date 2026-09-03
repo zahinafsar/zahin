@@ -50,7 +50,7 @@ export default function Showreel() {
             <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
             <span className="h-3 w-3 rounded-full bg-[#28c840]" />
 
-            <div className="mx-auto flex items-center gap-2 rounded-md border border-[var(--border)] bg-black/20 px-3 py-1 text-xs text-[var(--muted)]">
+            <div className="mx-auto flex items-center gap-2 rounded-md border border-[var(--border)] bg-black/20 px-3 py-1 text-sm text-[var(--muted)]">
               <Lock size={11} />
               zahinafsar.com
             </div>

@@ -155,7 +155,7 @@ export default function PerfChart({
           </BarChart>
         </ResponsiveContainer>
       </div>
-      <figcaption className="mt-3 text-center text-xs text-[var(--muted)]">
+      <figcaption className="mt-3 text-center text-sm text-[var(--muted)]">
         {caption}
       </figcaption>
     </figure>

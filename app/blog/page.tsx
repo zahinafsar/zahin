@@ -124,7 +124,7 @@ export default async function BlogIndex() {
       <section className="relative w-full px-6 pt-36 pb-16 md:px-10">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative mx-auto max-w-7xl">
-          <nav aria-label="Breadcrumb" className="mb-8 text-xs text-[var(--muted)]">
+          <nav aria-label="Breadcrumb" className="mb-8 text-sm text-[var(--muted)]">
             <ol className="flex items-center gap-2">
               <li>
                 <Link href="/" className="hover:text-white">Home</Link>
@@ -135,7 +135,7 @@ export default async function BlogIndex() {
           </nav>
 
           <header className="max-w-3xl">
-            {/* <p className="text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
+            {/* <p className="text-sm uppercase tracking-[0.3em] text-[var(--muted)]">
               The Journal
             </p> */}
             <h1 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">
@@ -151,7 +151,7 @@ export default async function BlogIndex() {
               {tags.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-xs text-[var(--muted)]"
+                  className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-sm text-[var(--muted)]"
                 >
                   #{t}
                 </span>
@@ -178,7 +178,7 @@ export default async function BlogIndex() {
                     className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-8 transition hover:border-white/20"
                   >
                     <div>
-                      <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                      <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-[var(--muted)]">
                         <time dateTime={p.frontmatter.date}>
                           {fmtDate(p.frontmatter.date)}
                         </time>
@@ -197,7 +197,7 @@ export default async function BlogIndex() {
                         {p.frontmatter.tags?.slice(0, 3).map((t) => (
                           <span
                             key={t}
-                            className="rounded-full border border-[var(--border)] px-2.5 py-0.5 text-[10px] text-[var(--muted)]"
+                            className="rounded-full border border-[var(--border)] px-2.5 py-0.5 text-xs text-[var(--muted)]"
                           >
                             #{t}
                           </span>

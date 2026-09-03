@@ -63,7 +63,7 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="rounded-full px-2.5 py-2 text-xs text-[var(--muted)] transition hover:bg-white/5 hover:text-white xl:px-3 xl:text-sm"
+              className="rounded-full px-2.5 py-2 text-sm text-[var(--muted)] transition hover:bg-white/5 hover:text-white xl:px-3 xl:text-sm"
             >
               {l.label}
             </a>
@@ -122,7 +122,7 @@ export default function Nav() {
               onClick={() => setOpen(false)}
               className="group flex items-center gap-4 border-b border-[var(--border)] py-4 text-2xl font-semibold tracking-tight text-white transition-colors hover:text-[var(--accent)]"
             >
-              <span className="w-5 font-mono text-[10px] font-normal tracking-widest text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]">
+              <span className="w-5 font-mono text-xs font-normal tracking-widest text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]">
                 {String(index + 1).padStart(2, "0")}
               </span>
               {l.label}

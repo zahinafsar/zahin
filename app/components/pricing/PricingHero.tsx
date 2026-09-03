@@ -36,7 +36,7 @@ export default function PricingHero() {
           </a>
         </div>
 
-        <p className="mt-6 text-xs text-[var(--muted)]">
+        <p className="mt-6 text-sm text-[var(--muted)]">
           Already subscribed?{" "}
           <a
             href={CUSTOMER_PORTAL}

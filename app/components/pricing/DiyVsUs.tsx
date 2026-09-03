@@ -26,10 +26,10 @@ export default function DiyVsUs() {
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <div className="flex flex-col rounded-2xl border border-[var(--border)] bg-white/[0.02] p-6 md:p-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
+              <h3 className="font-mono text-sm uppercase tracking-widest text-[var(--muted)]">
                 You + AI subscriptions
               </h3>
-              <span className="rounded-full border border-[var(--border)] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-[var(--muted)]">
+              <span className="rounded-full border border-[var(--border)] px-3 py-1 font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
                 The hard way
               </span>
             </div>
@@ -54,7 +54,7 @@ export default function DiyVsUs() {
             </ol>
 
             <div className="mt-auto rounded-xl border border-dashed border-red-500/40 bg-red-500/5 p-5">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-red-400">
+              <div className="font-mono text-xs uppercase tracking-widest text-red-400">
                 Result
               </div>
               <div className="mt-1 text-lg font-medium text-red-300">
@@ -65,10 +65,10 @@ export default function DiyVsUs() {
 
           <div className="flex flex-col rounded-2xl border border-accent/40 bg-accent/5 p-6 md:p-8">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="font-mono text-xs uppercase tracking-widest text-accent">
+              <h3 className="font-mono text-sm uppercase tracking-widest text-accent">
                 Us
               </h3>
-              <span className="rounded-full border border-accent/40 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-accent">
+              <span className="rounded-full border border-accent/40 px-3 py-1 font-mono text-xs uppercase tracking-widest text-accent">
                 The engineered way
               </span>
             </div>
@@ -96,7 +96,7 @@ export default function DiyVsUs() {
               {skipped.map((s) => (
                 <span
                   key={s}
-                  className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-xs text-[var(--muted)]"
+                  className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-sm text-[var(--muted)]"
                 >
                   {s}
                 </span>
@@ -104,7 +104,7 @@ export default function DiyVsUs() {
             </div>
 
             <div className="mt-auto rounded-xl border border-accent/40 bg-accent/10 p-5">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-accent">
+              <div className="font-mono text-xs uppercase tracking-widest text-accent">
                 Result
               </div>
               <div className="mt-1 text-lg font-medium text-white">

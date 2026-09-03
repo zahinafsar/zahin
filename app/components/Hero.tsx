@@ -85,7 +85,7 @@ export default function Hero() {
             {stack.map((s) => (
               <span
                 key={s}
-                className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-xs text-[var(--muted)]"
+                className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-sm text-[var(--muted)]"
               >
                 {s}
               </span>

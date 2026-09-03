@@ -54,7 +54,7 @@ export default function Plans() {
             return (
               <div key={plan.id} className={cardClass}>
                 {plan.popular && (
-                  <span className="absolute -top-3 left-6 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-black">
+                  <span className="absolute -top-3 left-6 rounded-full bg-accent px-3 py-1 text-sm font-semibold text-black">
                     Most popular
                   </span>
                 )}
@@ -69,7 +69,7 @@ export default function Plans() {
                 </div>
 
                 <div className="mt-4">
-                  <span className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-xs text-white">
+                  <span className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-sm text-white">
                     {plan.trial}
                   </span>
                 </div>

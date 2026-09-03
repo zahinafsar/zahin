@@ -74,10 +74,10 @@ export default function Skills() {
             >
               <div className="pointer-events-none absolute -inset-px -z-10 bg-gradient-to-br from-[#ff6b3d]/10 to-transparent opacity-0 transition group-hover:opacity-100" />
               <div className="flex items-baseline gap-3">
-                {/* <span className="font-mono text-xs text-[var(--accent)]">
+                {/* <span className="font-mono text-sm text-[var(--accent)]">
                   {String(i + 1).padStart(2, "0")}
                 </span> */}
-                <span className="text-xs uppercase tracking-widest text-[var(--accent)]">
+                <span className="text-sm uppercase tracking-widest text-[var(--accent)]">
                   {g.title}
                 </span>
               </div>

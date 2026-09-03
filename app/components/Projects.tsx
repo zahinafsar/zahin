@@ -232,13 +232,13 @@ export default function Projects() {
               </div>
 
               <div className="flex flex-1 flex-col p-6">
-                <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                   {p.title}
                 </div>
                 <h3 className="mt-2 text-xl font-semibold tracking-tight">
                   {p.name}
                 </h3>
-                <div className="mt-1 text-xs text-[var(--muted)]">{p.role}</div>
+                <div className="mt-1 text-sm text-[var(--muted)]">{p.role}</div>
 
                 <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
                   {p.desc}
@@ -263,7 +263,7 @@ export default function Projects() {
                         target="_blank"
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[#ff6b3d]/40 bg-[#ff6b3d]/10 px-3.5 py-1.5 text-xs text-[#ff6b3d] transition hover:border-[#ff6b3d] hover:bg-[#ff6b3d]/20"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-[#ff6b3d]/40 bg-[#ff6b3d]/10 px-3.5 py-1.5 text-sm text-[#ff6b3d] transition hover:border-[#ff6b3d] hover:bg-[#ff6b3d]/20"
                       >
                         <ExternalLink size={13} aria-hidden />
                         Live
@@ -275,14 +275,14 @@ export default function Projects() {
                         target="_blank"
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs text-white transition hover:border-white/40 hover:bg-white/10"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-sm text-white transition hover:border-white/40 hover:bg-white/10"
                       >
                         <GithubIcon />
                         GitHub
                       </a>
                     )}
                     {!p.github && p.closedSource && (
-                      <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-xs text-[var(--muted)]">
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-sm text-[var(--muted)]">
                         <svg
                           width="12"
                           height="12"
@@ -333,7 +333,7 @@ export default function Projects() {
               />
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                  <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                     {p.tag}
                   </div>
                   <h3 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
@@ -384,7 +384,7 @@ export default function Projects() {
             </div>
 
             <div className="p-6 md:p-8">
-              <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+              <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                 {active.title}
               </div>
               <h3 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
@@ -416,7 +416,7 @@ export default function Projects() {
                       href={active.live}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-[#ff6b3d]/40 bg-[#ff6b3d]/10 px-3.5 py-1.5 text-xs text-[#ff6b3d] transition hover:border-[#ff6b3d] hover:bg-[#ff6b3d]/20"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-[#ff6b3d]/40 bg-[#ff6b3d]/10 px-3.5 py-1.5 text-sm text-[#ff6b3d] transition hover:border-[#ff6b3d] hover:bg-[#ff6b3d]/20"
                     >
                       <ExternalLink size={13} aria-hidden />
                       Live
@@ -427,14 +427,14 @@ export default function Projects() {
                       href={active.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs text-white transition hover:border-white/40 hover:bg-white/10"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-sm text-white transition hover:border-white/40 hover:bg-white/10"
                     >
                       <GithubIcon />
                       GitHub
                     </a>
                   )}
                   {!active.github && active.closedSource && (
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-xs text-[var(--muted)]">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3.5 py-1.5 text-sm text-[var(--muted)]">
                       <svg
                         width="12"
                         height="12"

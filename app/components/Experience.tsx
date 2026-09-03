@@ -112,7 +112,7 @@ export default function Experience() {
                   {j.tech.map((t) => (
                     <span
                       key={t}
-                      className="rounded-md border border-[var(--border)] bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-wider text-[var(--muted)]"
+                      className="rounded-md border border-[var(--border)] bg-white/5 px-2 py-0.5 text-xs uppercase tracking-wider text-[var(--muted)]"
                     >
                       {t}
                     </span>

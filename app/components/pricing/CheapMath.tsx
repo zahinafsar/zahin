@@ -26,18 +26,18 @@ export default function CheapMath() {
 
               <div className="mt-4 flex flex-col gap-3">
                 <div className="flex items-center gap-4">
-                  <span className="w-10 shrink-0 font-mono text-xs text-[var(--muted)]">
+                  <span className="w-10 shrink-0 font-mono text-sm text-[var(--muted)]">
                     You
                   </span>
                   <div className="flex-1">
                     <div className="h-2 w-full rounded-full bg-white/15" />
                   </div>
-                  <span className="w-24 shrink-0 text-right font-mono text-xs text-[var(--muted)]">
+                  <span className="w-24 shrink-0 text-right font-mono text-sm text-[var(--muted)]">
                     {s.you}
                   </span>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="w-10 shrink-0 font-mono text-xs text-accent">
+                  <span className="w-10 shrink-0 font-mono text-sm text-accent">
                     Us
                   </span>
                   <div className="flex-1">
@@ -46,7 +46,7 @@ export default function CheapMath() {
                       style={{ width: s.usWidth }}
                     />
                   </div>
-                  <span className="w-24 shrink-0 text-right font-mono text-xs text-white">
+                  <span className="w-24 shrink-0 text-right font-mono text-sm text-white">
                     {s.us}
                   </span>
                 </div>

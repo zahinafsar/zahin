@@ -65,7 +65,7 @@ export default function Recommendations() {
               className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--bg-soft)] p-7 transition-colors duration-300 hover:border-white/20 md:p-9"
             >
               <div className="flex items-start justify-between gap-6">
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent)]">
+                <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--accent)]">
                   Voice {String(index + 1).padStart(2, "0")}
                 </span>
                 <span
@@ -108,15 +108,15 @@ export default function Recommendations() {
                       ↗
                     </span>
                   </a>
-                  <p className="mt-0.5 truncate text-xs text-[var(--muted)]">
+                  <p className="mt-0.5 truncate text-sm text-[var(--muted)]">
                     {recommendation.role}
                   </p>
                 </div>
                 <div className="hidden flex-none text-right sm:block">
-                  <p className="text-[10px] uppercase tracking-widest text-white/60">
+                  <p className="text-xs uppercase tracking-widest text-white/60">
                     {recommendation.context}
                   </p>
-                  <p className="mt-1 text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                  <p className="mt-1 text-xs uppercase tracking-widest text-[var(--muted)]">
                     {recommendation.date}
                   </p>
                 </div>

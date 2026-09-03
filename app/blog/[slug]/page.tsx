@@ -148,7 +148,7 @@ export default async function PostPage({
       <article className="relative w-full px-6 pt-36 pb-24 md:px-10">
         <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="relative mx-auto max-w-3xl">
-          <nav aria-label="Breadcrumb" className="mb-8 text-xs text-[var(--muted)]">
+          <nav aria-label="Breadcrumb" className="mb-8 text-sm text-[var(--muted)]">
             <ol className="flex items-center gap-2">
               <li><Link href="/" className="hover:text-white">Home</Link></li>
               <li aria-hidden>›</li>
@@ -159,7 +159,7 @@ export default async function PostPage({
           </nav>
 
           <header className="border-b border-[var(--border)] pb-10">
-            <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-widest text-[var(--muted)]">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-[var(--muted)]">
               <time dateTime={fm.date}>{fmtDate(fm.date)}</time>
               <span aria-hidden>·</span>
               <span>{post.readingTime} min read</span>
@@ -186,7 +186,7 @@ export default async function PostPage({
                   {fm.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-[var(--border)] px-2.5 py-0.5 text-[10px] text-[var(--muted)]"
+                      className="rounded-full border border-[var(--border)] px-2.5 py-0.5 text-xs text-[var(--muted)]"
                     >
                       #{t}
                     </span>
@@ -258,7 +258,7 @@ export default async function PostPage({
                     href={`/blog/${prev.slug}`}
                     className="group rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-5 transition hover:border-white/20"
                   >
-                    <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                    <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                       Previous
                     </div>
                     <div className="mt-2 font-medium">{prev.frontmatter.title}</div>
@@ -269,7 +269,7 @@ export default async function PostPage({
                     href={`/blog/${next.slug}`}
                     className="group rounded-2xl border border-[var(--border)] bg-[var(--bg-soft)] p-5 text-right transition hover:border-white/20"
                   >
-                    <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                    <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                       Next
                     </div>
                     <div className="mt-2 font-medium">{next.frontmatter.title}</div>

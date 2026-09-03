@@ -168,7 +168,7 @@ export default function ZiexLeptos({
         <Chart data={LATENCY} unit="ms" title="Latency (lower better)" />
         <Chart data={THROUGHPUT} unit="k" title="Throughput (higher better)" />
       </div>
-      <figcaption className="mt-4 text-center text-xs text-[var(--muted)]">
+      <figcaption className="mt-4 text-center text-sm text-[var(--muted)]">
         {caption}
       </figcaption>
     </figure>

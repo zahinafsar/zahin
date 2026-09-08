@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { SITE } from "../lib/site";
 
 const links = [
-  { label: "About", href: "/#showreel" },
   { label: "Experience", href: "/#experience" },
   { label: "Projects", href: "/#projects" },
   { label: "Skills", href: "/#skills" },
@@ -42,70 +41,79 @@ export default function Nav() {
 
   return (
     <>
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled || open
-          ? "bg-black/60 backdrop-blur-xl border-b border-[var(--border)]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-        <Link
-          href="/"
-          onClick={() => setOpen(false)}
-          className="flex items-center gap-2 text-xl font-bold tracking-tight"
-        >
-          <Image src="/logo-v2.png" alt="Zahin Afsar" width={32} height={32} priority />
-        </Link>
-
-        <nav aria-label="Primary navigation" className="hidden items-center lg:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="rounded-full px-2.5 py-2 text-sm text-[var(--muted)] transition hover:bg-white/5 hover:text-white xl:px-3 xl:text-sm"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-
-        <a
-          href={SITE.author.calendly}
-          target="_blank"
-          rel="noreferrer"
-          className="hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-[var(--accent)] lg:inline-block"
-        >
-          Let&apos;s talk
-        </a>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="relative z-50 -mr-2 flex h-10 w-10 items-center justify-center lg:hidden"
-        >
-          <span className="relative block h-4 w-6">
-            <span
-              className={`absolute left-0 block h-0.5 w-6 bg-white transition-all duration-300 ${
-                open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
-              }`}
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled || open
+            ? "bg-black/60 backdrop-blur-xl border-b border-[var(--border)]"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 text-xl font-bold tracking-tight"
+          >
+            <Image
+              src="/logo-v2.png"
+              alt="Zahin Afsar"
+              width={32}
+              height={32}
+              priority
             />
-            <span
-              className={`absolute left-0 top-1/2 block h-0.5 w-6 -translate-y-1/2 bg-white transition-all duration-300 ${
-                open ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute left-0 block h-0.5 w-6 bg-white transition-all duration-300 ${
-                open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
-              }`}
-            />
-          </span>
-        </button>
-      </div>
-    </header>
+          </Link>
+
+          <nav
+            aria-label="Primary navigation"
+            className="hidden items-center lg:flex"
+          >
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="rounded-full px-2.5 py-2 text-sm text-[var(--muted)] transition hover:bg-white/5 hover:text-white xl:px-3 xl:text-sm"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          <a
+            href={SITE.author.calendly}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-[var(--accent)] lg:inline-block"
+          >
+            Let&apos;s talk
+          </a>
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            className="relative z-50 -mr-2 flex h-10 w-10 items-center justify-center lg:hidden"
+          >
+            <span className="relative block h-4 w-6">
+              <span
+                className={`absolute left-0 block h-0.5 w-6 bg-white transition-all duration-300 ${
+                  open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 block h-0.5 w-6 -translate-y-1/2 bg-white transition-all duration-300 ${
+                  open ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute left-0 block h-0.5 w-6 bg-white transition-all duration-300 ${
+                  open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+      </header>
 
       <nav
         aria-label="Mobile navigation"
@@ -123,7 +131,7 @@ export default function Nav() {
               className="group flex items-center gap-4 border-b border-[var(--border)] py-4 text-2xl font-semibold tracking-tight text-white transition-colors hover:text-[var(--accent)]"
             >
               <span className="w-5 font-mono text-xs font-normal tracking-widest text-[var(--muted)] transition-colors group-hover:text-[var(--accent)]">
-                {String(index + 1).padStart(2, "0")}
+                -
               </span>
               {l.label}
             </a>

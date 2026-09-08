@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "./lib/blog";
+import { EXPERTISE_PAGES } from "./lib/expertise";
 import { SITE } from "./lib/site";
 
 export const dynamic = "force-static";
@@ -31,6 +32,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    ...EXPERTISE_PAGES.map((page) => ({
+      url: `${SITE.url}/${page.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
   ];
 
   const postEntries: MetadataRoute.Sitemap = posts.map((p) => ({

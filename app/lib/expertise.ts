@@ -1,7 +1,7 @@
 export type ExpertiseSlug =
   | "full-stack-engineer-bangladesh"
   | "reactjs-developer-bangladesh"
-  | "nextjs-developer-bangladesh"
+  // | "nextjs-developer-bangladesh"
   | "senior-frontend-engineer-bangladesh"
   | "lead-frontend-engineer-bangladesh"
   | "backend-engineer-bangladesh"

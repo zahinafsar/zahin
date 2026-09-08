@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import { getAllPosts, getAllTags } from "../lib/blog";
+import { getAllPosts } from "../lib/blog";
 import { SITE } from "../lib/site";
 
 export const dynamic = "force-static";
@@ -57,7 +57,7 @@ function fmtDate(d: string) {
 }
 
 export default async function BlogIndex() {
-  const [posts, tags] = await Promise.all([getAllPosts(), getAllTags()]);
+  const posts = await getAllPosts();
 
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -146,7 +146,7 @@ export default async function BlogIndex() {
             </p>
           </header>
 
-          {tags.length > 0 && (
+          {/* {tags.length > 0 && (
             <div className="mt-10 flex flex-wrap gap-2">
               {tags.map((t) => (
                 <span
@@ -157,7 +157,7 @@ export default async function BlogIndex() {
                 </span>
               ))}
             </div>
-          )}
+          )} */}
         </div>
       </section>
 

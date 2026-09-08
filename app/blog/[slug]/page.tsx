@@ -83,6 +83,7 @@ export default async function PostPage({
   if (!post) notFound();
 
   const fm = post.frontmatter;
+  const minimal = fm.minimal === true;
   const url = `${SITE.url}/blog/${slug}`;
   const ogImage = `${SITE.url}/blog/${slug}/opengraph-image`;
 
@@ -133,7 +134,7 @@ export default async function PostPage({
   return (
     <main className="relative">
       <Nav />
-      <CodeCopy />
+      {minimal ? null : <CodeCopy />}
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -145,20 +146,26 @@ export default async function PostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <article className="relative w-full px-6 pt-36 pb-24 md:px-10">
-        <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="relative mx-auto max-w-3xl">
-          <nav aria-label="Breadcrumb" className="mb-8 text-sm text-[var(--muted)]">
-            <ol className="flex items-center gap-2">
-              <li><Link href="/" className="hover:text-white">Home</Link></li>
-              <li aria-hidden>›</li>
-              <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
-              <li aria-hidden>›</li>
-              <li className="truncate text-white" aria-current="page">{fm.title}</li>
-            </ol>
-          </nav>
+      <article className={`relative w-full px-6 pb-24 md:px-10 ${minimal ? "pt-28" : "pt-36"}`}>
+        {minimal ? null : <div className="absolute inset-0 grid-bg opacity-20" />}
+        <div className={`relative mx-auto ${minimal ? "max-w-2xl" : "max-w-3xl"}`}>
+          {minimal ? (
+            <Link href="/blog" className="mb-10 inline-block text-sm text-[var(--muted)] transition hover:text-white">
+              ← All posts
+            </Link>
+          ) : (
+            <nav aria-label="Breadcrumb" className="mb-8 text-sm text-[var(--muted)]">
+              <ol className="flex items-center gap-2">
+                <li><Link href="/" className="hover:text-white">Home</Link></li>
+                <li aria-hidden>›</li>
+                <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
+                <li aria-hidden>›</li>
+                <li className="truncate text-white" aria-current="page">{fm.title}</li>
+              </ol>
+            </nav>
+          )}
 
-          <header className="border-b border-[var(--border)] pb-10">
+          <header className={`border-b border-[var(--border)] ${minimal ? "pb-8" : "pb-10"}`}>
             <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-[var(--muted)]">
               <time dateTime={fm.date}>{fmtDate(fm.date)}</time>
               <span aria-hidden>·</span>
@@ -170,34 +177,36 @@ export default async function PostPage({
                 </>
               )}
             </div>
-            <h1 className="mt-5 text-4xl font-semibold leading-[1.1] tracking-tight md:text-5xl">
+            <h1 className={`mt-5 font-semibold leading-[1.1] tracking-tight ${minimal ? "text-4xl" : "text-4xl md:text-5xl"}`}>
               {fm.title}
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-[var(--muted)] md:text-xl">
+            <p className={`mt-5 leading-relaxed text-[var(--muted)] ${minimal ? "text-base" : "text-lg md:text-xl"}`}>
               {fm.description}
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <div className="text-sm">
-                <span className="text-[var(--muted)]">By </span>
-                <span className="font-medium">{fm.author || SITE.author.name}</span>
-              </div>
-              {fm.tags && fm.tags.length > 0 && (
-                <div className="ml-auto flex flex-wrap gap-2">
-                  {fm.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-[var(--border)] px-2.5 py-0.5 text-xs text-[var(--muted)]"
-                    >
-                      #{t}
-                    </span>
-                  ))}
+            {minimal ? null : (
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <div className="text-sm">
+                  <span className="text-[var(--muted)]">By </span>
+                  <span className="font-medium">{fm.author || SITE.author.name}</span>
                 </div>
-              )}
-            </div>
+                {fm.tags && fm.tags.length > 0 && (
+                  <div className="ml-auto flex flex-wrap gap-2">
+                    {fm.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-[var(--border)] px-2.5 py-0.5 text-xs text-[var(--muted)]"
+                      >
+                        #{t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </header>
 
           {post.isMdx ? (
-            <div className="prose-blog mt-12">
+            <div className={`prose-blog ${minimal ? "mt-10" : "mt-12"}`}>
               <MDXRemote
                 source={post.content}
                 components={mdxComponents}
@@ -225,12 +234,18 @@ export default async function PostPage({
             </div>
           ) : (
             <div
-              className="prose-blog mt-12"
+              className={`prose-blog ${minimal ? "mt-10" : "mt-12"}`}
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
           )}
 
-          <footer className="mt-16 border-t border-[var(--border)] pt-10">
+          <footer className={`${minimal ? "mt-12 pt-8" : "mt-16 pt-10"} border-t border-[var(--border)]`}>
+            {minimal ? (
+              <Link href="/blog" className="text-sm text-[var(--muted)] transition hover:text-white">
+                ← All posts
+              </Link>
+            ) : (
+              <>
             <div className="flex flex-col gap-3 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between">
               <div>
                 Found this useful? <a href={`mailto:${SITE.author.email}`} className="text-white hover:text-[var(--accent)]">Email me</a> or share on{" "}
@@ -276,6 +291,8 @@ export default async function PostPage({
                   </Link>
                 ) : <span />}
               </nav>
+            )}
+              </>
             )}
           </footer>
         </div>

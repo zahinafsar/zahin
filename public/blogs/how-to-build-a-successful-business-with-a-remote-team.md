@@ -5,6 +5,7 @@ date: "2026-08-07"
 updated: "2026-08-07"
 tags: ["remote-work", "business", "startups", "leadership"]
 author: "Md. Zahin Afsar"
+minimal: true
 ---
 
 I have spent almost five years working with remote teams across four companies. Two failed. Two survived.
@@ -67,47 +68,13 @@ The arrangement worked because roles were distributed deliberately. Engineering 
 
 ## What actually makes a remote business work
 
-After four companies, these are the principles I keep coming back to.
-
-### Own more than one path to customers
-
-A marketplace such as Fiverr can help a company start, but it should not become the whole company. Build direct relationships, referrals, partnerships, content, outbound sales, or another channel you can control. If one platform changes its algorithm or your reviews decline, the business should still have a way to find customers.
-
-### Hire for quality per dollar, not the lowest price
-
-Remote hiring gives a company access to countries where excellent people cost less than comparable hires in the founders' local market. That is a real advantage. Chasing the cheapest person available is something else entirely.
-
-Low-quality work creates rework, support costs, missed deadlines, and lost trust. It can be far more expensive than paying a strong remote engineer properly.
-
-### Stay close to users
-
-Wecycle spent too long planning without enough customer contact. A remote team can make this worse because everyone can stay busy inside project tools and meetings without hearing from the people using the product.
-
-Engineers should see support problems. Product decisions should use sales conversations. Founders should keep speaking to customers even after dedicated teams are hired. A distributed company needs to design this feedback loop on purpose.
-
-### Build where you have an unfair understanding
-
-The first agency moved into a product category it did not know. The holistic-healing marketplace had much better domain alignment, even though it failed for a different reason. LiveRecover also solved a specific commerce problem with a clear customer and outcome.
-
-Entering an unfamiliar market is possible, but the missing knowledge has a cost. You will pay for it through research, experienced hires, partnerships, or mistakes. Pretending the cost does not exist is usually the most expensive option.
-
-### Treat financial relationships as infrastructure
-
-If one investor, client, or platform keeps the company alive, that relationship is a concentration risk. Founders need clear expectations with investors, enough runway to survive a disruption, and a plan for what happens if expected funding disappears.
-
-A dedicated team may volunteer extra time during a crisis. It should never be the company's financial plan.
-
-### Use a communication rhythm people can sustain
-
-Daily stand-ups worked well for us at LiveRecover because they were short and gave everyone alignment. The exact meeting is less important than the rhythm: people need to know the goal, what others are doing, and where to raise a blocker.
-
-Not every conversation needs a meeting. Decisions should be written down, ownership should be visible, and urgent channels should be reserved for genuinely urgent work. Flexibility is one of the best parts of remote work, but without boundaries it turns into permanent availability.
-
-### Give every department the setup it needs
-
-There is no reason engineering, support, sales, and marketing must follow the same geographic strategy. LiveRecover saved substantially on product delivery through remote hiring while keeping customer-facing functions close to the market. Wecycle improved when it added the non-engineering functions the business was missing.
-
-Design the company around how work and information move. Do not start with the assumption that everyone must be remote, hybrid, or local.
+- Use more than one way to find customers.
+- Hire for quality, not the lowest price.
+- Stay close to users and their feedback.
+- Build in a market you understand.
+- Avoid depending on one investor, client, or platform.
+- Keep communication clear and consistent.
+- Give each department the setup it needs.
 
 ## Remote is a multiplier
 

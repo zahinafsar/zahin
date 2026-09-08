@@ -16,6 +16,7 @@ export type PostFrontmatter = {
   ogImage?: string;
   draft?: boolean;
   canonical?: string;
+  minimal?: boolean;
 };
 
 export type Post = {

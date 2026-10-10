@@ -2,6 +2,16 @@ import Image from "next/image";
 
 const recommendations = [
   {
+    name: "Catana Harrington",
+    image: "/recommendations/catana-harrington.jpg",
+    role: "Product Manager at VYG.AI",
+    context: "Worked with Zahin on the same team",
+    date: "October 2026",
+    profile: "https://www.linkedin.com/in/catana-harrington/",
+    quote:
+      "Zahin was a great person to work with. I could always rely on him to be responsive and helpful when I needed support, whether that meant fixing front-end bugs, working through UI changes, or helping clarify what was and wasn’t possible from a design perspective. He was easy to communicate with and especially patient with our constantly evolving designs and frequent changes. Even when we made significant changes after he had already done the work, he never complained and simply adapted and got things where they needed to be. He was also very receptive to feedback and consistently used it to improve. I really appreciated how dependable and collaborative he was, and I would gladly work with him again.",
+  },
+  {
     name: "Dr. Mohammad NuruzZaman",
     image: "/recommendations/mohammad-nuruzzaman.jpg",
     role: "Group CEO of Daffodil Group",
@@ -31,16 +41,16 @@ const recommendations = [
     quote:
       "I worked directly with Zahin at Voyage Mobile, Inc., and he is hands-down one of the most talented frontend engineers I’ve partnered with. Zahin has an incredible ability to take super complex UI designs and translate them into pixel-perfect, production-ready code at lightning speed. He is deeply committed to execution and consistently goes above and beyond to get things done ahead of schedule without ever compromising on quality. He would be a massive asset to any engineering team looking for speed, precision, and technical excellence.",
   },
-  {
-    name: "Jubayer Al Mamun",
-    image: "/recommendations/jubayer-al-mamun.jpg",
-    role: "Software Engineer at Wecycle.io",
-    context: "Worked with Zahin on the same team",
-    date: "May 2026",
-    profile: "https://www.linkedin.com/in/jubayeramb/",
-    quote:
-      "Zahin Afsar is an excellent developer. He’s a strong problem solver with great frontend skills. Zahin really cares about user experience and pays close attention to detail. He handles complex user flows and designs with ease and always finds practical solutions.",
-  },
+  // {
+  //   name: "Jubayer Al Mamun",
+  //   image: "/recommendations/jubayer-al-mamun.jpg",
+  //   role: "Software Engineer at Wecycle.io",
+  //   context: "Worked with Zahin on the same team",
+  //   date: "May 2026",
+  //   profile: "https://www.linkedin.com/in/jubayeramb/",
+  //   quote:
+  //     "Zahin Afsar is an excellent developer. He’s a strong problem solver with great frontend skills. Zahin really cares about user experience and pays close attention to detail. He handles complex user flows and designs with ease and always finds practical solutions.",
+  // },
 ];
 
 export default function Recommendations() {

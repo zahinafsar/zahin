@@ -68,10 +68,10 @@ export default function Hero() {
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
-              href="/pricing"
-              className="btn-glow inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-black"
+              href="/ai-workflow"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-[var(--accent)] hover:text-white"
             >
-              Hire for $200/mo
+              See my AI workflow
             </Link>
             <a
               href="#contact"

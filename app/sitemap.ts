@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${SITE.url}/pricing`,
+      url: `${SITE.url}/ai-workflow`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,

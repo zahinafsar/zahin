@@ -2,11 +2,11 @@ import { ImageResponse } from "next/og";
 import { SITE } from "../lib/site";
 
 export const runtime = "nodejs";
-export const alt = "Hire a software engineer for $200/mo";
+export const alt = "How I ship with AI agents";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const chips = ["First 2 days free", "Any dev work", "We handle AI for you"];
+const chips = ["Plan", "Tests first", "Loop until green"];
 
 export default function OG() {
   return new ImageResponse(
@@ -37,7 +37,7 @@ export default function OG() {
           }}
         >
           <div style={{ display: "flex" }}>
-            {SITE.url.replace(/^https?:\/\//, "")} / pricing
+            {SITE.url.replace(/^https?:\/\//, "")} / ai-workflow
           </div>
         </div>
 
@@ -52,8 +52,8 @@ export default function OG() {
               flexDirection: "column",
             }}
           >
-            <div style={{ display: "flex" }}>Ship your product for</div>
-            <div style={{ display: "flex", color: "#ff6b3d" }}>$200/mo.</div>
+            <div style={{ display: "flex" }}>How I ship with</div>
+            <div style={{ display: "flex", color: "#ff6b3d" }}>AI agents.</div>
           </div>
           <div
             style={{
@@ -62,7 +62,7 @@ export default function OG() {
               color: "rgba(255,255,255,0.65)",
             }}
           >
-            No AI subscriptions. No models. No agents to manage.
+            Plan, write tests, execute, loop until green, ship.
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Nav from "../components/Nav";
-import WorkflowHero from "../components/workflow/WorkflowHero";
 import WorkflowGraph from "../components/workflow/WorkflowGraph";
 import WorkflowPrinciples from "../components/workflow/WorkflowPrinciples";
 import Footer from "../components/Footer";
@@ -61,7 +60,6 @@ export default function AiWorkflowPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Nav />
-      <WorkflowHero />
       <WorkflowGraph />
       <WorkflowPrinciples />
       <Footer />

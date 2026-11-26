@@ -4,6 +4,7 @@ export type WorkflowNodeId =
   | "tests"
   | "execute"
   | "verify"
+  | "review"
   | "ship"
   | "memory";
 
@@ -41,7 +42,7 @@ export type WorkflowStep = {
   parallel?: string[];
 };
 
-export const CANVAS = { width: 1280, height: 550 } as const;
+export const CANVAS = { width: 1490, height: 550 } as const;
 export const NODE_WIDTH = 160;
 export const NODE_HEIGHT = 84;
 
@@ -114,14 +115,26 @@ export const NODES: WorkflowNode[] = [
     output: "Green build",
   },
   {
-    id: "ship",
-    label: "Ship",
-    kicker: "Final",
+    id: "review",
+    label: "Review",
+    kicker: "Me",
     owner: "Me",
     x: 1160,
     y: 240,
     summary:
-      "I read the diff, then it deploys. The pipeline ends here. No loop after deploy.",
+      "Green is not done. I read the diff, click through the preview and check it against the brief. Nothing deploys until I sign off.",
+    tools: ["GitHub PR", "Preview deploy"],
+    output: "Approved diff",
+  },
+  {
+    id: "ship",
+    label: "Ship",
+    kicker: "Final",
+    owner: "Agent",
+    x: 1370,
+    y: 240,
+    summary:
+      "Approved code deploys. The pipeline ends here. No loop after deploy.",
     tools: ["Vercel", "EasyHost"],
     output: "Live URL",
   },
@@ -150,7 +163,7 @@ export const MEMORY_LINKS: MemoryLink[] = [
     id: "read-execute",
     node: "execute",
     mode: "read",
-    d: "M 610 450 C 700 450, 700 370, 700 288",
+    d: "M 610 450 C 700 450, 700 400, 700 328",
   },
   {
     id: "write-verify",
@@ -173,12 +186,13 @@ export const PLAN_INPUTS: PlanInput[] = [
 ];
 
 export const SUB_AGENTS = [
-  { id: "backend", label: "Backend", x: 700, width: 96 },
-  { id: "frontend", label: "Frontend", x: 810, width: 96 },
-  { id: "data", label: "Data", x: 920, width: 96 },
+  { id: "backend", label: "Backend" },
+  { id: "frontend", label: "Frontend" },
+  { id: "data", label: "Data" },
 ];
 
-export const SUB_AGENT_CAPTION_X = 810;
+export const AGENT_CARD_HEIGHT = 48;
+export const AGENT_CARD_GAP = 10;
 
 export const PLAN_INPUT_Y = 130;
 export const PLAN_INPUT_HEIGHT = 30;
@@ -189,7 +203,8 @@ export const EDGES: WorkflowEdge[] = [
   { from: "tests", to: "execute" },
   { from: "execute", to: "verify" },
   { from: "verify", to: "execute", loop: true },
-  { from: "verify", to: "ship" },
+  { from: "verify", to: "review" },
+  { from: "review", to: "ship" },
 ];
 
 export const SEQUENCE: WorkflowStep[] = [
@@ -214,9 +229,9 @@ export const SEQUENCE: WorkflowStep[] = [
     node: "execute",
     log: [
       "applying memory.md rules",
-      "tasks are independent: splitting into 3 sub-agents",
+      "tasks are independent: splitting into 3 agents",
       "backend, frontend, data running in parallel",
-      "sub-agents merged: 6 files changed",
+      "agents merged: 6 files changed",
     ],
     parallel: ["backend", "frontend", "data"],
   },
@@ -234,11 +249,13 @@ export const SEQUENCE: WorkflowStep[] = [
     node: "execute",
     log: [
       "checking memory.md for this fault",
-      "fix is small: single agent, no sub-agents",
+      "fix is small: one agent, no fan-out",
       "fixing 3 failing tests",
       "2 files changed",
     ],
+    parallel: ["backend"],
   },
   { node: "verify", log: ["tsc ok", "12/12 passed", "build compiled"] },
-  { node: "ship", log: ["diff reviewed", "deployed to production", "pipeline complete"] },
+  { node: "review", log: ["diff reviewed", "preview checked against brief", "approved"] },
+  { node: "ship", log: ["deployed to production", "pipeline complete"] },
 ];

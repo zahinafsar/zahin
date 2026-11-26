@@ -1,6 +1,10 @@
-import { SITE } from "../../lib/site";
+import type { ReactNode } from "react";
 
-export default function WorkflowHero() {
+type WorkflowHeroProps = {
+  actions: ReactNode;
+};
+
+export default function WorkflowHero({ actions }: WorkflowHeroProps) {
   return (
     <section className="relative flex w-full items-center overflow-hidden px-6 pb-16 pt-40 md:px-10">
       <div className="absolute inset-0 grid-bg opacity-80" />
@@ -13,25 +17,11 @@ export default function WorkflowHero() {
 
         <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[var(--muted)] md:text-lg">
           Agents write most of the code. I own the plan, the review and the
-          result. This is the exact pipeline, running live.{" "}
-          <span className="text-white">Click any step to open it.</span>
+          result. This is the exact pipeline, running live.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <a
-            href="#workflow"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-[var(--accent)]"
-          >
-            Watch it run
-          </a>
-          <a
-            href={SITE.author.calendly}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-5 py-3 text-sm font-medium text-white transition hover:border-white"
-          >
-            Book a call
-          </a>
+          {actions}
         </div>
       </div>
     </section>
